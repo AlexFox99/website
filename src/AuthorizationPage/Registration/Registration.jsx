@@ -18,6 +18,8 @@ const Registration=(props)=>{
                         <input type="text" className="PasswordInputReg"/>
                         <div className="RepPasswordNameInputReg">RepeatPassword</div>
                         <input type="text" className="RepPasswordInputReg"/>
+                        <div className="EmailNameInputReg">Email</div>
+                        <input type="text" className="EmailInputReg"/>
                     </div>
                 </div>
                 <div className="ForNavLinkReg">
