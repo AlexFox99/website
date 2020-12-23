@@ -3,31 +3,37 @@ import {NavLink} from "react-router-dom";
 import "./Entrance.css";
 const Entrance=(props)=>{
     return(
-        <div className="EntrancePage">
-            <div className="EntranceContent">
-                <div className="NameEntrance">
-                    Войти
+        <div className={props.store.PageEntrance.ClassNameEntrance[0].name}>
+            <div className={props.store.PageEntrance.ClassNameEntrance[1].name}>
+                <div className={props.store.PageEntrance.ClassNameEntrance[2].name}>
+                    {props.store.PageEntrance.NamesEntrance[0].name}
                 </div>
-                <div className="ForInput">
-                    <div className="LoginInputContent">
-                        <div className="NameLoginInput">Имя пользователя или Email</div>
-                        <input type="text" className="LoginInput"/>
+                <div className={props.store.PageEntrance.ClassNameEntrance[3].name}>
+                    <div className={props.store.PageEntrance.ClassNameEntrance[4].name}>
+                        <div className={props.store.PageEntrance.ClassNameEntrance[5].name}>
+                            {props.store.PageEntrance.NamesEntrance[1].name}</div>
+                        <input type={props.store.Type}
+                               className={props.store.PageEntrance.ClassNameEntrance[6].name}/>
                     </div>
-                    <div className="PasswordInputContent">
-                        <div className="NamePasswordInput">Пароль</div>
-                        <input type="text" className="PasswordInput"/>
+                    <div className={props.store.PageEntrance.ClassNameEntrance[7].name}>
+                        <div className={props.store.PageEntrance.ClassNameEntrance[8].name}>
+                            {props.store.PageEntrance.NamesEntrance[2].name}</div>
+                        <input type={props.store.Type}
+                               className={props.store.PageEntrance.ClassNameEntrance[9].name}/>
                     </div>
                 </div>
-                <div className="ForNavLink">
-                    <NavLink to="/Authorization/ForgotPassword" className="ForgotPassNavLink">
-                        Забыли свой пароль?
+                <div className={props.store.PageEntrance.ClassNameEntrance[10].name}>
+                    <NavLink to={props.store.PageEntrance.LinksEntrance[0].links}
+                             className={props.store.PageEntrance.ClassNameEntrance[11].name}>
+                        {props.store.PageEntrance.NamesEntrance[3].name}
                     </NavLink>
-                    <NavLink to="/Authorization/Registration">
-                        <button color='primary' className="RegButNavLink">
-                            Регистрация
+                    <NavLink to={props.store.PageEntrance.LinksEntrance[1].links}>
+                        <button className={props.store.PageEntrance.ClassNameEntrance[12].name}>
+                            {props.store.PageEntrance.NamesEntrance[4].name}
                         </button>
                     </NavLink>
-                    <button color='primary' className="EnterBut">Войти</button>
+                    <button className={props.store.PageEntrance.ClassNameEntrance[13].name}>
+                        {props.store.PageEntrance.NamesEntrance[0].name}</button>
                 </div>
             </div>
         </div>
