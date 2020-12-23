@@ -1,0 +1,22 @@
+.map-wrapper {
+    display: grid;
+    grid-template-areas:
+    "h h"
+    "c n";
+    grid-template-rows:   1fr ;
+    grid-auto-columns: 1fr 1fr;
+}
+.map-header{
+    height: 60px;
+    background-color: darkgreen;
+    grid-area: h;
+}
+.map-nav{
+    background-color: green;
+    grid-area: n;
+}
+.map-content{
+
+    background-color: grey;
+    grid-area: c;
+}

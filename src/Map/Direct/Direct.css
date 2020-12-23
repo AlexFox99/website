@@ -1,0 +1,50 @@
+.direct-wrapper {
+    display: grid;
+    grid-template-areas:
+            "d1 d2 d3 d4"
+            "d5 d6 d7 d7";
+    grid-template-rows: 1fr 1fr ;
+    grid-auto-columns: auto;
+}
+.direct-1{
+    height: 60px;
+    width: 60px;
+    background-color:darkorange;
+    grid-area: d1;
+}
+.direct-2{
+    height: 60px;
+    width: 60px;
+    background-color: darksalmon;
+    grid-area: d2;
+}
+.direct-3{
+    height: 60px;
+    width: 60px;
+    background-color: darkcyan;
+    grid-area: d3;
+}
+.direct-4{
+    height: 60px;
+    width: 60px;
+    background-color: darkseagreen;
+    grid-area: d4;
+}
+.direct-5{
+    height: 60px;
+    width: 60px;
+    background-color: lightseagreen;
+    grid-area: d5;
+}
+.direct-6{
+    height: 60px;
+    width: 60px;
+    background-color: lightcoral;
+    grid-area: d6;
+}
+.direct-7{
+    height: 60px;
+    width: 60px;
+    background-color: limegreen;
+    grid-area: d7;
+}
