@@ -1,3 +1,4 @@
+import {rerenderTree} from "../render";
 
 
 let state={
@@ -45,7 +46,8 @@ let state={
         LinksEntrance:[
             {id:0,links:"/Authorization/ForgotPassword"},
             {id:1,links:"/Authorization/Registration"}
-        ]
+        ],
+        Text:""
     },
     PageReg:{
         ClassNameReg:[
@@ -110,6 +112,15 @@ let state={
     },
     Type:"text",
 
+//pricol
+}
+export let Onclick=()=>{
+    alert(state.PageEntrance.Text);
+    state.PageEntrance.Text="";
+}
+export let updateText=(text)=>{
+    state.PageEntrance.Text=text;
+    rerenderTree(state);
 
 }
 export default state;
