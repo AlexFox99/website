@@ -1,14 +1,14 @@
 import React from "react";
-import Direct from "./Direct/Direct";
-import "./Map.css"
-const Map = () => {
+import Ticket from "./ticket/Ticket";
+import "./tickets.css"
+const Tickets = () => {
     return(
         <div className="map-wrapper">
             <div className="map-header">
                 I map
             </div>
             <div className="map-content">
-                <Direct/>
+                <Ticket/>
             </div>
 
             <div className="map-nav">
@@ -17,4 +17,4 @@ const Map = () => {
         </div>
     );
 }
-export default Map;
+export default Tickets;

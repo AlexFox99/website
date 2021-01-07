@@ -1,6 +1,6 @@
 import React from "react";
-import "./Direct.css"
-const Direct = () => {
+import "./ticket.css"
+const Ticket = () => {
     return(
         <div className="direct-wrapper">
             <div onClick={()=>alert("d1")} className="direct-1">I Direct 1</div>
@@ -13,4 +13,4 @@ const Direct = () => {
         </div>
     );
 }
-export default Direct;
+export default Ticket;

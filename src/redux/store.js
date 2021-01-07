@@ -15,7 +15,7 @@ let state={
           {id:1,links:"/Authorization"},
           {id:2,links:"/Authorization/Entrance"},
           {id:3,links:"/Authorization/Registration"},
-          {id:4,links:"/Map"},
+          {id:4,links:"/tickets"},
           {id:5,links:"/Authorization/ForgotPassword"}
       ]
     },
@@ -82,7 +82,7 @@ let state={
         ],
         LinksReg:[
             {id:0,links:"/Authorization/Entrance"},
-            {id:1,links:"/Map"}
+            {id:1,links:"/Tickets"}
         ]
     },
     PageForPas:{
