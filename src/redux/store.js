@@ -114,13 +114,13 @@ let state={
 
 //pricol
 }
-export let Onclick=()=>{
+export let onclick=()=>{
     alert(state.PageEntrance.Text);
     state.PageEntrance.Text="";
 }
 export let updateText=(text)=>{
     state.PageEntrance.Text=text;
-    rerenderTree(state);
+    /*rerenderTree(state);*/
 
 }
 export default state;

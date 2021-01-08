@@ -3,7 +3,7 @@ import React from "react";
 import {BrowserRouter, Redirect, Route} from "react-router-dom";
 
 import ForgotPasswordPage from "./AuthorizationPage/ForgotPassword/ForgotPasswordPage";
-import Map from "./Map/Map";
+import Tickets from "./tickets/Tickets";
 import logo from "./logo.png";
 import Entrance from "./AuthorizationPage/Entrance/Entrance";
 import Registration from "./AuthorizationPage/Registration/Registration";
@@ -23,11 +23,13 @@ const App=(props)=> {
                     <Route exact path={props.state.ForApp.LinksApp[1].links}
                            render={()=><Redirect to={props.state.ForApp.LinksApp[2].links}/>} />
                     <Route path={props.state.ForApp.LinksApp[2].links}
-                           render={()=><Entrance store={props.state}/>}/>
+                           render={()=><Entrance store={props.state}
+                                                 onclick={props.onclick}
+                                                 updateText={props.updateText}/>}/>
                     <Route path={props.state.ForApp.LinksApp[3].links}
                            render={()=><Registration store={props.state}/>}/>
-                    <Route path={props.state.ForApp.LinksApp[4].links}
-                           render={()=><Map/>} />
+                    <Route path="/Tickets"
+                           render={()=><Tickets/>} />
                     <Route path={props.state.ForApp.LinksApp[5].links}
                            render={()=><ForgotPasswordPage store={props.state}/>} />
                 </div>

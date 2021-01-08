@@ -2,6 +2,14 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 import "./Entrance.css";
 const Entrance=(props)=>{
+    let onClick=()=>{
+        props.onclick();
+    };
+    let onloginChange=()=>{
+        let text=login.current.value;
+        props.updateText(text);
+    };
+    let login=React.createRef();
     return(
         <div className={props.store.PageEntrance.ClassNameEntrance[0].name}>
             <div className={props.store.PageEntrance.ClassNameEntrance[1].name}>
@@ -12,8 +20,12 @@ const Entrance=(props)=>{
                     <div className={props.store.PageEntrance.ClassNameEntrance[4].name}>
                         <div className={props.store.PageEntrance.ClassNameEntrance[5].name}>
                             {props.store.PageEntrance.NamesEntrance[1].name}</div>
-                        <input type={props.store.Type}
-                               className={props.store.PageEntrance.ClassNameEntrance[6].name}/>
+                        <input onChange={onloginChange}
+                               value={props.store.PageEntrance.Text}
+                            ref={login}
+                            type={props.store.Type}
+                               className={props.store.PageEntrance.ClassNameEntrance[6].name}
+                        />
                     </div>
                     <div className={props.store.PageEntrance.ClassNameEntrance[7].name}>
                         <div className={props.store.PageEntrance.ClassNameEntrance[8].name}>
@@ -32,7 +44,8 @@ const Entrance=(props)=>{
                             {props.store.PageEntrance.NamesEntrance[4].name}
                         </button>
                     </NavLink>
-                    <button className={props.store.PageEntrance.ClassNameEntrance[13].name}>
+                    <button onClick={onClick}
+                        className={props.store.PageEntrance.ClassNameEntrance[13].name}>
                         {props.store.PageEntrance.NamesEntrance[0].name}</button>
                 </div>
             </div>
