@@ -3,10 +3,10 @@ import "./ticket.css"
 const Ticket = (props) => {
 
     let onchangeProcessing=()=>{
-        props.onchangeProcessing(props.id);
+        props.onchangeProcessing(props.directid,props.tiketsid);
     }
     let onchangeCompleted=()=>{
-        props.onchangeCompleted(props.id);
+        props.onchangeCompleted(props.directid,props.tiketsid);
     }
     return(
         <div className="ticketPattern">

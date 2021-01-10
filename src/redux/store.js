@@ -1,4 +1,6 @@
 import {rerenderTree} from "../render";
+import Ticket from "../tickets/ticket/Ticket";
+import React from "react";
 
 
 let state={
@@ -112,38 +114,70 @@ let state={
     },
     Type:"text",
     PageTiket:{
-        Tikets:[
-            {id:0,name:"1 заявка",
+        Directs:[{id:0,TiketsDirect:[
+            {id:0,name:"1 заявка Железнодорожный",
                 disEnrolled:true,defEnrolled:true,
                 disProcessing:false,defProcessing:false,
                 disCompleted:false,defCompleted:false
             },
-            {id:1,name:"2 заявка",
-                disEnrolled:true,defEnrolled:true,
-                disProcessing:false,defProcessing:false,
-                disCompleted:false,defCompleted:false
-            },
-            {id:2,name:"3 заявка",
-                disEnrolled:true,defEnrolled:true,
-                disProcessing:false,defProcessing:false,
-                disCompleted:false,defCompleted:false
-            },
-            {id:3,name:"4 заявка",
-                disEnrolled:true,defEnrolled:true,
-                disProcessing:false,defProcessing:false,
-                disCompleted:false,defCompleted:false
-            },
-            {id:4,name:"5 заявка",
-                disEnrolled:true,defEnrolled:true,
-                disProcessing:false,defProcessing:false,
-                disCompleted:false,defCompleted:false
-            },
-            {id:5,name:"6 заявка",
-                disEnrolled:true,defEnrolled:true,
-                disProcessing:false,defProcessing:false,
-                disCompleted:false,defCompleted:false
-            }
-        ]
+                {id:1,name:"2 заявка Железнодорожный",
+                    disEnrolled:true,defEnrolled:true,
+                    disProcessing:false,defProcessing:false,
+                    disCompleted:false,defCompleted:false
+                },
+                {id:2,name:"3 заявка Железнодорожный",
+                    disEnrolled:true,defEnrolled:true,
+                    disProcessing:false,defProcessing:false,
+                    disCompleted:false,defCompleted:false
+                },
+                {id:3,name:"4 заявка Железнодорожный",
+                    disEnrolled:true,defEnrolled:true,
+                    disProcessing:false,defProcessing:false,
+                    disCompleted:false,defCompleted:false
+                },
+                {id:4,name:"5 заявка Железнодорожный",
+                    disEnrolled:true,defEnrolled:true,
+                    disProcessing:false,defProcessing:false,
+                    disCompleted:false,defCompleted:false
+                },
+                {id:5,name:"6 заявка Железнодорожный",
+                    disEnrolled:true,defEnrolled:true,
+                    disProcessing:false,defProcessing:false,
+                    disCompleted:false,defCompleted:false
+                }
+                ]},
+            {id:1,TiketsDirect:[
+                {id:0,name:"1 заявка Кировский",
+                    disEnrolled:true,defEnrolled:true,
+                    disProcessing:false,defProcessing:false,
+                    disCompleted:false,defCompleted:false
+                },
+                    {id:1,name:"2 заявка Кировский",
+                        disEnrolled:true,defEnrolled:true,
+                        disProcessing:false,defProcessing:false,
+                        disCompleted:false,defCompleted:false
+                    },
+                    {id:2,name:"3 заявка Кировский",
+                        disEnrolled:true,defEnrolled:true,
+                        disProcessing:false,defProcessing:false,
+                        disCompleted:false,defCompleted:false
+                    },
+                    {id:3,name:"4 заявка Кировский",
+                        disEnrolled:true,defEnrolled:true,
+                        disProcessing:false,defProcessing:false,
+                        disCompleted:false,defCompleted:false
+                    },
+                    {id:4,name:"5 заявка Кировский",
+                        disEnrolled:true,defEnrolled:true,
+                        disProcessing:false,defProcessing:false,
+                        disCompleted:false,defCompleted:false
+                    },
+                    {id:5,name:"6 заявка Кировский",
+                        disEnrolled:true,defEnrolled:true,
+                        disProcessing:false,defProcessing:false,
+                        disCompleted:false,defCompleted:false
+                    }]
+            }]
     }
 //pricol
 }
@@ -157,22 +191,49 @@ export let updateText=(text)=>{
 
 }
 
-export let onchangeProcessing=(id)=>{
-    state.PageTiket.Tikets[id].defEnrolled=false;
-    state.PageTiket.Tikets[id].disEnrolled=true;
-    state.PageTiket.Tikets[id].defProcessing=true;
-    state.PageTiket.Tikets[id].disProcessing=true;
-    state.PageTiket.Tikets[id].defCompleted=false;
-    state.PageTiket.Tikets[id].disCompleted=false;
+export let onchangeProcessing=(directid,tiketsid)=>{
+    debugger
+    state.PageTiket.Directs[directid].TiketsDirect[tiketsid].defEnrolled=false;
+    state.PageTiket.Directs[directid].TiketsDirect[tiketsid].disEnrolled=true;
+    state.PageTiket.Directs[directid].TiketsDirect[tiketsid].defProcessing=true;
+    state.PageTiket.Directs[directid].TiketsDirect[tiketsid].disProcessing=true;
+    state.PageTiket.Directs[directid].TiketsDirect[tiketsid].defCompleted=false;
+    state.PageTiket.Directs[directid].TiketsDirect[tiketsid].disCompleted=false;
+    debugger
     rerenderTree(state);
 }
-export let onchangeCompleted=(id)=>{
-    state.PageTiket.Tikets[id].defEnrolled=false;
-    state.PageTiket.Tikets[id].disEnrolled=true;
-    state.PageTiket.Tikets[id].defProcessing=false;
-    state.PageTiket.Tikets[id].disProcessing=true;
-    state.PageTiket.Tikets[id].defCompleted=true;
-    state.PageTiket.Tikets[id].disCompleted=true;
+export let onchangeCompleted=(directid,tiketsid)=>{
+    debugger
+    state.PageTiket.Directs[directid].TiketsDirect[tiketsid].defEnrolled=false;
+    state.PageTiket.Directs[directid].TiketsDirect[tiketsid].disEnrolled=true;
+    state.PageTiket.Directs[directid].TiketsDirect[tiketsid].defProcessing=false;
+    state.PageTiket.Directs[directid].TiketsDirect[tiketsid].disProcessing=true;
+    state.PageTiket.Directs[directid].TiketsDirect[tiketsid].defCompleted=true;
+    state.PageTiket.Directs[directid].TiketsDirect[tiketsid].disCompleted=true;
+    debugger
+    rerenderTree(state);
+}
+export let zayavkimap=state.PageTiket.Directs[0].TiketsDirect.map(zayavkis=>
+    <Ticket directid={0}
+            tiketsid={zayavkis.id}
+            name={zayavkis.name}
+            disEnrolled={zayavkis.disEnrolled} defEnrolled={zayavkis.defEnrolled}
+            disProcessing={zayavkis.disProcessing} defProcessing={zayavkis.defProcessing}
+            disCompleted={zayavkis.disCompleted} defCompleted={zayavkis.defCompleted}
+            onchangeProcessing={onchangeProcessing}
+            onchangeCompleted={onchangeCompleted}
+    />);
+export let selectChange1=(id)=>{
+    zayavkimap=state.PageTiket.Directs[id].TiketsDirect.map(zayavkis=>
+        <Ticket directid={id}
+                tiketsid={zayavkis.id}
+                name={zayavkis.name}
+                disEnrolled={zayavkis.disEnrolled} defEnrolled={zayavkis.defEnrolled}
+                disProcessing={zayavkis.disProcessing} defProcessing={zayavkis.defProcessing}
+                disCompleted={zayavkis.disCompleted} defCompleted={zayavkis.defCompleted}
+                onchangeProcessing={onchangeProcessing}
+                onchangeCompleted={onchangeCompleted}
+        />);
     rerenderTree(state);
 }
 export default state;
