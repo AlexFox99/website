@@ -38,5 +38,5 @@
 }
 .TicketScroll{
     overflow-y: scroll;
-    min-height: 200px;
+    height: 260px;
 }

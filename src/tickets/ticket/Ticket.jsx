@@ -1,32 +1,30 @@
 import React from "react";
 import "./ticket.css"
-const Ticket = () => {
+const Ticket = (props) => {
+
+    let onchangeProcessing=()=>{
+        props.onchangeProcessing(props.id);
+    }
+    let onchangeCompleted=()=>{
+        props.onchangeCompleted(props.id);
+    }
     return(
-        <div className="row">
-            <div className="Tickets1Content">1 заявка
-                <input  className="имя" type="radio" value="1"/>поступила
-                <input className="имя" type="radio" value="2"/>в обработке
-                <input className="имя" type="radio" value="3"/>выполнена
-            </div>
-            <div className="Tickets1Content">2 заявка
-                <input checked="checked" className="имя" type="radio" value="1"/>поступила
-                <input className="имя" type="radio" value="2"/>в обработке
-                <input className="имя" type="radio" value="3"/>выполнена
-            </div>
-            <div className="Tickets1Content">3 заявка
-                <input checked="checked" className="имя" type="radio" value="1"/>поступила
-                <input className="имя" type="radio" value="2"/>в обработке
-                <input className="имя" type="radio" value="3"/>выполнена
-            </div>
-            <div className="Tickets1Content">3 заявка
-                <input checked="checked" className="имя" type="radio" value="1"/>поступила
-                <input className="имя" type="radio" value="2"/>в обработке
-                <input className="имя" type="radio" value="3"/>выполнена
-            </div>
-            <div className="Tickets1Content">3 заявка
-                <input checked="checked" className="имя" type="radio" value="1"/>поступила
-                <input className="имя" type="radio" value="2"/>в обработке
-                <input className="имя" type="radio" value="3"/>выполнена
+        <div className="ticketPattern">
+            <div className="TicketContent">{props.name}
+                <input disabled={props.disEnrolled} defaultChecked={props.defEnrolled}
+                       name={props.name}
+                       type="radio" value="1"
+                />поступила
+                <input disabled={props.disProcessing} defaultChecked={props.defProcessing}
+                       name={props.name}
+                       type="radio" value="2"
+                       onChange={onchangeProcessing}
+                />в обработке
+                <input disabled={props.disCompleted} defaultChecked={props.defCompleted}
+                       name={props.name}
+                       type="radio" value="3"
+                       onChange={onchangeCompleted}
+                />выполнена
             </div>
         </div>
     );

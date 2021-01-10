@@ -1,4 +1,4 @@
-.Tickets1Content{
+.TicketContent{
     background-color:#424242;
     min-width: 500px;
     display: flex;
@@ -9,6 +9,6 @@
     border:1px solid #3498db;
     border-radius: 3px;
 }
-.row {
-    height: 130px;
+.ticketPattern {
+
 }

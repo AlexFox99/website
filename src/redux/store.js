@@ -111,7 +111,40 @@ let state={
         ]
     },
     Type:"text",
-
+    PageTiket:{
+        Tikets:[
+            {id:0,name:"1 заявка",
+                disEnrolled:true,defEnrolled:true,
+                disProcessing:false,defProcessing:false,
+                disCompleted:false,defCompleted:false
+            },
+            {id:1,name:"2 заявка",
+                disEnrolled:true,defEnrolled:true,
+                disProcessing:false,defProcessing:false,
+                disCompleted:false,defCompleted:false
+            },
+            {id:2,name:"3 заявка",
+                disEnrolled:true,defEnrolled:true,
+                disProcessing:false,defProcessing:false,
+                disCompleted:false,defCompleted:false
+            },
+            {id:3,name:"4 заявка",
+                disEnrolled:true,defEnrolled:true,
+                disProcessing:false,defProcessing:false,
+                disCompleted:false,defCompleted:false
+            },
+            {id:4,name:"5 заявка",
+                disEnrolled:true,defEnrolled:true,
+                disProcessing:false,defProcessing:false,
+                disCompleted:false,defCompleted:false
+            },
+            {id:5,name:"6 заявка",
+                disEnrolled:true,defEnrolled:true,
+                disProcessing:false,defProcessing:false,
+                disCompleted:false,defCompleted:false
+            }
+        ]
+    }
 //pricol
 }
 export let onclick=()=>{
@@ -120,7 +153,26 @@ export let onclick=()=>{
 }
 export let updateText=(text)=>{
     state.PageEntrance.Text=text;
-    /*rerenderTree(state);*/
+    rerenderTree(state);
 
+}
+
+export let onchangeProcessing=(id)=>{
+    state.PageTiket.Tikets[id].defEnrolled=false;
+    state.PageTiket.Tikets[id].disEnrolled=true;
+    state.PageTiket.Tikets[id].defProcessing=true;
+    state.PageTiket.Tikets[id].disProcessing=true;
+    state.PageTiket.Tikets[id].defCompleted=false;
+    state.PageTiket.Tikets[id].disCompleted=false;
+    rerenderTree(state);
+}
+export let onchangeCompleted=(id)=>{
+    state.PageTiket.Tikets[id].defEnrolled=false;
+    state.PageTiket.Tikets[id].disEnrolled=true;
+    state.PageTiket.Tikets[id].defProcessing=false;
+    state.PageTiket.Tikets[id].disProcessing=true;
+    state.PageTiket.Tikets[id].defCompleted=true;
+    state.PageTiket.Tikets[id].disCompleted=true;
+    rerenderTree(state);
 }
 export default state;

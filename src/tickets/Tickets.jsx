@@ -1,7 +1,16 @@
 import React from "react";
 import Ticket from "./ticket/Ticket";
 import "./tickets.css"
-const Tickets = () => {
+const Tickets = (props) => {
+    let zayavkimap=props.store.PageTiket.Tikets.map(zayavkis=>
+        <Ticket id={zayavkis.id}
+                name={zayavkis.name}
+                disEnrolled={zayavkis.disEnrolled} defEnrolled={zayavkis.defEnrolled}
+                disProcessing={zayavkis.disProcessing} defProcessing={zayavkis.defProcessing}
+                disCompleted={zayavkis.disCompleted} defCompleted={zayavkis.defCompleted}
+                onchangeProcessing={props.onchangeProcessing}
+                onchangeCompleted={props.onchangeCompleted}
+        />);
     return(
         <div className="TicketsPage">
             <div className="TicketsContent">
@@ -16,7 +25,7 @@ const Tickets = () => {
                     <option value="7">Центральный</option>
                 </select></div>
                 <div className="TicketScroll">
-                    <Ticket/>
+                    {zayavkimap}
                 </div>
             </div>
         </div>
