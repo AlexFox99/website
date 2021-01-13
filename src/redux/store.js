@@ -1,6 +1,4 @@
 import {rerenderTree} from "../render";
-import Ticket from "../tickets/ticket/Ticket";
-import React from "react";
 
 
 let state={
@@ -177,7 +175,8 @@ let state={
                         disProcessing:false,defProcessing:false,
                         disCompleted:false,defCompleted:false
                     }]
-            }]
+            }],
+        id:0
     }
 //pricol
 }
@@ -192,48 +191,26 @@ export let updateText=(text)=>{
 }
 
 export let onchangeProcessing=(directid,tiketsid)=>{
-    debugger
     state.PageTiket.Directs[directid].TiketsDirect[tiketsid].defEnrolled=false;
     state.PageTiket.Directs[directid].TiketsDirect[tiketsid].disEnrolled=true;
     state.PageTiket.Directs[directid].TiketsDirect[tiketsid].defProcessing=true;
     state.PageTiket.Directs[directid].TiketsDirect[tiketsid].disProcessing=true;
     state.PageTiket.Directs[directid].TiketsDirect[tiketsid].defCompleted=false;
     state.PageTiket.Directs[directid].TiketsDirect[tiketsid].disCompleted=false;
-    debugger
     rerenderTree(state);
 }
 export let onchangeCompleted=(directid,tiketsid)=>{
-    debugger
     state.PageTiket.Directs[directid].TiketsDirect[tiketsid].defEnrolled=false;
     state.PageTiket.Directs[directid].TiketsDirect[tiketsid].disEnrolled=true;
     state.PageTiket.Directs[directid].TiketsDirect[tiketsid].defProcessing=false;
     state.PageTiket.Directs[directid].TiketsDirect[tiketsid].disProcessing=true;
     state.PageTiket.Directs[directid].TiketsDirect[tiketsid].defCompleted=true;
     state.PageTiket.Directs[directid].TiketsDirect[tiketsid].disCompleted=true;
-    debugger
     rerenderTree(state);
 }
-export let zayavkimap=state.PageTiket.Directs[0].TiketsDirect.map(zayavkis=>
-    <Ticket directid={0}
-            tiketsid={zayavkis.id}
-            name={zayavkis.name}
-            disEnrolled={zayavkis.disEnrolled} defEnrolled={zayavkis.defEnrolled}
-            disProcessing={zayavkis.disProcessing} defProcessing={zayavkis.defProcessing}
-            disCompleted={zayavkis.disCompleted} defCompleted={zayavkis.defCompleted}
-            onchangeProcessing={onchangeProcessing}
-            onchangeCompleted={onchangeCompleted}
-    />);
+
 export let selectChange1=(id)=>{
-    zayavkimap=state.PageTiket.Directs[id].TiketsDirect.map(zayavkis=>
-        <Ticket directid={id}
-                tiketsid={zayavkis.id}
-                name={zayavkis.name}
-                disEnrolled={zayavkis.disEnrolled} defEnrolled={zayavkis.defEnrolled}
-                disProcessing={zayavkis.disProcessing} defProcessing={zayavkis.defProcessing}
-                disCompleted={zayavkis.disCompleted} defCompleted={zayavkis.defCompleted}
-                onchangeProcessing={onchangeProcessing}
-                onchangeCompleted={onchangeCompleted}
-        />);
+    state.PageTiket.id=id;
     rerenderTree(state);
 }
 export default state;

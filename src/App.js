@@ -30,6 +30,7 @@ const App=(props)=> {
                            render={()=><Registration store={props.state}/>}/>
                     <Route path="/Tickets"
                            render={()=><Tickets store={props.state}
+                                                id={props.state.PageTiket.id}
                                                 onchangeProcessing={props.onchangeProcessing}
                                                 onchangeCompleted={props.onchangeCompleted}
                            />} />
