@@ -7,11 +7,11 @@ const Entrance=(props)=>{
     let onClick=()=>{
         props.onclick();
     };
-    let onloginChange=()=>{
+    let onLoginChange=()=>{
         let loginText=login.current.value;
         props.updateLogin(loginText);
     };
-    let onloginChange1=()=>{
+    let onPassChange=()=>{
         let passText=pass.current.value;
         props.updatePassword(passText);
     };
@@ -25,7 +25,7 @@ const Entrance=(props)=>{
                     <div className={props.store.PageEntrance.ClassNameEntrance[4].name}>
                         <div className={props.store.PageEntrance.ClassNameEntrance[5].name}>
                             {props.store.PageEntrance.NamesEntrance[1].name}</div>
-                        <input onChange={onloginChange}
+                        <input onChange={onLoginChange}
                                value={props.store.PageEntrance.Login}
                             ref={login}
                             type={props.store.Type}
@@ -35,7 +35,7 @@ const Entrance=(props)=>{
                     <div className={props.store.PageEntrance.ClassNameEntrance[7].name}>
                         <div className={props.store.PageEntrance.ClassNameEntrance[8].name}>
                             {props.store.PageEntrance.NamesEntrance[2].name}</div>
-                        <input onChange={onloginChange1}
+                        <input onChange={onPassChange}
                                value={props.store.PageEntrance.PasswordText}
                                ref={pass}
                             type={props.store.Type}

@@ -84,7 +84,9 @@ let state={
         LinksReg:[
             {id:0,links:"/Authorization/Entrance"},
             {id:1,links:"/Tickets"}
-        ]
+        ],
+        Login:"",
+        Password:"",PasswordText:"",PassRep:"",PassRepText:"",Email:""
     },
     PageForPas:{
         ClassForPas:[
@@ -186,6 +188,7 @@ export let onclick=()=>{
     state.PageEntrance.Login="";
     state.PageEntrance.Password="";
     state.PageEntrance.PasswordText="";
+    rerenderTree(state);
 }
 export let updateLogin=(login)=>{
     state.PageEntrance.Login=login;
@@ -202,6 +205,55 @@ export let updatePassword=(pass)=>{
         text=text+"*"
     }
     state.PageEntrance.PasswordText=text;
+    rerenderTree(state);
+
+}
+export let onclickReg=()=>{
+    debugger
+    alert(state.PageReg.Login+" "+state.PageReg.Password+" "+state.PageReg.PassRep+" "+
+        state.PageReg.Email);
+    state.PageReg.Login="";
+    state.PageReg.Password="";
+    state.PageReg.PasswordText="";
+    state.PageReg.PassRep="";
+    state.PageReg.PassRepText="";
+    state.PageReg.Email="";
+    rerenderTree(state);
+}
+export let updateLoginReg=(login)=>{
+    debugger
+    state.PageReg.Login=login;
+    rerenderTree(state);
+
+}
+
+export let updatePasswordReg=(pass)=>{
+    debugger
+    let length=pass.length;
+    state.PageReg.Password=state.PageReg.Password+pass[length-1];
+    let text="";
+    for(let i of pass){
+        text=text+"*"
+    }
+    state.PageReg.PasswordText=text;
+    rerenderTree(state);
+
+}
+export let updatePasswordRepReg=(PassRep)=>{
+    debugger
+    let length=PassRep.length;
+    state.PageReg.PassRep=state.PageReg.PassRep+PassRep[length-1];
+    let text="";
+    for(let i of PassRep){
+        text=text+"*"
+    }
+    state.PageReg.PassRepText=text;
+    rerenderTree(state);
+
+}
+export let updateEmailReg=(email)=>{
+    debugger
+    state.PageReg.Email=email;
     rerenderTree(state);
 
 }

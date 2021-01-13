@@ -29,7 +29,13 @@ const App=(props)=> {
                                                  updatePassword={props.updatePassword}
                            />}/>
                     <Route path={props.state.ForApp.LinksApp[3].links}
-                           render={()=><Registration store={props.state}/>}/>
+                           render={()=><Registration store={props.state}
+                                                     onclickReg={props.onclickReg}
+                                                     updateLoginReg={props.updateLoginReg}
+                                                     updatePasswordReg={props.updatePasswordReg}
+                                                     updatePasswordRepReg={props.updatePasswordRepReg}
+                                                     updateEmailReg={props.updateEmailReg}
+                           />}/>
                     <Route path="/Tickets"
                            render={()=><Tickets store={props.state}
                                                 id={props.state.PageTiket.id}
