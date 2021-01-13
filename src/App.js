@@ -12,7 +12,7 @@ const App=(props)=> {
         <BrowserRouter>
             <div className={props.state.ForApp.ClassNameApp[0].name}>
                 <header className={props.state.ForApp.ClassNameApp[1].name}>
-                    <img src={logo} className={props.state.ForApp.ClassNameApp[2].name} alt=""/>
+                    {/*<img src={logo} className={props.state.ForApp.ClassNameApp[2].name} alt=""/>*/}LOGO
                 </header>
                 <div className={props.state.ForApp.ClassNameApp[3].name}>
 
@@ -25,7 +25,9 @@ const App=(props)=> {
                     <Route path={props.state.ForApp.LinksApp[2].links}
                            render={()=><Entrance store={props.state}
                                                  onclick={props.onclick}
-                                                 updateText={props.updateText}/>}/>
+                                                 updateLogin={props.updateLogin}
+                                                 updatePassword={props.updatePassword}
+                           />}/>
                     <Route path={props.state.ForApp.LinksApp[3].links}
                            render={()=><Registration store={props.state}/>}/>
                     <Route path="/Tickets"

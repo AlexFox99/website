@@ -2,14 +2,19 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 import "./Entrance.css";
 const Entrance=(props)=>{
+    let login=React.createRef();
+    let pass=React.createRef();
     let onClick=()=>{
         props.onclick();
     };
     let onloginChange=()=>{
-        let text=login.current.value;
-        props.updateText(text);
+        let loginText=login.current.value;
+        props.updateLogin(loginText);
     };
-    let login=React.createRef();
+    let onloginChange1=()=>{
+        let passText=pass.current.value;
+        props.updatePassword(passText);
+    };
     return(
         <div className={props.store.PageEntrance.ClassNameEntrance[0].name}>
             <div className={props.store.PageEntrance.ClassNameEntrance[1].name}>
@@ -21,7 +26,7 @@ const Entrance=(props)=>{
                         <div className={props.store.PageEntrance.ClassNameEntrance[5].name}>
                             {props.store.PageEntrance.NamesEntrance[1].name}</div>
                         <input onChange={onloginChange}
-                               value={props.store.PageEntrance.Text}
+                               value={props.store.PageEntrance.Login}
                             ref={login}
                             type={props.store.Type}
                                className={props.store.PageEntrance.ClassNameEntrance[6].name}
@@ -30,7 +35,10 @@ const Entrance=(props)=>{
                     <div className={props.store.PageEntrance.ClassNameEntrance[7].name}>
                         <div className={props.store.PageEntrance.ClassNameEntrance[8].name}>
                             {props.store.PageEntrance.NamesEntrance[2].name}</div>
-                        <input type={props.store.Type}
+                        <input onChange={onloginChange1}
+                               value={props.store.PageEntrance.PasswordText}
+                               ref={pass}
+                            type={props.store.Type}
                                className={props.store.PageEntrance.ClassNameEntrance[9].name}/>
                     </div>
                 </div>

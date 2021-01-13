@@ -47,7 +47,8 @@ let state={
             {id:0,links:"/Authorization/ForgotPassword"},
             {id:1,links:"/Authorization/Registration"}
         ],
-        Text:""
+        Login:"",
+        Password:"",PasswordText:""
     },
     PageReg:{
         ClassNameReg:[
@@ -181,15 +182,29 @@ let state={
 //pricol
 }
 export let onclick=()=>{
-    alert(state.PageEntrance.Text);
-    state.PageEntrance.Text="";
+    alert(state.PageEntrance.Login+" "+state.PageEntrance.Password);
+    state.PageEntrance.Login="";
+    state.PageEntrance.Password="";
+    state.PageEntrance.PasswordText="";
 }
-export let updateText=(text)=>{
-    state.PageEntrance.Text=text;
+export let updateLogin=(login)=>{
+    state.PageEntrance.Login=login;
     rerenderTree(state);
 
 }
 
+export let updatePassword=(pass)=>{
+    debugger
+    let length=pass.length;
+    state.PageEntrance.Password=state.PageEntrance.Password+pass[length-1];
+    let text="";
+    for(let i of pass){
+        text=text+"*"
+    }
+    state.PageEntrance.PasswordText=text;
+    rerenderTree(state);
+
+}
 export let onchangeProcessing=(directid,tiketsid)=>{
     state.PageTiket.Directs[directid].TiketsDirect[tiketsid].defEnrolled=false;
     state.PageTiket.Directs[directid].TiketsDirect[tiketsid].disEnrolled=true;

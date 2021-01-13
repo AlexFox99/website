@@ -18,6 +18,7 @@
 .App-header {
   background-color: #212121;
   grid-area: hed;
+  color:white;
 }
 .App_Nav{
   background-color: #171C20;
