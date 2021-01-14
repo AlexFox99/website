@@ -5,56 +5,56 @@ const Entrance=(props)=>{
     let login=React.createRef();
     let pass=React.createRef();
     let onClick=()=>{
-        props.onclick();
+        props.onclickEnt();
     };
     let onLoginChange=()=>{
         let loginText=login.current.value;
-        props.updateLogin(loginText);
+        props.updateLoginEnt(loginText);
     };
     let onPassChange=()=>{
         let passText=pass.current.value;
-        props.updatePassword(passText);
+        props.updatePasswordEnt(passText);
     };
     return(
-        <div className={props.store.PageEntrance.ClassNameEntrance[0].name}>
-            <div className={props.store.PageEntrance.ClassNameEntrance[1].name}>
-                <div className={props.store.PageEntrance.ClassNameEntrance[2].name}>
-                    {props.store.PageEntrance.NamesEntrance[0].name}
+        <div className={props.state.PageEntrance.ClassNameEntrance[0].name}>
+            <div className={props.state.PageEntrance.ClassNameEntrance[1].name}>
+                <div className={props.state.PageEntrance.ClassNameEntrance[2].name}>
+                    {props.state.PageEntrance.NamesEntrance[0].name}
                 </div>
-                <div className={props.store.PageEntrance.ClassNameEntrance[3].name}>
-                    <div className={props.store.PageEntrance.ClassNameEntrance[4].name}>
-                        <div className={props.store.PageEntrance.ClassNameEntrance[5].name}>
-                            {props.store.PageEntrance.NamesEntrance[1].name}</div>
+                <div className={props.state.PageEntrance.ClassNameEntrance[3].name}>
+                    <div className={props.state.PageEntrance.ClassNameEntrance[4].name}>
+                        <div className={props.state.PageEntrance.ClassNameEntrance[5].name}>
+                            {props.state.PageEntrance.NamesEntrance[1].name}</div>
                         <input onChange={onLoginChange}
-                               value={props.store.PageEntrance.Login}
+                               value={props.state.PageEntrance.Login}
                             ref={login}
-                            type={props.store.Type}
-                               className={props.store.PageEntrance.ClassNameEntrance[6].name}
+                            type={props.state.Type}
+                               className={props.state.PageEntrance.ClassNameEntrance[6].name}
                         />
                     </div>
-                    <div className={props.store.PageEntrance.ClassNameEntrance[7].name}>
-                        <div className={props.store.PageEntrance.ClassNameEntrance[8].name}>
-                            {props.store.PageEntrance.NamesEntrance[2].name}</div>
+                    <div className={props.state.PageEntrance.ClassNameEntrance[7].name}>
+                        <div className={props.state.PageEntrance.ClassNameEntrance[8].name}>
+                            {props.state.PageEntrance.NamesEntrance[2].name}</div>
                         <input onChange={onPassChange}
-                               value={props.store.PageEntrance.PasswordText}
+                               value={props.state.PageEntrance.PasswordText}
                                ref={pass}
-                            type={props.store.Type}
-                               className={props.store.PageEntrance.ClassNameEntrance[9].name}/>
+                            type={props.state.Type}
+                               className={props.state.PageEntrance.ClassNameEntrance[9].name}/>
                     </div>
                 </div>
-                <div className={props.store.PageEntrance.ClassNameEntrance[10].name}>
-                    <NavLink to={props.store.PageEntrance.LinksEntrance[0].links}
-                             className={props.store.PageEntrance.ClassNameEntrance[11].name}>
-                        {props.store.PageEntrance.NamesEntrance[3].name}
+                <div className={props.state.PageEntrance.ClassNameEntrance[10].name}>
+                    <NavLink to={props.state.PageEntrance.LinksEntrance[0].links}
+                             className={props.state.PageEntrance.ClassNameEntrance[11].name}>
+                        {props.state.PageEntrance.NamesEntrance[3].name}
                     </NavLink>
-                    <NavLink to={props.store.PageEntrance.LinksEntrance[1].links}>
-                        <button className={props.store.PageEntrance.ClassNameEntrance[12].name}>
-                            {props.store.PageEntrance.NamesEntrance[4].name}
+                    <NavLink to={props.state.PageEntrance.LinksEntrance[1].links}>
+                        <button className={props.state.PageEntrance.ClassNameEntrance[12].name}>
+                            {props.state.PageEntrance.NamesEntrance[4].name}
                         </button>
                     </NavLink>
                     <button onClick={onClick}
-                        className={props.store.PageEntrance.ClassNameEntrance[13].name}>
-                        {props.store.PageEntrance.NamesEntrance[0].name}</button>
+                        className={props.state.PageEntrance.ClassNameEntrance[13].name}>
+                        {props.state.PageEntrance.NamesEntrance[0].name}</button>
                 </div>
             </div>
         </div>

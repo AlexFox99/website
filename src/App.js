@@ -23,13 +23,13 @@ const App=(props)=> {
                     <Route exact path={props.state.ForApp.LinksApp[1].links}
                            render={()=><Redirect to={props.state.ForApp.LinksApp[2].links}/>} />
                     <Route path={props.state.ForApp.LinksApp[2].links}
-                           render={()=><Entrance store={props.state}
-                                                 onclick={props.onclick}
-                                                 updateLogin={props.updateLogin}
-                                                 updatePassword={props.updatePassword}
+                           render={()=><Entrance state={props.state}
+                                                 onclickEnt={props.onclickEnt}
+                                                 updateLoginEnt={props.updateLoginEnt}
+                                                 updatePasswordEnt={props.updatePasswordEnt}
                            />}/>
                     <Route path={props.state.ForApp.LinksApp[3].links}
-                           render={()=><Registration store={props.state}
+                           render={()=><Registration state={props.state}
                                                      onclickReg={props.onclickReg}
                                                      updateLoginReg={props.updateLoginReg}
                                                      updatePasswordReg={props.updatePasswordReg}
@@ -37,13 +37,14 @@ const App=(props)=> {
                                                      updateEmailReg={props.updateEmailReg}
                            />}/>
                     <Route path="/Tickets"
-                           render={()=><Tickets store={props.state}
+                           render={()=><Tickets state={props.state}
                                                 id={props.state.PageTiket.id}
                                                 onchangeProcessing={props.onchangeProcessing}
                                                 onchangeCompleted={props.onchangeCompleted}
+                                                onchangeDirect={props.onchangeDirect}
                            />} />
                     <Route path={props.state.ForApp.LinksApp[5].links}
-                           render={()=><ForgotPasswordPage store={props.state}/>} />
+                           render={()=><ForgotPasswordPage state={props.state}/>} />
                 </div>
 
             </div>

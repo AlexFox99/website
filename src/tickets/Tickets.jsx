@@ -1,25 +1,26 @@
 import React from "react";
 import "./tickets.css"
-import state, {onchangeCompleted, onchangeProcessing, selectChange1} from "../redux/store";
+
 import Ticket from "./ticket/Ticket";
 
 
 const Tickets = (props) => {
     let select=React.createRef();
+    debugger
     let zayavkimap=
-        state.PageTiket.Directs[props.id].TiketsDirect.map(zayavkis=>
+        props.state.PageTiket.Directs[props.id].TiketsDirect.map(zayavkis=>
         <Ticket directid={props.id}
                 tiketsid={zayavkis.id}
                 name={zayavkis.name}
                 disEnrolled={zayavkis.disEnrolled} defEnrolled={zayavkis.defEnrolled}
                 disProcessing={zayavkis.disProcessing} defProcessing={zayavkis.defProcessing}
                 disCompleted={zayavkis.disCompleted} defCompleted={zayavkis.defCompleted}
-                onchangeProcessing={onchangeProcessing}
-                onchangeCompleted={onchangeCompleted}
+                onchangeProcessing={props.onchangeProcessing}
+                onchangeCompleted={props.onchangeCompleted}
         />);
     let selectChange=()=>{
         let id=select.current.value;
-        selectChange1(id);
+        props.onchangeDirect(id);
     }
     return(
         <div className="TicketsPage">
