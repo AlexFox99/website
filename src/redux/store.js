@@ -1,6 +1,4 @@
-import {rerenderTree} from "../render";
-
-
+let rerenderTree=()=>{}
 let state={
     ForApp:{
       ClassNameApp:[
@@ -279,5 +277,8 @@ export let onchangeCompleted=(directid,tiketsid)=>{
 export let selectChange1=(id)=>{
     state.PageTiket.id=id;
     rerenderTree(state);
+}
+export const subscriber=(observer)=> {
+    rerenderTree=observer;
 }
 export default state;
