@@ -6,21 +6,19 @@ import Ticket from "./ticket/Ticket";
 
 const Tickets = (props) => {
     let select=React.createRef();
-    debugger
-    let zayavkimap=
-        props.state.PageTiket.Directs[props.id].TiketsDirect.map(zayavkis=>
-        <Ticket directid={props.id}
-                tiketsid={zayavkis.id}
-                name={zayavkis.name}
-                disEnrolled={zayavkis.disEnrolled} defEnrolled={zayavkis.defEnrolled}
-                disProcessing={zayavkis.disProcessing} defProcessing={zayavkis.defProcessing}
-                disCompleted={zayavkis.disCompleted} defCompleted={zayavkis.defCompleted}
-                onchangeProcessing={props.onchangeProcessing}
-                onchangeCompleted={props.onchangeCompleted}
+    let Ticket=
+        props.state.PageTiket.Directs[props.state.PageTiket.id].TiketsDirect.map(Tickets=>
+        <Ticket directid={props.state.PageTiket.id}
+                tiketsid={Tickets.id}
+                name={Tickets.name}
+                disEnrolled={Tickets.disEnrolled} defEnrolled={Tickets.defEnrolled}
+                disProcessing={Tickets.disProcessing} defProcessing={Tickets.defProcessing}
+                disCompleted={Tickets.disCompleted} defCompleted={Tickets.defCompleted}
+                dispatch={props.dispatch}
         />);
     let selectChange=()=>{
         let id=select.current.value;
-        props.onchangeDirect(id);
+        props.dispatch({type:'SELECT-DIRECT-TIC',id:id});
     }
     return(
         <div className="TicketsPage">

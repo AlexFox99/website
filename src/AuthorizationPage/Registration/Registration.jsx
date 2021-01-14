@@ -8,22 +8,22 @@ const Registration=(props)=>{
     let email=React.createRef();
     let onLoginChange=()=>{
         let loginText=login.current.value;
-        props.updateLoginReg(loginText);
+        props.dispatch({type:'UPDATE-LOGIN-REG',login:loginText});
     };
     let onPassChange=()=>{
         let passText=pass.current.value;
-        props.updatePasswordReg(passText);
+        props.dispatch({type:'UPDATE-PASSWORD-REG',pass:passText});
     };
     let onPassRepChange=()=>{
         let passRepText=passRep.current.value;
-        props.updatePasswordRepReg(passRepText);
+        props.dispatch({type:'UPDATE-PASSWORD-REP-REG',PassRep:passRepText});
     };
     let onEmailChange=()=>{
         let emailText=email.current.value;
-        props.updateEmailReg(emailText);
+        props.dispatch({type:'UPDATE-EMAIL-REG',email:emailText});
     };
     let onclick=()=>{
-        props.onclickReg();
+        props.dispatch({type:'ON-CLICK-BUTTON-REG'});
     }
     return(
         <div className={props.state.PageReg.ClassNameReg[0].name}>

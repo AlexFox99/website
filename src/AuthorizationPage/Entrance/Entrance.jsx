@@ -5,15 +5,15 @@ const Entrance=(props)=>{
     let login=React.createRef();
     let pass=React.createRef();
     let onClick=()=>{
-        props.onclickEnt();
+        props.dispatch({type:'ON-CLICK-BUTTON-ENTER'});
     };
     let onLoginChange=()=>{
         let loginText=login.current.value;
-        props.updateLoginEnt(loginText);
+        props.dispatch({type:'UPDATE-LOGIN-ENTER',login:loginText});
     };
     let onPassChange=()=>{
         let passText=pass.current.value;
-        props.updatePasswordEnt(passText);
+        props.dispatch({type:'UPDATE-PASSWORD-ENTER',pass:passText});
     };
     return(
         <div className={props.state.PageEntrance.ClassNameEntrance[0].name}>

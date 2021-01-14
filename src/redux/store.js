@@ -1,3 +1,4 @@
+
 let store={
     _state:{
         ForApp:{
@@ -181,101 +182,99 @@ let store={
         }
 //pricol
     },
-    getState(){
-        return this._state
-    },
     _callSubcriber(){
         console.log("State changed");
     },
-    onclickButtonEnter(){
-        debugger
-        alert(this._state.PageEntrance.Login+" "+this._state.PageEntrance.Password);
-        this._state.PageEntrance.Login="";
-        this._state.PageEntrance.Password="";
-        this._state.PageEntrance.PasswordText="";
-        this._callSubcriber(this._state);
-},
-    updateLoginEnter(login){
-        this._state.PageEntrance.Login=login;
-        this._callSubcriber(this._state);},
-    updatePasswordEnter(pass){
-        let length=pass.length;
-        this._state.PageEntrance.Password=this._state.PageEntrance.Password+pass[length-1];
-        let text="";
-        for(let i of pass){
-            text=text+"*"
-        }
-        this._state.PageEntrance.PasswordText=text;
-        this._callSubcriber(this._state);
-
-    },
-    onclickButtonReg(){
-        alert(this._state.PageReg.Login+" "+this._state.PageReg.Password+" "+
-            this._state.PageReg.PassRep+" "+
-            this._state.PageReg.Email);
-        this._state.PageReg.Login="";
-        this._state.PageReg.Password="";
-        this._state.PageReg.PasswordText="";
-        this._state.PageReg.PassRep="";
-        this._state.PageReg.PassRepText="";
-        this._state.PageReg.Email="";
-        this._callSubcriber(this._state);
-    },
-    updateLoginReg(login){
-        this._state.PageReg.Login=login;
-        this._callSubcriber(this._state);
-
-    },
-    updatePasswordReg(pass){
-        let length=pass.length;
-        this._state.PageReg.Password=this._state.PageReg.Password+pass[length-1];
-        let text="";
-        for(let i of pass){
-            text=text+"*"
-        }
-        this._state.PageReg.PasswordText=text;
-        this._callSubcriber(this._state);
-
-    },
-    updatePasswordRepReg(PassRep){
-        let length=PassRep.length;
-        this._state.PageReg.PassRep=this._state.PageReg.PassRep+PassRep[length-1];
-        let text="";
-        for(let i of PassRep){
-            text=text+"*"
-        }
-        this._state.PageReg.PassRepText=text;
-        this._callSubcriber(this._state);
-
-    },
-    updateEmailReg(email){
-        this._state.PageReg.Email=email;
-        this._callSubcriber(this._state);
-    },
-    onchangeProcessing(directid,tiketsid){
-        this._state.PageTiket.Directs[directid].TiketsDirect[tiketsid].defEnrolled=false;
-        this._state.PageTiket.Directs[directid].TiketsDirect[tiketsid].disEnrolled=true;
-        this._state.PageTiket.Directs[directid].TiketsDirect[tiketsid].defProcessing=true;
-        this._state.PageTiket.Directs[directid].TiketsDirect[tiketsid].disProcessing=true;
-        this._state.PageTiket.Directs[directid].TiketsDirect[tiketsid].defCompleted=false;
-        this._state.PageTiket.Directs[directid].TiketsDirect[tiketsid].disCompleted=false;
-        this._callSubcriber(this._state);
-    },
-    onchangeCompleted(directid,tiketsid){
-        this._state.PageTiket.Directs[directid].TiketsDirect[tiketsid].defEnrolled=false;
-        this._state.PageTiket.Directs[directid].TiketsDirect[tiketsid].disEnrolled=true;
-        this._state.PageTiket.Directs[directid].TiketsDirect[tiketsid].defProcessing=false;
-        this._state.PageTiket.Directs[directid].TiketsDirect[tiketsid].disProcessing=true;
-        this._state.PageTiket.Directs[directid].TiketsDirect[tiketsid].defCompleted=true;
-        this._state.PageTiket.Directs[directid].TiketsDirect[tiketsid].disCompleted=true;
-        this._callSubcriber(this._state);
-    },
-    selectChangeDirect(id){
-        this._state.PageTiket.id=id;
-        this._callSubcriber(this._state);
+    getState(){
+        return this._state
     },
     subscriber(observer){
         this._callSubcriber=observer;
+    },
+    dispatch(action){
+        if(action.type ==='ON-CLICK-BUTTON-ENTER'){
+            alert(this._state.PageEntrance.Login+" "+this._state.PageEntrance.Password);
+            this._state.PageEntrance.Login="";
+            this._state.PageEntrance.Password="";
+            this._state.PageEntrance.PasswordText="";
+            this._callSubcriber(this._state);
+        }
+        else if(action.type ==='UPDATE-LOGIN-ENTER'){
+            this._state.PageEntrance.Login=action.login;
+            this._callSubcriber(this._state);
+        }
+        else if(action.type ==='UPDATE-PASSWORD-ENTER'){
+            let length=action.pass.length;
+            this._state.PageEntrance.Password=this._state.PageEntrance.Password+action.pass[length-1];
+            let text="";
+            for(let i of action.pass){
+                text=text+"*"
+            }
+            this._state.PageEntrance.PasswordText=text;
+            this._callSubcriber(this._state);
+        }
+        else if(action.type ==='ON-CLICK-BUTTON-REG'){
+            alert(this._state.PageReg.Login+" "+this._state.PageReg.Password+" "+
+                this._state.PageReg.PassRep+" "+
+                this._state.PageReg.Email);
+            this._state.PageReg.Login="";
+            this._state.PageReg.Password="";
+            this._state.PageReg.PasswordText="";
+            this._state.PageReg.PassRep="";
+            this._state.PageReg.PassRepText="";
+            this._state.PageReg.Email="";
+            this._callSubcriber(this._state);
+        }
+        else if(action.type ==='UPDATE-LOGIN-REG'){
+            this._state.PageReg.Login=action.login;
+            this._callSubcriber(this._state);
+        }
+        else if(action.type ==='UPDATE-PASSWORD-REG'){
+            let length=action.pass.length;
+            this._state.PageReg.Password=this._state.PageReg.Password+action.pass[length-1];
+            let text="";
+            for(let i of action.pass){
+                text=text+"*"
+            }
+            this._state.PageReg.PasswordText=text;
+            this._callSubcriber(this._state);
+        }
+        else if(action.type ==='UPDATE-PASSWORD-REP-REG'){
+            let length=action.PassRep.length;
+            this._state.PageReg.PassRep=this._state.PageReg.PassRep+action.PassRep[length-1];
+            let text="";
+            for(let i of action.PassRep){
+                text=text+"*"
+            }
+            this._state.PageReg.PassRepText=text;
+            this._callSubcriber(this._state);
+        }
+        else if(action.type ==='UPDATE-EMAIL-REG'){
+            this._state.PageReg.Email=action.email;
+            this._callSubcriber(this._state);
+        }
+        else if(action.type ==='ON-CHANGE-PROCESSING-TIC'){
+            this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].defEnrolled=false;
+            this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].disEnrolled=true;
+            this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].defProcessing=true;
+            this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].disProcessing=true;
+            this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].defCompleted=false;
+            this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].disCompleted=false;
+            this._callSubcriber(this._state);
+        }
+        else if(action.type ==='ON-CHANGE-COMPLETED-TIC'){
+            this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].defEnrolled=false;
+            this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].disEnrolled=true;
+            this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].defProcessing=false;
+            this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].disProcessing=true;
+            this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].defCompleted=true;
+            this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].disCompleted=true;
+            this._callSubcriber(this._state);
+        }
+        else if(action.type ==='SELECT-DIRECT-TIC'){
+            this._state.PageTiket.id=action.id;
+            this._callSubcriber(this._state);
+        }
     }
 }
 export default store;

@@ -24,24 +24,15 @@ const App=(props)=> {
                            render={()=><Redirect to={props.state.ForApp.LinksApp[2].links}/>} />
                     <Route path={props.state.ForApp.LinksApp[2].links}
                            render={()=><Entrance state={props.state}
-                                                 onclickEnt={props.onclickEnt}
-                                                 updateLoginEnt={props.updateLoginEnt}
-                                                 updatePasswordEnt={props.updatePasswordEnt}
+                                                 dispatch={props.dispatch}
                            />}/>
                     <Route path={props.state.ForApp.LinksApp[3].links}
                            render={()=><Registration state={props.state}
-                                                     onclickReg={props.onclickReg}
-                                                     updateLoginReg={props.updateLoginReg}
-                                                     updatePasswordReg={props.updatePasswordReg}
-                                                     updatePasswordRepReg={props.updatePasswordRepReg}
-                                                     updateEmailReg={props.updateEmailReg}
+                                                     dispatch={props.dispatch}
                            />}/>
                     <Route path="/Tickets"
                            render={()=><Tickets state={props.state}
-                                                id={props.state.PageTiket.id}
-                                                onchangeProcessing={props.onchangeProcessing}
-                                                onchangeCompleted={props.onchangeCompleted}
-                                                onchangeDirect={props.onchangeDirect}
+                                                dispatch={props.dispatch}
                            />} />
                     <Route path={props.state.ForApp.LinksApp[5].links}
                            render={()=><ForgotPasswordPage state={props.state}/>} />
