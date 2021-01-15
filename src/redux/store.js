@@ -1,3 +1,7 @@
+import EntranceReducer from "./reducer/EntranceReducer";
+import RegistrationReducer from "./reducer/RegistrationReducer";
+import TicketReducer from "./reducer/TicketReducer";
+
 const onClickButtonEnterActionType = 'ON-CLICK-BUTTON-ENTER';
 const onLoginChangeEnterActionType = 'UPDATE-LOGIN-ENTER';
 const onChangePassEnterActionType = 'UPDATE-PASSWORD-ENTER';
@@ -202,118 +206,30 @@ let store={
         this._callSubcriber=observer;
     },
     dispatch(action){
-        if(action.type ===onClickButtonEnterActionType){
-            alert(this._state.PageEntrance.Login+" "+this._state.PageEntrance.Password);
-            this._state.PageEntrance.Login="";
-            this._state.PageEntrance.Password="";
-            this._state.PageEntrance.PasswordText="";
-            this._callSubcriber(this._state);
-        }
-        else if(action.type ===onLoginChangeEnterActionType){
-            this._state.PageEntrance.Login=action.login;
-            this._callSubcriber(this._state);
-        }
-        else if(action.type ===onChangePassEnterActionType){
-            let length=action.pass.length;
-            this._state.PageEntrance.Password=this._state.PageEntrance.Password+action.pass[length-1];
-            let text="";
-            for(let i of action.pass){
-                text=text+"*"
-            }
-            this._state.PageEntrance.PasswordText=text;
-            this._callSubcriber(this._state);
-        }
-        else if(action.type ===onClickButtonRegActionType){
-            alert(this._state.PageReg.Login+" "+this._state.PageReg.Password+" "+
-                this._state.PageReg.PassRep+" "+
-                this._state.PageReg.Email);
-            this._state.PageReg.Login="";
-            this._state.PageReg.Password="";
-            this._state.PageReg.PasswordText="";
-            this._state.PageReg.PassRep="";
-            this._state.PageReg.PassRepText="";
-            this._state.PageReg.Email="";
-            this._callSubcriber(this._state);
-        }
-        else if(action.type ===updateLoginRegActionType){
-            this._state.PageReg.Login=action.login;
-            this._callSubcriber(this._state);
-        }
-        else if(action.type ===updatePasswordRegActionType){
-            let length=action.pass.length;
-            this._state.PageReg.Password=this._state.PageReg.Password+action.pass[length-1];
-            let text="";
-            for(let i of action.pass){
-                text=text+"*"
-            }
-            this._state.PageReg.PasswordText=text;
-            this._callSubcriber(this._state);
-        }
-        else if(action.type ===updatePasswordRepRegActionType){
-            let length=action.PassRep.length;
-            this._state.PageReg.PassRep=this._state.PageReg.PassRep+action.PassRep[length-1];
-            let text="";
-            for(let i of action.PassRep){
-                text=text+"*"
-            }
-            this._state.PageReg.PassRepText=text;
-            this._callSubcriber(this._state);
-        }
-        else if(action.type ===updateEmailRegActionType){
-            this._state.PageReg.Email=action.email;
-            this._callSubcriber(this._state);
-        }
-        else if(action.type ===onChangeProcessingTicActionType){
-            this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].defEnrolled=false;
-            this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].disEnrolled=true;
-            this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].defProcessing=true;
-            this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].disProcessing=true;
-            this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].defCompleted=false;
-            this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].disCompleted=false;
-            this._callSubcriber(this._state);
-        }
-        else if(action.type ===onChangeCompletedTicActionType){
-            this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].defEnrolled=false;
-            this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].disEnrolled=true;
-            this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].defProcessing=false;
-            this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].disProcessing=true;
-            this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].defCompleted=true;
-            this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].disCompleted=true;
-            this._callSubcriber(this._state);
-        }
-        else if(action.type ===selectDirectTicActionType){
-            this._state.PageTiket.id=action.id;
-            this._callSubcriber(this._state);
-        }
+        this._state.PageEntrance=EntranceReducer(this._state.PageEntrance,action);
+        this._state.PageReg=RegistrationReducer(this._state.PageReg,action);
+        this._state.PageTiket=TicketReducer(this._state.PageTiket,action);
+        this._callSubcriber(this._state);
     }
 };
-export const onClickEnterActionCreator=()=>{
-    return{type: onClickButtonEnterActionType}};
-export const onLoginChangeEnterActionCreator=(loginText)=>{
-    return{type: onLoginChangeEnterActionType,login:loginText}
-};
-export const onPassChangeEnterActionCreator=(passText)=>{
-    return{type: onChangePassEnterActionType,pass:passText}
-};
-export const onClickRegActionCreator=()=>{
-    return{type: onClickButtonRegActionType}};
-export const onLoginChangeRegActionCreator=(loginText)=>{
-    return{type: updateLoginRegActionType,login:loginText}
-};
-export const onPassChangeRegActionCreator=(passText)=>{
-    return{type: updatePasswordRegActionType,pass:passText}
-};
-export const onPassRepChangeRegActionCreator=(passRepText)=>{
-    return{type: updatePasswordRepRegActionType,PassRep:passRepText}
-};
-export const onEmailChangeRegActionCreator=(emailText)=>{
-    return{type: updateEmailRegActionType,email:emailText}
-};
-export const onChangeProcessingActionCreator=(directid,tiketsid)=>{
-    return {type: onChangeProcessingTicActionType, directid:directid, tiketsid:tiketsid}};
-export const onChangeCompletedActionCreator=(directid,tiketsid)=>{
-    return {type: onChangeCompletedTicActionType, directid:directid, tiketsid:tiketsid}};
-export const selectChangeActionCreator=(id)=>{
-    return{type: selectDirectTicActionType,id:id}};
+export const onClickEnterActionCreator=()=>({type: onClickButtonEnterActionType});
+export const onLoginChangeEnterActionCreator=(loginText)=>(
+    {type: onLoginChangeEnterActionType,login:loginText});
+export const onPassChangeEnterActionCreator=(passText)=>(
+    {type: onChangePassEnterActionType,pass:passText});
+export const onClickRegActionCreator=()=>({type: onClickButtonRegActionType});
+export const onLoginChangeRegActionCreator=(loginText)=>(
+    {type: updateLoginRegActionType,login:loginText});
+export const onPassChangeRegActionCreator=(passText)=>(
+    {type: updatePasswordRegActionType,pass:passText});
+export const onPassRepChangeRegActionCreator=(passRepText)=>(
+    {type: updatePasswordRepRegActionType,PassRep:passRepText});
+export const onEmailChangeRegActionCreator=(emailText)=>(
+    {type: updateEmailRegActionType,email:emailText});
+export const onChangeProcessingActionCreator=(directid,tiketsid)=>(
+    {type: onChangeProcessingTicActionType, directid:directid, tiketsid:tiketsid});
+export const onChangeCompletedActionCreator=(directid,tiketsid)=>(
+    {type: onChangeCompletedTicActionType, directid:directid, tiketsid:tiketsid});
+export const selectChangeActionCreator=(id)=>({type: selectDirectTicActionType,id:id});
 export default store;
 window.store=store;
