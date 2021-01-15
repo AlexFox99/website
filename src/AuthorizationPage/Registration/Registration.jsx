@@ -45,7 +45,7 @@ const Registration=(props)=>{
                         <input onChange={onLoginChange}
                                value={props.state.PageReg.Login}
                                ref={login}
-                               type={props.state.Type}
+                               type={props.state.PageReg.Type}
                                className={props.state.PageReg.ClassNameReg[6].name}/>
      {/*                   <div className={props.store.PageReg.ClassNameReg[7].name}>
                             {props.store.PageReg.NamesReg[2].name}</div>
@@ -55,21 +55,21 @@ const Registration=(props)=>{
                         <input onChange={onPassChange}
                                value={props.state.PageReg.PasswordText}
                                ref={pass}
-                               type={props.state.Type}
+                               type={props.state.PageReg.Type}
                                className={props.state.PageReg.ClassNameReg[10].name}/>
                         <div className={props.state.PageReg.ClassNameReg[11].name}>
                             {props.state.PageReg.NamesReg[4].name}</div>
                         <input onChange={onPassRepChange}
                                value={props.state.PageReg.PassRepText}
                                ref={passRep}
-                               type={props.state.Type}
+                               type={props.state.PageReg.Type}
                                className={props.state.PageReg.ClassNameReg[12].name}/>
                         <div className={props.state.PageReg.ClassNameReg[13].name}>
                             {props.state.PageReg.NamesReg[5].name}</div>
                         <input onChange={onEmailChange}
                                value={props.state.PageReg.Email}
                                ref={email}
-                               type={props.state.Type}
+                               type={props.state.PageReg.Type}
                                className={props.state.PageReg.ClassNameReg[14].name}/>
                     </div>
                 </div>

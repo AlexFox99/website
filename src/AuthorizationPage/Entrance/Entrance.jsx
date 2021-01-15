@@ -33,7 +33,7 @@ const Entrance=(props)=>{
                         <input onChange={onLoginChange}
                                value={props.state.PageEntrance.Login}
                             ref={login}
-                            type={props.state.Type}
+                            type={props.state.PageEntrance.Type}
                                className={props.state.PageEntrance.ClassNameEntrance[6].name}
                         />
                     </div>
@@ -43,7 +43,7 @@ const Entrance=(props)=>{
                         <input onChange={onPassChange}
                                value={props.state.PageEntrance.PasswordText}
                                ref={pass}
-                            type={props.state.Type}
+                            type={props.state.PageEntrance.Type}
                                className={props.state.PageEntrance.ClassNameEntrance[9].name}/>
                     </div>
                 </div>

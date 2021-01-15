@@ -26,7 +26,7 @@ const ForgotPasswordPage=(props)=>{
                         <input onChange={onEmailChange}
                                value={props.state.PageForPas.Email}
                             ref={email}
-                            type={props.state.Type}
+                            type={props.state.PageForPas.Type}
                             className={props.state.PageForPas.ClassForPas[7].name}/>
                     </div>
                 </div>
