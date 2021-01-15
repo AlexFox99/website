@@ -2,23 +2,24 @@ import React from "react";
 import "./tickets.css"
 
 import Ticket from "./ticket/Ticket";
+import {selectChangeActionCreator} from "../redux/store";
 
 
 const Tickets = (props) => {
     let select=React.createRef();
-    let Ticket=
-        props.state.PageTiket.Directs[props.state.PageTiket.id].TiketsDirect.map(Tickets=>
+    let ticket=
+        props.state.PageTiket.Directs[props.state.PageTiket.id].TiketsDirect.map(tickets=>
         <Ticket directid={props.state.PageTiket.id}
-                tiketsid={Tickets.id}
-                name={Tickets.name}
-                disEnrolled={Tickets.disEnrolled} defEnrolled={Tickets.defEnrolled}
-                disProcessing={Tickets.disProcessing} defProcessing={Tickets.defProcessing}
-                disCompleted={Tickets.disCompleted} defCompleted={Tickets.defCompleted}
+                tiketsid={tickets.id}
+                name={tickets.name}
+                disEnrolled={tickets.disEnrolled} defEnrolled={tickets.defEnrolled}
+                disProcessing={tickets.disProcessing} defProcessing={tickets.defProcessing}
+                disCompleted={tickets.disCompleted} defCompleted={tickets.defCompleted}
                 dispatch={props.dispatch}
         />);
     let selectChange=()=>{
         let id=select.current.value;
-        props.dispatch({type:'SELECT-DIRECT-TIC',id:id});
+        props.dispatch(selectChangeActionCreator(id));
     }
     return(
         <div className="TicketsPage">
@@ -35,7 +36,7 @@ const Tickets = (props) => {
                 </select></div>
                 <div className="TicketScroll">
                     {
-                        zayavkimap
+                        ticket
                     }
                 </div>
             </div>

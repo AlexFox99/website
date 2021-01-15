@@ -1,16 +1,13 @@
 import React from "react";
 import "./ticket.css"
+import {onChangeCompletedActionCreator, onChangeProcessingActionCreator} from "../../redux/store";
 const Ticket = (props) => {
 
     let onchangeProcessing=()=>{
-        props.dispatch({type:'ON-CHANGE-PROCESSING-TIC',
-            directid:props.directid,
-            tiketsid:props.tiketsid});
+        props.dispatch(onChangeProcessingActionCreator(props.directid,props.tiketsid));
     }
     let onchangeCompleted=()=>{
-        props.dispatch({type:'ON-CHANGE-COMPLETED-TIC',
-            directid:props.directid,
-            tiketsid:props.tiketsid});
+        props.dispatch(onChangeCompletedActionCreator(props.directid,props.tiketsid));
     }
     return(
         <div className="ticketPattern">

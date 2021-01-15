@@ -1,19 +1,24 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import "./Entrance.css";
+import {
+    onClickEnterActionCreator,
+    onLoginChangeEnterActionCreator,
+    onPassChangeEnterActionCreator,
+} from "../../redux/store";
 const Entrance=(props)=>{
     let login=React.createRef();
     let pass=React.createRef();
     let onClick=()=>{
-        props.dispatch({type:'ON-CLICK-BUTTON-ENTER'});
+        props.dispatch(onClickEnterActionCreator());
     };
     let onLoginChange=()=>{
         let loginText=login.current.value;
-        props.dispatch({type:'UPDATE-LOGIN-ENTER',login:loginText});
+        props.dispatch(onLoginChangeEnterActionCreator(loginText));
     };
     let onPassChange=()=>{
         let passText=pass.current.value;
-        props.dispatch({type:'UPDATE-PASSWORD-ENTER',pass:passText});
+        props.dispatch(onPassChangeEnterActionCreator(passText));
     };
     return(
         <div className={props.state.PageEntrance.ClassNameEntrance[0].name}>

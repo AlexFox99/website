@@ -1,4 +1,14 @@
-
+const onClickButtonEnterActionType = 'ON-CLICK-BUTTON-ENTER';
+const onLoginChangeEnterActionType = 'UPDATE-LOGIN-ENTER';
+const onChangePassEnterActionType = 'UPDATE-PASSWORD-ENTER';
+const onClickButtonRegActionType = 'ON-CLICK-BUTTON-REG';
+const updateLoginRegActionType = 'UPDATE-LOGIN-REG';
+const updatePasswordRegActionType = 'UPDATE-PASSWORD-REG';
+const updatePasswordRepRegActionType = 'UPDATE-PASSWORD-REP-REG';
+const updateEmailRegActionType = 'UPDATE-EMAIL-REG';
+const onChangeProcessingTicActionType = 'ON-CHANGE-PROCESSING-TIC';
+const onChangeCompletedTicActionType = 'ON-CHANGE-COMPLETED-TIC';
+const selectDirectTicActionType = 'SELECT-DIRECT-TIC';
 let store={
     _state:{
         ForApp:{
@@ -192,18 +202,18 @@ let store={
         this._callSubcriber=observer;
     },
     dispatch(action){
-        if(action.type ==='ON-CLICK-BUTTON-ENTER'){
+        if(action.type ===onClickButtonEnterActionType){
             alert(this._state.PageEntrance.Login+" "+this._state.PageEntrance.Password);
             this._state.PageEntrance.Login="";
             this._state.PageEntrance.Password="";
             this._state.PageEntrance.PasswordText="";
             this._callSubcriber(this._state);
         }
-        else if(action.type ==='UPDATE-LOGIN-ENTER'){
+        else if(action.type ===onLoginChangeEnterActionType){
             this._state.PageEntrance.Login=action.login;
             this._callSubcriber(this._state);
         }
-        else if(action.type ==='UPDATE-PASSWORD-ENTER'){
+        else if(action.type ===onChangePassEnterActionType){
             let length=action.pass.length;
             this._state.PageEntrance.Password=this._state.PageEntrance.Password+action.pass[length-1];
             let text="";
@@ -213,7 +223,7 @@ let store={
             this._state.PageEntrance.PasswordText=text;
             this._callSubcriber(this._state);
         }
-        else if(action.type ==='ON-CLICK-BUTTON-REG'){
+        else if(action.type ===onClickButtonRegActionType){
             alert(this._state.PageReg.Login+" "+this._state.PageReg.Password+" "+
                 this._state.PageReg.PassRep+" "+
                 this._state.PageReg.Email);
@@ -225,11 +235,11 @@ let store={
             this._state.PageReg.Email="";
             this._callSubcriber(this._state);
         }
-        else if(action.type ==='UPDATE-LOGIN-REG'){
+        else if(action.type ===updateLoginRegActionType){
             this._state.PageReg.Login=action.login;
             this._callSubcriber(this._state);
         }
-        else if(action.type ==='UPDATE-PASSWORD-REG'){
+        else if(action.type ===updatePasswordRegActionType){
             let length=action.pass.length;
             this._state.PageReg.Password=this._state.PageReg.Password+action.pass[length-1];
             let text="";
@@ -239,7 +249,7 @@ let store={
             this._state.PageReg.PasswordText=text;
             this._callSubcriber(this._state);
         }
-        else if(action.type ==='UPDATE-PASSWORD-REP-REG'){
+        else if(action.type ===updatePasswordRepRegActionType){
             let length=action.PassRep.length;
             this._state.PageReg.PassRep=this._state.PageReg.PassRep+action.PassRep[length-1];
             let text="";
@@ -249,11 +259,11 @@ let store={
             this._state.PageReg.PassRepText=text;
             this._callSubcriber(this._state);
         }
-        else if(action.type ==='UPDATE-EMAIL-REG'){
+        else if(action.type ===updateEmailRegActionType){
             this._state.PageReg.Email=action.email;
             this._callSubcriber(this._state);
         }
-        else if(action.type ==='ON-CHANGE-PROCESSING-TIC'){
+        else if(action.type ===onChangeProcessingTicActionType){
             this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].defEnrolled=false;
             this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].disEnrolled=true;
             this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].defProcessing=true;
@@ -262,7 +272,7 @@ let store={
             this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].disCompleted=false;
             this._callSubcriber(this._state);
         }
-        else if(action.type ==='ON-CHANGE-COMPLETED-TIC'){
+        else if(action.type ===onChangeCompletedTicActionType){
             this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].defEnrolled=false;
             this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].disEnrolled=true;
             this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].defProcessing=false;
@@ -271,11 +281,39 @@ let store={
             this._state.PageTiket.Directs[action.directid].TiketsDirect[action.tiketsid].disCompleted=true;
             this._callSubcriber(this._state);
         }
-        else if(action.type ==='SELECT-DIRECT-TIC'){
+        else if(action.type ===selectDirectTicActionType){
             this._state.PageTiket.id=action.id;
             this._callSubcriber(this._state);
         }
     }
-}
+};
+export const onClickEnterActionCreator=()=>{
+    return{type: onClickButtonEnterActionType}};
+export const onLoginChangeEnterActionCreator=(loginText)=>{
+    return{type: onLoginChangeEnterActionType,login:loginText}
+};
+export const onPassChangeEnterActionCreator=(passText)=>{
+    return{type: onChangePassEnterActionType,pass:passText}
+};
+export const onClickRegActionCreator=()=>{
+    return{type: onClickButtonRegActionType}};
+export const onLoginChangeRegActionCreator=(loginText)=>{
+    return{type: updateLoginRegActionType,login:loginText}
+};
+export const onPassChangeRegActionCreator=(passText)=>{
+    return{type: updatePasswordRegActionType,pass:passText}
+};
+export const onPassRepChangeRegActionCreator=(passRepText)=>{
+    return{type: updatePasswordRepRegActionType,PassRep:passRepText}
+};
+export const onEmailChangeRegActionCreator=(emailText)=>{
+    return{type: updateEmailRegActionType,email:emailText}
+};
+export const onChangeProcessingActionCreator=(directid,tiketsid)=>{
+    return {type: onChangeProcessingTicActionType, directid:directid, tiketsid:tiketsid}};
+export const onChangeCompletedActionCreator=(directid,tiketsid)=>{
+    return {type: onChangeCompletedTicActionType, directid:directid, tiketsid:tiketsid}};
+export const selectChangeActionCreator=(id)=>{
+    return{type: selectDirectTicActionType,id:id}};
 export default store;
 window.store=store;

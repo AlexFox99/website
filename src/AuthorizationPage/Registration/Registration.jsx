@@ -1,6 +1,12 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import "./Registration.css";
+import {
+    onClickRegActionCreator, onEmailChangeRegActionCreator,
+    onLoginChangeRegActionCreator,
+    onPassChangeRegActionCreator,
+    onPassRepChangeRegActionCreator
+} from "../../redux/store";
 const Registration=(props)=>{
     let login=React.createRef();
     let pass=React.createRef();
@@ -8,22 +14,22 @@ const Registration=(props)=>{
     let email=React.createRef();
     let onLoginChange=()=>{
         let loginText=login.current.value;
-        props.dispatch({type:'UPDATE-LOGIN-REG',login:loginText});
+        props.dispatch(onLoginChangeRegActionCreator(loginText));
     };
     let onPassChange=()=>{
         let passText=pass.current.value;
-        props.dispatch({type:'UPDATE-PASSWORD-REG',pass:passText});
+        props.dispatch(onPassChangeRegActionCreator(passText));
     };
     let onPassRepChange=()=>{
         let passRepText=passRep.current.value;
-        props.dispatch({type:'UPDATE-PASSWORD-REP-REG',PassRep:passRepText});
+        props.dispatch(onPassRepChangeRegActionCreator(passRepText));
     };
     let onEmailChange=()=>{
         let emailText=email.current.value;
-        props.dispatch({type:'UPDATE-EMAIL-REG',email:emailText});
+        props.dispatch(onEmailChangeRegActionCreator(emailText));
     };
     let onclick=()=>{
-        props.dispatch({type:'ON-CLICK-BUTTON-REG'});
+        props.dispatch(onClickRegActionCreator());
     }
     return(
         <div className={props.state.PageReg.ClassNameReg[0].name}>
