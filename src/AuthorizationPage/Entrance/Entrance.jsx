@@ -4,8 +4,8 @@ import "./Entrance.css";
 import {
     onClickEnterActionCreator,
     onLoginChangeEnterActionCreator,
-    onPassChangeEnterActionCreator,
-} from "../../redux/store";
+    onPassChangeEnterActionCreator
+} from "../../redux/reducer/EntranceReducer";
 const Entrance=(props)=>{
     let login=React.createRef();
     let pass=React.createRef();

@@ -1,18 +1,6 @@
 import EntranceReducer from "./reducer/EntranceReducer";
 import RegistrationReducer from "./reducer/RegistrationReducer";
 import TicketReducer from "./reducer/TicketReducer";
-
-const onClickButtonEnterActionType = 'ON-CLICK-BUTTON-ENTER';
-const onLoginChangeEnterActionType = 'UPDATE-LOGIN-ENTER';
-const onChangePassEnterActionType = 'UPDATE-PASSWORD-ENTER';
-const onClickButtonRegActionType = 'ON-CLICK-BUTTON-REG';
-const updateLoginRegActionType = 'UPDATE-LOGIN-REG';
-const updatePasswordRegActionType = 'UPDATE-PASSWORD-REG';
-const updatePasswordRepRegActionType = 'UPDATE-PASSWORD-REP-REG';
-const updateEmailRegActionType = 'UPDATE-EMAIL-REG';
-const onChangeProcessingTicActionType = 'ON-CHANGE-PROCESSING-TIC';
-const onChangeCompletedTicActionType = 'ON-CHANGE-COMPLETED-TIC';
-const selectDirectTicActionType = 'SELECT-DIRECT-TIC';
 let store={
     _state:{
         ForApp:{
@@ -212,24 +200,5 @@ let store={
         this._callSubcriber(this._state);
     }
 };
-export const onClickEnterActionCreator=()=>({type: onClickButtonEnterActionType});
-export const onLoginChangeEnterActionCreator=(loginText)=>(
-    {type: onLoginChangeEnterActionType,login:loginText});
-export const onPassChangeEnterActionCreator=(passText)=>(
-    {type: onChangePassEnterActionType,pass:passText});
-export const onClickRegActionCreator=()=>({type: onClickButtonRegActionType});
-export const onLoginChangeRegActionCreator=(loginText)=>(
-    {type: updateLoginRegActionType,login:loginText});
-export const onPassChangeRegActionCreator=(passText)=>(
-    {type: updatePasswordRegActionType,pass:passText});
-export const onPassRepChangeRegActionCreator=(passRepText)=>(
-    {type: updatePasswordRepRegActionType,PassRep:passRepText});
-export const onEmailChangeRegActionCreator=(emailText)=>(
-    {type: updateEmailRegActionType,email:emailText});
-export const onChangeProcessingActionCreator=(directid,tiketsid)=>(
-    {type: onChangeProcessingTicActionType, directid:directid, tiketsid:tiketsid});
-export const onChangeCompletedActionCreator=(directid,tiketsid)=>(
-    {type: onChangeCompletedTicActionType, directid:directid, tiketsid:tiketsid});
-export const selectChangeActionCreator=(id)=>({type: selectDirectTicActionType,id:id});
 export default store;
 window.store=store;

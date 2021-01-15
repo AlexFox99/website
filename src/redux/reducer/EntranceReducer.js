@@ -26,5 +26,9 @@ const EntranceReducer = (state,action)=>{
         default:return state;
     }
 }
-
+export const onClickEnterActionCreator=()=>({type: onClickButtonEnterActionType});
+export const onLoginChangeEnterActionCreator=(loginText)=>(
+    {type: onLoginChangeEnterActionType,login:loginText});
+export const onPassChangeEnterActionCreator=(passText)=>(
+    {type: onChangePassEnterActionType,pass:passText});
 export default EntranceReducer;

@@ -2,7 +2,7 @@ import React from "react";
 import "./tickets.css"
 
 import Ticket from "./ticket/Ticket";
-import {selectChangeActionCreator} from "../redux/store";
+import {selectChangeActionCreator} from "../redux/reducer/TicketReducer";
 
 
 const Tickets = (props) => {

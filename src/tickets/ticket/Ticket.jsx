@@ -1,6 +1,7 @@
 import React from "react";
 import "./ticket.css"
-import {onChangeCompletedActionCreator, onChangeProcessingActionCreator} from "../../redux/store";
+import {onChangeCompletedActionCreator, onChangeProcessingActionCreator} from "../../redux/reducer/TicketReducer";
+
 const Ticket = (props) => {
 
     let onchangeProcessing=()=>{

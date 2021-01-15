@@ -26,5 +26,9 @@ const TicketReducer = (state, action)=>{
         default:return state;
     }
 }
-
+export const onChangeProcessingActionCreator=(directid,tiketsid)=>(
+    {type: onChangeProcessingTicActionType, directid:directid, tiketsid:tiketsid});
+export const onChangeCompletedActionCreator=(directid,tiketsid)=>(
+    {type: onChangeCompletedTicActionType, directid:directid, tiketsid:tiketsid});
+export const selectChangeActionCreator=(id)=>({type: selectDirectTicActionType,id:id});
 export default TicketReducer;

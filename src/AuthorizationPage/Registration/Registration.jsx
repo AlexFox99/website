@@ -2,11 +2,12 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 import "./Registration.css";
 import {
-    onClickRegActionCreator, onEmailChangeRegActionCreator,
+    onClickRegActionCreator,
+    onEmailChangeRegActionCreator,
     onLoginChangeRegActionCreator,
     onPassChangeRegActionCreator,
     onPassRepChangeRegActionCreator
-} from "../../redux/store";
+} from "../../redux/reducer/RegistrationReducer";
 const Registration=(props)=>{
     let login=React.createRef();
     let pass=React.createRef();

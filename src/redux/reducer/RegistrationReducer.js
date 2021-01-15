@@ -42,5 +42,13 @@ const RegistrationReducer = (state,action)=>{
         default:return state;
     }
 }
-
+export const onClickRegActionCreator=()=>({type: onClickButtonRegActionType});
+export const onLoginChangeRegActionCreator=(loginText)=>(
+    {type: updateLoginRegActionType,login:loginText});
+export const onPassChangeRegActionCreator=(passText)=>(
+    {type: updatePasswordRegActionType,pass:passText});
+export const onPassRepChangeRegActionCreator=(passRepText)=>(
+    {type: updatePasswordRepRegActionType,PassRep:passRepText});
+export const onEmailChangeRegActionCreator=(emailText)=>(
+    {type: updateEmailRegActionType,email:emailText});
 export default RegistrationReducer;
