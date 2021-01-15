@@ -35,7 +35,9 @@ const App=(props)=> {
                                                 dispatch={props.dispatch}
                            />} />
                     <Route path={props.state.ForApp.LinksApp[5].links}
-                           render={()=><ForgotPasswordPage state={props.state}/>} />
+                           render={()=><ForgotPasswordPage state={props.state}
+                                                           dispatch={props.dispatch}
+                           />} />
                 </div>
 
             </div>

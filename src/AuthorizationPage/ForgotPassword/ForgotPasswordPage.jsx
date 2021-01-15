@@ -1,7 +1,14 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import "./ForgotPasswordPage.css";
+import {onEmailChangeForgotActionCreator} from "../../redux/reducer/ForgotReducer";
+
 const ForgotPasswordPage=(props)=>{
+    let email=React.createRef();
+    let onEmailChange=()=>{
+        let emailText=email.current.value;
+        props.dispatch(onEmailChangeForgotActionCreator(emailText));
+    };
     return(
         <div className={props.state.PageForPas.ClassForPas[0].name}>
             <div className={props.state.PageForPas.ClassForPas[1].name}>
@@ -16,7 +23,11 @@ const ForgotPasswordPage=(props)=>{
                         {props.state.PageForPas.NamesForPas[2].name}
                     </div>
                     <div className={props.state.PageForPas.ClassForPas[6].name}>
-                        <input type={props.state.Type} className={props.state.PageForPas.ClassForPas[7].name}/>
+                        <input onChange={onEmailChange}
+                               value={props.state.PageForPas.Email}
+                            ref={email}
+                            type={props.state.Type}
+                            className={props.state.PageForPas.ClassForPas[7].name}/>
                     </div>
                 </div>
                 <div className={props.state.PageForPas.ClassForPas[8].name}>

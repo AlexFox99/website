@@ -1,6 +1,7 @@
 import EntranceReducer from "./reducer/EntranceReducer";
 import RegistrationReducer from "./reducer/RegistrationReducer";
 import TicketReducer from "./reducer/TicketReducer";
+import ForgotReducer from "./reducer/ForgotReducer";
 let store={
     _state:{
         ForApp:{
@@ -112,7 +113,8 @@ let store={
             ],
             LinksForPas:[
                 {id:0,links:"/Authorization/Entrance"}
-            ]
+            ],
+            Email:""
         },
         Type:"text",
         PageTiket:{
@@ -197,6 +199,7 @@ let store={
         this._state.PageEntrance=EntranceReducer(this._state.PageEntrance,action);
         this._state.PageReg=RegistrationReducer(this._state.PageReg,action);
         this._state.PageTiket=TicketReducer(this._state.PageTiket,action);
+        this._state.PageForPas=ForgotReducer(this._state.PageForPas,action);
         this._callSubcriber(this._state);
     }
 };
