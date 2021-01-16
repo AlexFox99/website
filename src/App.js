@@ -26,9 +26,7 @@ const App=(props)=> {
                     <Route path={props.app.LinksApp[3].links}
                            render={()=><RegistrationContainer/>}/>
                     <Route path={props.app.LinksApp[4].links}
-                           render={()=><TicketsContainer store={props.store}
-                                                dispatch={props.dispatch}
-                           />} />
+                           render={()=><TicketsContainer/>}/>
                     <Route path={props.app.LinksApp[5].links}
                            render={()=><ForgotContainer/>}/>
                 </div>
