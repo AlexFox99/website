@@ -1,3 +1,4 @@
+/*
 import EntranceReducer from "./reducer/EntranceReducer";
 import RegistrationReducer from "./reducer/RegistrationReducer";
 import TicketReducer from "./reducer/TicketReducer";
@@ -203,5 +204,5 @@ let store={
         this._callSubcriber(this._state);
     }
 };
-export default store;
-window.store=store;
+
+*/
