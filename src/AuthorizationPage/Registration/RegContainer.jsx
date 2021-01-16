@@ -7,30 +7,24 @@ import {
     onPassRepChangeRegActionCreator
 } from "../../redux/reducer/RegistrationReducer";
 import Registration from "./Registration";
-const RegistrationContainer=(props)=>{
-    let state=props.store.getState().PageReg;
-    let onLoginChange=(loginText)=>{
-        props.dispatch(onLoginChangeRegActionCreator(loginText));
+import {connect} from "react-redux";
+let mapStateToProps=(state)=>{
+    return{ClassNameReg:state.PageReg.ClassNameReg, NamesReg:state.PageReg.NamesReg,
+        LinksReg:state.PageReg.LinksReg,
+        valuePassRepReg:state.PageReg.PassRepText,
+        valueLoginReg:state.PageReg.Login,
+        valueEmail:state.PageReg.Email,
+        valuePasswordReg:state.PageReg.PasswordText,
+        Type:state.PageReg.Type};
+};
+let mapDispatchToProps=(dispatch)=>{
+    return{
+        onClickReg:()=>{dispatch(onClickRegActionCreator())},
+        UpdateLogin:(loginText)=>{dispatch(onLoginChangeRegActionCreator(loginText))},
+        UpdatePass:(passText)=>{dispatch(onPassChangeRegActionCreator(passText))},
+        UpdatePassRep:(passRepText)=>{dispatch(onPassRepChangeRegActionCreator(passRepText))},
+        UpdateEmail:(emailText)=>{dispatch(onEmailChangeRegActionCreator(emailText))}
     };
-    let onPassChange=(passText)=>{
-        props.dispatch(onPassChangeRegActionCreator(passText));
-    };
-    let onPassRepChange=(passRepText)=>{
-        props.dispatch(onPassRepChangeRegActionCreator(passRepText));
-    };
-    let onEmailChange=(emailText)=>{
-        props.dispatch(onEmailChangeRegActionCreator(emailText));
-    };
-    let onClick=()=>{
-        props.dispatch(onClickRegActionCreator());
-    }
-    return(<Registration onClickReg={onClick} UpdateLogin={onLoginChange}
-                         UpdatePass={onPassChange} UpdatePassRep={onPassRepChange}
-                         UpdateEmail={onEmailChange}
-                         ClassNameReg={state.ClassNameReg} NamesReg={state.NamesReg}
-                         LinksReg={state.LinksReg} Type={state.Type}
-                         valueLoginReg={state.Login} valuePasswordReg={state.PasswordText}
-                         valuePassRepReg={state.PassRepText}
-                         valueEmail={state.Email}/>);
-}
+};
+let RegistrationContainer=connect(mapStateToProps,mapDispatchToProps)(Registration);
 export default RegistrationContainer;

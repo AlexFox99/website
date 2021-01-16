@@ -60,7 +60,7 @@ const Registration=(props)=>{
                         <div className={props.ClassNameReg[13].name}>
                             {props.NamesReg[5].name}</div>
                         <input onChange={onEmailChange}
-                               value={props.Email}
+                               value={props.valueEmail}
                                ref={email}
                                type={props.Type}
                                className={props.ClassNameReg[14].name}/>

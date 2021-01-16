@@ -44,39 +44,50 @@ let InitialState={
 const RegistrationReducer = (state=InitialState,action)=>{
     /*state=this._state.PageReg*/
     switch (action.type) {
-        case onClickButtonRegActionType:
-            alert(state.Login+ " " + state.Password + " " + state.PassRep + " " + state.Email);
-            state.Login="";
-            state.Password="";
-            state.PasswordText="";
-            state.PassRep="";
-            state.PassRepText="";
-            state.Email="";
-            return state;
-        case updateLoginRegActionType:
-            state.Login=action.login;
-            return state;
-        case updatePasswordRegActionType:
+        case onClickButtonRegActionType:{
+            let stateCopy={...state};
+            alert(stateCopy.Login+ " " + stateCopy.Password + " " + stateCopy.PassRep + " " + stateCopy.Email);
+            stateCopy.Login="";
+            stateCopy.Password="";
+            stateCopy.PasswordText="";
+            stateCopy.PassRep="";
+            stateCopy.PassRepText="";
+            stateCopy.Email="";
+            return stateCopy;}
+        case updateLoginRegActionType:{
+            let stateCopy={...state};
+            stateCopy.Login=action.login;
+            return stateCopy;
+        }
+        case updatePasswordRegActionType:{
+            let stateCopy={...state};
             let length=action.pass.length;
-            state.Password=state.Password+action.pass[length-1];
+            stateCopy.Password=stateCopy.Password+action.pass[length-1];
             let text="";
             for(let i of action.pass){
                 text=text+"*"
             }
-            state.PasswordText=text;
-            return state;
-        case updatePasswordRepRegActionType:
+            stateCopy.PasswordText=text;
+            return stateCopy;
+        }
+
+        case updatePasswordRepRegActionType:{
+            let stateCopy={...state};
             let lengthRep=action.PassRep.length;
-            state.PassRep=state.PassRep+action.PassRep[lengthRep-1];
+            stateCopy.PassRep=stateCopy.PassRep+action.PassRep[lengthRep-1];
             let textRep="";
             for(let i of action.PassRep){
                 textRep=textRep+"*"
             }
-            state.PassRepText=textRep;
-            return state;
-        case updateEmailRegActionType:
-            state.Email=action.email;
-            return state;
+            stateCopy.PassRepText=textRep;
+            return stateCopy;
+        }
+        case updateEmailRegActionType:{
+            let stateCopy={...state};
+            stateCopy.Email=action.email;
+            return stateCopy;
+        }
+
         default:return state;
     }
 }
