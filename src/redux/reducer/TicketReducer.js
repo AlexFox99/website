@@ -257,11 +257,11 @@ let InitialState={
     ],
     ClassNameTicket:[{id:0,name:"TicketContent"}],
     typeInputTicket:"radio",
-    valueInputTicket:[{id:0,value:0},{id:1,value:1},{id:2,value:2}]
+    valueInputTicket:[{id:0,value:0},{id:1,value:1},{id:2,value:2}],
+    NamesTicket:[{id:0,name:"поступила"},{id:1,name:"в обработке"},{id:2,name:"выполнена"}]
 }
 const TicketReducer = (state=InitialState, action)=>{
     /*state=this._state.PageTiket*/
-    debugger
     switch (action.type) {
         case onChangeProcessingTicActionType:
             state.Directs[action.directid].TiketsDirect[action.tiketsid].defEnrolled=false;

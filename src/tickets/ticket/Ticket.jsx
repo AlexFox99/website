@@ -7,24 +7,23 @@ const Ticket = (props) => {
     let onchangeCompleted=()=>{
         props.UpdateStateIntoCompleted(props.directid,props.tiketsid);
     }
-    debugger
     return(
         <div>
             <div className={props.ClassNameTicket[0].name}>{props.name}
                 <input disabled={props.disEnrolled} defaultChecked={props.defEnrolled}
                        name={props.name}
                        type={props.typeInputTicket} value={props.valueInputTicket[0].value}
-                />поступила
+                />{props.NamesTicket[0].name}
                 <input disabled={props.disProcessing} defaultChecked={props.defProcessing}
                        name={props.name}
                        type={props.typeInputTicket} value={props.valueInputTicket[1].value}
                        onChange={onchangeProcessing}
-                />в обработке
+                />{props.NamesTicket[1].name}
                 <input disabled={props.disCompleted} defaultChecked={props.defCompleted}
                        name={props.name}
                        type={props.typeInputTicket} value={props.valueInputTicket[2].value}
                        onChange={onchangeCompleted}
-                />выполнена
+                />{props.NamesTicket[2].name}
             </div>
         </div>
     );

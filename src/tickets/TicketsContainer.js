@@ -18,7 +18,6 @@ const TicketsContainer = (props) => {
     let onchangeCompleted=(directid,tiketsid)=>{
         props.dispatch(onChangeCompletedActionCreator(directid,tiketsid));
     }
-    debugger
     return(<Tickets UpdateIdSelect={selectChange} UpdateStateIntoProccessing={onchangeProcessing}
                     UpdateStateIntoCompleted={onchangeCompleted}
                     ClassNameTickets={state.ClassNameTickets}
@@ -26,6 +25,7 @@ const TicketsContainer = (props) => {
                     Id={state.id} optionValue={state.optionValue}
                     Directs={state.Directs}
                     ClassNameTicket={state.ClassNameTicket}
+                    NamesTicket={state.NamesTicket}
                     typeInputTicket={state.typeInputTicket}
                     valueInputTicket={state.valueInputTicket}
         />
