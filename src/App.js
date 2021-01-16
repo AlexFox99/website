@@ -1,12 +1,11 @@
 import './App.css';
 import React from "react";
 import {BrowserRouter, Redirect, Route} from "react-router-dom";
-
-import ForgotPasswordPage from "./AuthorizationPage/ForgotPassword/ForgotPasswordPage";
 import Tickets from "./tickets/Tickets";
 /*import logo from "./logo.png";*/
 import EntranceContainer from "./AuthorizationPage/Entrance/EnteranceContainer";
 import RegistrationContainer from "./AuthorizationPage/Registration/RegContainer";
+import ForgotContainer from "./AuthorizationPage/ForgotPassword/ForgotContainer";
 const App=(props)=> {
     return (
         <BrowserRouter>
@@ -28,15 +27,15 @@ const App=(props)=> {
                            />}/>
                     <Route path={props.state.ForApp.LinksApp[3].links}
                            render={()=><RegistrationContainer store={props.store}
-                                                     dispatch={props.dispatch}
+                                                              dispatch={props.dispatch}
                            />}/>
                     <Route path="/Tickets"
                            render={()=><Tickets state={props.state}
                                                 dispatch={props.dispatch}
                            />} />
                     <Route path={props.state.ForApp.LinksApp[5].links}
-                           render={()=><ForgotPasswordPage state={props.state}
-                                                           dispatch={props.dispatch}
+                           render={()=><ForgotContainer store={props.store}
+                                                        dispatch={props.dispatch}
                            />} />
                 </div>
 
