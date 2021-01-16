@@ -1,13 +1,14 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import "./ForgotPasswordPage.css";
-const ForgotPasswordPage=(props)=>{
-    let email=React.createRef();
-    let onEmailChange=()=>{
-        let emailText=email.current.value;
+
+const ForgotPasswordPage = (props) => {
+    let email = React.createRef();
+    let onEmailChange = () => {
+        let emailText = email.current.value;
         props.UpdateEmailForgot(emailText);
     };
-    return(
+    return (
         <div className={props.ClassForPas[0].name}>
             <div className={props.ClassForPas[1].name}>
                 <div className={props.ClassForPas[2].name}>
@@ -23,9 +24,9 @@ const ForgotPasswordPage=(props)=>{
                     <div className={props.ClassForPas[6].name}>
                         <input onChange={onEmailChange}
                                value={props.valueEmailForgot}
-                            ref={email}
-                            type={props.type}
-                            className={props.ClassForPas[7].name}/>
+                               ref={email}
+                               type={props.type}
+                               className={props.ClassForPas[7].name}/>
                     </div>
                 </div>
                 <div className={props.ClassForPas[8].name}>

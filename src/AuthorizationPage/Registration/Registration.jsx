@@ -1,31 +1,32 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import "./Registration.css";
-const Registration=(props)=>{
-    let login=React.createRef();
-    let pass=React.createRef();
-    let passRep=React.createRef();
-    let email=React.createRef();
-    let onLoginChange=()=>{
-        let loginText=login.current.value;
+
+const Registration = (props) => {
+    let login = React.createRef();
+    let pass = React.createRef();
+    let passRep = React.createRef();
+    let email = React.createRef();
+    let onLoginChange = () => {
+        let loginText = login.current.value;
         props.UpdateLogin(loginText);
     };
-    let onPassChange=()=>{
-        let passText=pass.current.value;
+    let onPassChange = () => {
+        let passText = pass.current.value;
         props.UpdatePass(passText);
     };
-    let onPassRepChange=()=>{
-        let passRepText=passRep.current.value;
+    let onPassRepChange = () => {
+        let passRepText = passRep.current.value;
         props.UpdatePassRep(passRepText);
     };
-    let onEmailChange=()=>{
-        let emailText=email.current.value;
+    let onEmailChange = () => {
+        let emailText = email.current.value;
         props.UpdateEmail(emailText);
     };
-    let onclick=()=>{
+    let onclick = () => {
         props.onClickReg();
     }
-    return(
+    return (
         <div className={props.ClassNameReg[0].name}>
             <div className={props.ClassNameReg[1].name}>
                 <div className={props.ClassNameReg[2].name}>
@@ -40,7 +41,7 @@ const Registration=(props)=>{
                                ref={login}
                                type={props.Type}
                                className={props.ClassNameReg[6].name}/>
-     {/*                   <div className={props.store.PageReg.ClassNameReg[7].name}>
+                        {/*                   <div className={props.store.PageReg.ClassNameReg[7].name}>
                             {props.store.PageReg.NamesReg[2].name}</div>
                         <input type={props.store.Type} className={props.store.PageReg.ClassNameReg[8].name}/>*/}
                         <div className={props.ClassNameReg[9].name}>

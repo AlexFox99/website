@@ -1,21 +1,22 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import "./Entrance.css";
-const Entrance=(props)=>{
-    let login=React.createRef();
-    let pass=React.createRef();
-    let onClick=()=>{
+
+const Entrance = (props) => {
+    let login = React.createRef();
+    let pass = React.createRef();
+    let onClick = () => {
         props.onClickEnter();
     };
-    let onLoginChange=()=>{
-        let loginText=login.current.value;
+    let onLoginChange = () => {
+        let loginText = login.current.value;
         props.onLoginChangeEnter(loginText);
     };
-    let onPassChange=()=>{
-        let passText=pass.current.value;
+    let onPassChange = () => {
+        let passText = pass.current.value;
         props.onPassChangeEnter(passText);
     };
-    return(
+    return (
         <div className={props.ClassNameEntrance[0].name}>
             <div className={props.ClassNameEntrance[1].name}>
                 <div className={props.ClassNameEntrance[2].name}>
@@ -27,8 +28,8 @@ const Entrance=(props)=>{
                             {props.NamesEntrance[1].name}</div>
                         <input onChange={onLoginChange}
                                value={props.valueLogin}
-                            ref={login}
-                            type={props.type}
+                               ref={login}
+                               type={props.type}
                                className={props.ClassNameEntrance[6].name}
                         />
                     </div>
@@ -38,7 +39,7 @@ const Entrance=(props)=>{
                         <input onChange={onPassChange}
                                value={props.valuePass}
                                ref={pass}
-                            type={props.type}
+                               type={props.type}
                                className={props.ClassNameEntrance[9].name}/>
                     </div>
                 </div>
@@ -53,7 +54,7 @@ const Entrance=(props)=>{
                         </button>
                     </NavLink>
                     <button onClick={onClick}
-                        className={props.ClassNameEntrance[13].name}>
+                            className={props.ClassNameEntrance[13].name}>
                         {props.NamesEntrance[0].name}</button>
                 </div>
             </div>

@@ -1,13 +1,14 @@
 import React from "react";
 import "./ticket.css"
+
 const Ticket = (props) => {
-    let onchangeProcessing=()=>{
-        props.UpdateStateIntoProccessing(props.directid,props.tiketsid);
+    let onchangeProcessing = () => {
+        props.UpdateStateIntoProccessing(props.directid, props.tiketsid);
     }
-    let onchangeCompleted=()=>{
-        props.UpdateStateIntoCompleted(props.directid,props.tiketsid);
+    let onchangeCompleted = () => {
+        props.UpdateStateIntoCompleted(props.directid, props.tiketsid);
     }
-    return(
+    return (
         <div>
             <div className={props.ClassNameTicket[0].name}>{props.name}
                 <input disabled={props.disEnrolled} defaultChecked={props.defEnrolled}
