@@ -4,9 +4,9 @@ import {BrowserRouter, Redirect, Route} from "react-router-dom";
 
 import ForgotPasswordPage from "./AuthorizationPage/ForgotPassword/ForgotPasswordPage";
 import Tickets from "./tickets/Tickets";
-import logo from "./logo.png";
-import Entrance from "./AuthorizationPage/Entrance/Entrance";
+/*import logo from "./logo.png";*/
 import Registration from "./AuthorizationPage/Registration/Registration";
+import EntranceContainer from "./AuthorizationPage/Entrance/EnteranceContainer";
 const App=(props)=> {
     return (
         <BrowserRouter>
@@ -23,7 +23,7 @@ const App=(props)=> {
                     <Route exact path={props.state.ForApp.LinksApp[1].links}
                            render={()=><Redirect to={props.state.ForApp.LinksApp[2].links}/>} />
                     <Route path={props.state.ForApp.LinksApp[2].links}
-                           render={()=><Entrance state={props.state}
+                           render={()=><EntranceContainer store={props.store}
                                                  dispatch={props.dispatch}
                            />}/>
                     <Route path={props.state.ForApp.LinksApp[3].links}
