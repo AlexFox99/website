@@ -4,10 +4,10 @@ import './index.css';
 import store from "./redux/redux-store";
 import App from "./App";
 
-let rerenderTree= (state)=>{
+let rerenderTree= ()=>{
     ReactDOM.render(
         <React.StrictMode>
-            <App state={store.getState()} store={store}
+            <App app={store.getState().ForApp} store={store}
                  dispatch={store.dispatch.bind(store)}
             />
         </React.StrictMode>,
@@ -16,8 +16,7 @@ let rerenderTree= (state)=>{
 }
 rerenderTree(store.getState());
 store.subscribe(()=>{
-    let state=store.getState();
-    rerenderTree(state);
+    rerenderTree();
 });
 
 
