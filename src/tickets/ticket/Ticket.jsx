@@ -1,30 +1,28 @@
 import React from "react";
 import "./ticket.css"
-import {onChangeCompletedActionCreator, onChangeProcessingActionCreator} from "../../redux/reducer/TicketReducer";
-
 const Ticket = (props) => {
-
     let onchangeProcessing=()=>{
-        props.dispatch(onChangeProcessingActionCreator(props.directid,props.tiketsid));
+        props.UpdateStateIntoProccessing(props.directid,props.tiketsid);
     }
     let onchangeCompleted=()=>{
-        props.dispatch(onChangeCompletedActionCreator(props.directid,props.tiketsid));
+        props.UpdateStateIntoCompleted(props.directid,props.tiketsid);
     }
+    debugger
     return(
-        <div className="ticketPattern">
-            <div className="TicketContent">{props.name}
+        <div>
+            <div className={props.ClassNameTicket[0].name}>{props.name}
                 <input disabled={props.disEnrolled} defaultChecked={props.defEnrolled}
                        name={props.name}
-                       type="radio" value="1"
+                       type={props.typeInputTicket} value={props.valueInputTicket[0].value}
                 />поступила
                 <input disabled={props.disProcessing} defaultChecked={props.defProcessing}
                        name={props.name}
-                       type="radio" value="2"
+                       type={props.typeInputTicket} value={props.valueInputTicket[1].value}
                        onChange={onchangeProcessing}
                 />в обработке
                 <input disabled={props.disCompleted} defaultChecked={props.defCompleted}
                        name={props.name}
-                       type="radio" value="3"
+                       type={props.typeInputTicket} value={props.valueInputTicket[2].value}
                        onChange={onchangeCompleted}
                 />выполнена
             </div>

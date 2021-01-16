@@ -1,11 +1,11 @@
 import './App.css';
 import React from "react";
 import {BrowserRouter, Redirect, Route} from "react-router-dom";
-import Tickets from "./tickets/Tickets";
 /*import logo from "./logo.png";*/
 import EntranceContainer from "./AuthorizationPage/Entrance/EnteranceContainer";
 import RegistrationContainer from "./AuthorizationPage/Registration/RegContainer";
 import ForgotContainer from "./AuthorizationPage/ForgotPassword/ForgotContainer";
+import TicketsContainer from "./tickets/TicketsContainer";
 const App=(props)=> {
     return (
         <BrowserRouter>
@@ -29,8 +29,8 @@ const App=(props)=> {
                            render={()=><RegistrationContainer store={props.store}
                                                               dispatch={props.dispatch}
                            />}/>
-                    <Route path="/Tickets"
-                           render={()=><Tickets state={props.state}
+                    <Route path={props.state.ForApp.LinksApp[4].links}
+                           render={()=><TicketsContainer store={props.store}
                                                 dispatch={props.dispatch}
                            />} />
                     <Route path={props.state.ForApp.LinksApp[5].links}
