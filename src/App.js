@@ -30,9 +30,7 @@ const App=(props)=> {
                                                 dispatch={props.dispatch}
                            />} />
                     <Route path={props.app.LinksApp[5].links}
-                           render={()=><ForgotContainer store={props.store}
-                                                        dispatch={props.dispatch}
-                           />} />
+                           render={()=><ForgotContainer/>}/>
                 </div>
 
             </div>
