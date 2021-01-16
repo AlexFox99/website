@@ -22,9 +22,7 @@ const App=(props)=> {
                     <Route exact path={props.app.LinksApp[1].links}
                            render={()=><Redirect to={props.app.LinksApp[2].links}/>} />
                     <Route path={props.app.LinksApp[2].links}
-                           render={()=><EntranceContainer store={props.store}
-                                                 dispatch={props.dispatch}
-                           />}/>
+                           render={()=><EntranceContainer/>}/>
                     <Route path={props.app.LinksApp[3].links}
                            render={()=><RegistrationContainer store={props.store}
                                                               dispatch={props.dispatch}

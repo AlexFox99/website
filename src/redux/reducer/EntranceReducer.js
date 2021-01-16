@@ -34,26 +34,30 @@ let InitialState={
 }
 const EntranceReducer = (state=InitialState,action)=>{
     /*state=this._state.PageEntrance*/
+    let stateCopy={};
     switch (action.type) {
         case onClickButtonEnterActionType:
-            alert(state.Login+" "+state.Password);
+            stateCopy={...state};
+            alert(stateCopy.Login+" "+stateCopy.Password);
 
-            state.Login="";
-            state.Password="";
-            state.PasswordText="";
-            return state;
+            stateCopy.Login="";
+            stateCopy.Password="";
+            stateCopy.PasswordText="";
+            return stateCopy;
         case onLoginChangeEnterActionType:
-            state.Login=action.login;
-            return state;
+            stateCopy={...state};
+            stateCopy.Login=action.login;
+            return stateCopy;
         case onChangePassEnterActionType:
+            stateCopy={...state};
             let length=action.pass.length;
-            state.Password=state.Password+action.pass[length-1];
+            stateCopy.Password=stateCopy.Password+action.pass[length-1];
             let text="";
             for(let i of action.pass){
                 text=text+"*"
             }
-            state.PasswordText=text;
-            return state;
+            stateCopy.PasswordText=text;
+            return stateCopy;
         default:return state;
     }
 }

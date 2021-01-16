@@ -5,25 +5,19 @@ import {
     onPassChangeEnterActionCreator
 } from "../../redux/reducer/EntranceReducer";
 import Entrance from "./Entrance";
-const EntranceContainer=(props)=>{
-    let state=props.store.getState().PageEntrance;
-    let onClickEnter=()=>{
-        props.dispatch(onClickEnterActionCreator());
+import {connect} from "react-redux";
+let mapStateToProps=(state)=>{
+    return{ClassNameEntrance:state.PageEntrance.ClassNameEntrance,
+        NamesEntrance:state.PageEntrance.NamesEntrance, valueLogin:state.PageEntrance.Login,
+        valuePass:state.PageEntrance.PasswordText,LinksEntrance:state.PageEntrance.LinksEntrance,
+        type:state.PageEntrance.Type};
+};
+let mapDispatchToProps=(dispatch)=>{
+    return{
+        onClickEnter:()=>{dispatch(onClickEnterActionCreator())},
+        onLoginChangeEnter:(loginText)=>{dispatch(onLoginChangeEnterActionCreator(loginText))},
+        onPassChangeEnter:(passText)=>{dispatch(onPassChangeEnterActionCreator(passText))}
     };
-    let onLoginChangeEnter=(loginText)=>{
-        props.dispatch(onLoginChangeEnterActionCreator(loginText));
-    };
-    let onPassChangeEnter=(passText)=>{
-        props.dispatch(onPassChangeEnterActionCreator(passText));
-    };
-    return(<Entrance onClickEnter={onClickEnter} onLoginChangeEnter={onLoginChangeEnter}
-                     onPassChangeEnter={onPassChangeEnter}
-                     ClassNameEntrance={state.ClassNameEntrance}
-                     NamesEntrance={state.NamesEntrance}
-                     valueLogin={state.Login}
-                     valuePass={state.PasswordText}
-                     LinksEntrance={state.LinksEntrance}
-                     type={state.Type}/>);
-}
+};
+const EntranceContainer=connect(mapStateToProps,mapDispatchToProps)(Entrance);
 export default EntranceContainer;
-
