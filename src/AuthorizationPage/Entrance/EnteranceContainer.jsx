@@ -1,4 +1,3 @@
-import React from "react";
 import {
     onClickEnterActionCreator,
     onLoginChangeEnterActionCreator,
@@ -9,10 +8,16 @@ import {connect} from "react-redux";
 
 const mapStateToProps = (state) => {
     return {
-        ClassNameEntrance: state.PageEntrance.ClassNameEntrance,
-        NamesEntrance: state.PageEntrance.NamesEntrance, valueLogin: state.PageEntrance.Login,
-        valuePass: state.PageEntrance.PasswordText, LinksEntrance: state.PageEntrance.LinksEntrance,
-        type: state.PageEntrance.Type
+        NameEntr:state.PageEntrance.NamesEntrance[0].name,
+        NameLogin:state.PageEntrance.NamesEntrance[1].name,
+        NamePassword:state.PageEntrance.NamesEntrance[2].name,
+        NameForgot:state.PageEntrance.NamesEntrance[3].name,
+        LinksEntrForgot:state.PageEntrance.LinksEntrance[0].links,
+        LinksEntrReg:state.PageEntrance.LinksEntrance[1].links,
+        NameReg:state.PageEntrance.NamesEntrance[4].name,
+        valueLogin: state.PageEntrance.Login,
+        valuePass: state.PageEntrance.PasswordText,
+        type: state.PageEntrance.Type,length:state.PageEntrance.length
     };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -23,8 +28,8 @@ const mapDispatchToProps = (dispatch) => {
         onLoginChangeEnter: (loginText) => {
             dispatch(onLoginChangeEnterActionCreator(loginText))
         },
-        onPassChangeEnter: (passText) => {
-            dispatch(onPassChangeEnterActionCreator(passText))
+        onPassChangeEnter: (passText,length) => {
+            dispatch(onPassChangeEnterActionCreator(passText,length))
         }
     };
 };

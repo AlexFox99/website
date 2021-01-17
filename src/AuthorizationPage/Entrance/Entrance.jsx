@@ -1,72 +1,106 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
-import "./Entrance.css";
+import s from "./Entrance.module.css";
 import * as axios from "axios"
-const Entrance = (props) => {
-    let login = React.createRef();
-    let pass = React.createRef();
-    let onClick = () => {
-        props.onClickEnter();
+
+class Entrance extends React.Component {
+    onClick = () => {
+        this.props.onClickEnter();
     };
-    let onLoginChange = () => {
-        let loginText = login.current.value;
-        props.onLoginChangeEnter(loginText);
+    onLoginChange = (e) => {
+        let loginText = e.target.value;
+        this.props.onLoginChangeEnter(loginText);
     };
-    let onPassChange = () => {
-        let passText = pass.current.value;
-        props.onPassChangeEnter(passText);
+    onPassChange = (e) => {
+        let passText = e.target.value;
+        this.props.onPassChangeEnter(passText, this.props.length);
     };
-    let asGet = () => {
+    asGet = () => {
+        /*    let json=[{"ticket_id":1,
+                "ticket":{"id":1,"token":"CE926B0213F9D7B1E4AFAD4B8A1446DC",
+                    "state_id":1,"state":{"id":1,"name":"Поступила"}},
+                "traffic_light_id":1,
+                "traffic_light":{"id":1,"long_":42,"lat":-42,
+                    "district_id":1, "district":{"id":1,"name":"Железнодорожный"}},"description":"Светофор не работает"},
+                {"ticket_id":2,
+                    "ticket":{"id":2,"token":"4AAA652DA9B7A60B9C2461837BB528E9",
+                        "state_id":1,"state":{"id":1,"name":"Поступила"}},
+                    "traffic_light_id":1,
+                    "traffic_light":{"id":1,"long_":42,"lat":-42,
+                        "district_id":1,"district":{"id":1,"name":"Железнодорожный"}},"description":"Светофор не работает"},
+                {"ticket_id":3,
+                    "ticket":{"id":3,"token":"59ADB849F0083EC9061E0CC530B55EDC",
+                        "state_id":1,"state":{"id":1,"name":"Поступила"}},
+                    "traffic_light_id":1,
+                    "traffic_light":{"id":1,"long_":42,"lat":-42,"district_id":1,"district":{"id":1,"name":"Железнодорожный"}},
+                    "description":"Светофор не работает"},
+                {"ticket_id":4,
+                    "ticket":{"id":4,"token":"60877499615F2F79B69F885F02417DB5",
+                        "state_id":1,"state":{"id":1,"name":"Поступила"}},
+                    "traffic_light_id":1,
+                    "traffic_light":{"id":1,"long_":42,"lat":-42,"district_id":1,"district":{"id":1,"name":"Железнодорожный"}},
+                    "description":"Светофор не работает"},
+                {"ticket_id":5,
+                    "ticket":{"id":5,"token":"4AF9EFD0DA8D81BA10299818673B9442",
+                        "state_id":1,"state":{"id":1,"name":"Поступила"}},
+                    "traffic_light_id":1,"traffic_light":{"id":1,"long_":42,"lat":-42,"district_id":1,
+                        "district":{"id":1,"name":"Железнодорожный"}},"description":"Светофор не работает"},
+                {"ticket_id":6,"ticket":{"id":6,"token":"FD46AC96BEF6D9A9B4DAD4EC7F15F46A",
+                        "state_id":1,"state":{"id":1,"name":"Поступила"}},
+                    "traffic_light_id":1,"traffic_light":{"id":1,"long_":42,"lat":-42,
+                        "district_id":1,"district":{"id":1,"name":"Железнодорожный"}},"description":"Светофор не работает"}];*/
         debugger
         axios.get("/Ticket/All").then((response) => {
-                debugger;
-                alert(response);
-            })
+            debugger;
+            alert(response);
+        })
     };
-    return (
-        <div className={props.ClassNameEntrance[0].name}>
-            <button onClick={asGet}>asget</button>
-            <div className={props.ClassNameEntrance[1].name}>
-                <div className={props.ClassNameEntrance[2].name}>
-                    {props.NamesEntrance[0].name}
-                </div>
-                <div className={props.ClassNameEntrance[3].name}>
-                    <div className={props.ClassNameEntrance[4].name}>
-                        <div className={props.ClassNameEntrance[5].name}>
-                            {props.NamesEntrance[1].name}</div>
-                        <input onChange={onLoginChange}
-                               value={props.valueLogin}
-                               ref={login}
-                               type={props.type}
-                               className={props.ClassNameEntrance[6].name}
-                        />
+
+    render() {
+        return (
+            <div className={s.EntrancePage}>
+                <button onClick={this.asGet}>asget</button>
+                <div className={s.EntranceContent}>
+                    <div className={s.NameEntrance}>
+                        {this.props.NameEntr}
                     </div>
-                    <div className={props.ClassNameEntrance[7].name}>
-                        <div className={props.ClassNameEntrance[8].name}>
-                            {props.NamesEntrance[2].name}</div>
-                        <input onChange={onPassChange}
-                               value={props.valuePass}
-                               ref={pass}
-                               type={props.type}
-                               className={props.ClassNameEntrance[9].name}/>
+                    <div className={s.ForInput}>
+                        <div>
+                            <div>
+                                {this.props.NameLogin}</div>
+                            <input onChange={this.onLoginChange}
+                                   value={this.props.valueLogin}
+                                   type={this.props.type}
+                                   className={s.LoginInput}
+                            />
+                        </div>
+                        <div>
+                            <div>
+                                {this.props.NamePassword}</div>
+                            <input onChange={this.onPassChange}
+                                   value={this.props.valuePass}
+                                   type={this.props.type}
+                                   className={s.PasswordInput}/>
+                        </div>
                     </div>
-                </div>
-                <div className={props.ClassNameEntrance[10].name}>
-                    <NavLink to={props.LinksEntrance[0].links}
-                             className={props.ClassNameEntrance[11].name}>
-                        {props.NamesEntrance[3].name}
-                    </NavLink>
-                    <NavLink to={props.LinksEntrance[1].links}>
-                        <button className={props.ClassNameEntrance[12].name}>
-                            {props.NamesEntrance[4].name}
-                        </button>
-                    </NavLink>
-                    <button onClick={onClick}
-                            className={props.ClassNameEntrance[13].name}>
-                        {props.NamesEntrance[0].name}</button>
+                    <div className={s.ForNavLink}>
+                        <NavLink to={this.props.LinksEntrForgot}
+                                 className={s.ForgotPassNavLink}>
+                            {this.props.NameForgot}
+                        </NavLink>
+                        <NavLink to={this.props.LinksEntrReg}>
+                            <button className={s.RegButNavLink}>
+                                {this.props.NameReg}
+                            </button>
+                        </NavLink>
+                        <button onClick={this.onClick}
+                                className={s.EnterBut}>
+                            {this.props.NameEntr}</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
+
 export default Entrance;

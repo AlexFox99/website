@@ -2,22 +2,6 @@ const onClickButtonEnterActionType = 'ON-CLICK-BUTTON-ENTER';
 const onLoginChangeEnterActionType = 'UPDATE-LOGIN-ENTER';
 const onChangePassEnterActionType = 'UPDATE-PASSWORD-ENTER';
 let InitialState = {
-    ClassNameEntrance: [
-        {id: 0, name: "EntrancePage"},
-        {id: 1, name: "EntranceContent"},
-        {id: 2, name: "NameEntrance"},
-        {id: 3, name: "ForInput"},
-        {id: 4, name: "LoginInputContent"},
-        {id: 5, name: "NameLoginInput"},
-        {id: 6, name: "LoginInput"},
-        {id: 7, name: "PasswordInputContent"},
-        {id: 8, name: "NamePasswordInput"},
-        {id: 9, name: "PasswordInput"},
-        {id: 10, name: "ForNavLink"},
-        {id: 11, name: "ForgotPassNavLink"},
-        {id: 12, name: "RegButNavLink"},
-        {id: 13, name: "EnterBut"}
-    ],
     NamesEntrance: [
         {id: 0, name: "Войти"},
         {id: 1, name: "Имя пользователя или Email"},
@@ -30,7 +14,7 @@ let InitialState = {
         {id: 1, links: "/Authorization/Registration"}
     ],
     Login: "",
-    Password: "", PasswordText: "", Type: "text"
+    Password: "", PasswordText: "", Type: "text",length:0
 }
 const EntranceReducer = (state = InitialState, action) => {
     /*state=this._state.PageEntrance*/
@@ -43,6 +27,7 @@ const EntranceReducer = (state = InitialState, action) => {
             stateCopy.Login = "";
             stateCopy.Password = "";
             stateCopy.PasswordText = "";
+            stateCopy.length=0;
             return stateCopy;
         case onLoginChangeEnterActionType:
             stateCopy = {...state};
@@ -50,13 +35,26 @@ const EntranceReducer = (state = InitialState, action) => {
             return stateCopy;
         case onChangePassEnterActionType:
             stateCopy = {...state};
-            let length = action.pass.length;
-            stateCopy.Password = stateCopy.Password + action.pass[length - 1];
-            let text = "";
-            for (let i of action.pass) {
-                text = text + "*"
+            if(action.pass.length>stateCopy.length){
+                let passArray=Array.from(action.pass);
+                passArray.map((s)=>{
+                    if(s!=="*"){
+                        stateCopy.Password+=s;
+                        stateCopy.PasswordText+="*";
+                    }
+                });
             }
-            stateCopy.PasswordText = text;
+            else {
+                let passTextArray=Array.from(stateCopy.PasswordText);
+                let PassArray=Array.from(stateCopy.Password);
+                stateCopy.PasswordText="";
+                stateCopy.Password="";
+                for (let i=0;i<action.pass.length;i++) {
+                    stateCopy.PasswordText+=passTextArray[i];
+                    stateCopy.Password+=PassArray[i];
+                }
+            }
+            stateCopy.length=action.pass.length;
             return stateCopy;
         default:
             return state;
@@ -65,6 +63,6 @@ const EntranceReducer = (state = InitialState, action) => {
 export const onClickEnterActionCreator = () => ({type: onClickButtonEnterActionType});
 export const onLoginChangeEnterActionCreator = (loginText) => (
     {type: onLoginChangeEnterActionType, login: loginText});
-export const onPassChangeEnterActionCreator = (passText) => (
-    {type: onChangePassEnterActionType, pass: passText});
+export const onPassChangeEnterActionCreator = (passText,length) => (
+    {type: onChangePassEnterActionType, pass: passText,length:length});
 export default EntranceReducer;
