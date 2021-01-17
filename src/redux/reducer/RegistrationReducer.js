@@ -4,26 +4,6 @@ const updatePasswordRegActionType = 'UPDATE-PASSWORD-REG';
 const updatePasswordRepRegActionType = 'UPDATE-PASSWORD-REP-REG';
 const updateEmailRegActionType = 'UPDATE-EMAIL-REG';
 let InitialState = {
-    ClassNameReg: [
-        {id: 0, name: "RegistrationPage"},
-        {id: 1, name: "RegistrationContent"},
-        {id: 2, name: "NameReg"},
-        {id: 3, name: "ForInputReg"},
-        {id: 4, name: "LoginInputContentReg"},
-        {id: 5, name: "UserNameInputReg"},
-        {id: 6, name: "UserInputReg"},
-        {id: 7, name: "RealNameInputReg"},
-        {id: 8, name: "RealInputReg"},
-        {id: 9, name: "PasswordNameInputReg"},
-        {id: 10, name: "PasswordInputReg"},
-        {id: 11, name: "RepPasswordNameInputReg"},
-        {id: 12, name: "RepPasswordInputReg"},
-        {id: 13, name: "EmailNameInputReg"},
-        {id: 14, name: "EmailInputReg"},
-        {id: 15, name: "ForNavLinkReg"},
-        {id: 16, name: "CancelNavLink"},
-        {id: 17, name: "ButNavLinkReg"}
-    ],
     NamesReg: [
         {id: 0, name: "Создать нового пользователя"},
         {id: 1, name: "UserName"},
@@ -39,7 +19,8 @@ let InitialState = {
         {id: 1, links: "/Tickets"}
     ],
     Login: "",
-    Password: "", PasswordText: "", PassRep: "", PassRepText: "", Email: "", Type: "text"
+    Password: "", PasswordText: "", PassRep: "", PassRepText: "", Email: "", Type: "text",
+    lengthPass: 0, lengthPassRep: 0
 }
 const RegistrationReducer = (state = InitialState, action) => {
     /*state=this._state.PageReg*/
@@ -53,6 +34,8 @@ const RegistrationReducer = (state = InitialState, action) => {
             stateCopy.PassRep = "";
             stateCopy.PassRepText = "";
             stateCopy.Email = "";
+            stateCopy.lengthPass=0;
+            stateCopy.lengthPassRep=0;
             return stateCopy;
         }
         case updateLoginRegActionType: {
@@ -62,25 +45,49 @@ const RegistrationReducer = (state = InitialState, action) => {
         }
         case updatePasswordRegActionType: {
             let stateCopy = {...state};
-            let length = action.pass.length;
-            stateCopy.Password = stateCopy.Password + action.pass[length - 1];
-            let text = "";
-            for (let i of action.pass) {
-                text = text + "*"
+            if (action.pass.length > stateCopy.lengthPass) {
+                let passArray = Array.from(action.pass);
+                passArray.map((s) => {
+                    if (s !== "*") {
+                        stateCopy.Password += s;
+                        stateCopy.PasswordText += "*";
+                    }
+                });
+            } else {
+                let passTextArray = Array.from(stateCopy.PasswordText);
+                let PassArray = Array.from(stateCopy.Password);
+                stateCopy.PasswordText = "";
+                stateCopy.Password = "";
+                for (let i = 0; i < action.pass.length; i++) {
+                    stateCopy.PasswordText += passTextArray[i];
+                    stateCopy.Password += PassArray[i];
+                }
             }
-            stateCopy.PasswordText = text;
+            stateCopy.lengthPass = action.pass.length;
             return stateCopy;
         }
 
         case updatePasswordRepRegActionType: {
             let stateCopy = {...state};
-            let lengthRep = action.PassRep.length;
-            stateCopy.PassRep = stateCopy.PassRep + action.PassRep[lengthRep - 1];
-            let textRep = "";
-            for (let i of action.PassRep) {
-                textRep = textRep + "*"
+            if (action.PassRep.length > stateCopy.lengthPassRep) {
+                let passArray = Array.from(action.PassRep);
+                passArray.map((s) => {
+                    if (s !== "*") {
+                        stateCopy.PassRep += s;
+                        stateCopy.PassRepText += "*";
+                    }
+                });
+            } else {
+                let passTextArray = Array.from(stateCopy.PassRepText);
+                let PassArray = Array.from(stateCopy.PassRep);
+                stateCopy.PassRepText = "";
+                stateCopy.PassRep = "";
+                for (let i = 0; i < action.PassRep.length; i++) {
+                    stateCopy.PassRepText += passTextArray[i];
+                    stateCopy.PassRep += PassArray[i];
+                }
             }
-            stateCopy.PassRepText = textRep;
+            stateCopy.lengthPassRep = action.PassRep.length;
             return stateCopy;
         }
         case updateEmailRegActionType: {
@@ -96,10 +103,10 @@ const RegistrationReducer = (state = InitialState, action) => {
 export const onClickRegActionCreator = () => ({type: onClickButtonRegActionType});
 export const onLoginChangeRegActionCreator = (loginText) => (
     {type: updateLoginRegActionType, login: loginText});
-export const onPassChangeRegActionCreator = (passText) => (
-    {type: updatePasswordRegActionType, pass: passText});
-export const onPassRepChangeRegActionCreator = (passRepText) => (
-    {type: updatePasswordRepRegActionType, PassRep: passRepText});
+export const onPassChangeRegActionCreator = (passText, length) => (
+    {type: updatePasswordRegActionType, pass: passText, length: length});
+export const onPassRepChangeRegActionCreator = (passRepText, length) => (
+    {type: updatePasswordRepRegActionType, PassRep: passRepText, length: length});
 export const onEmailChangeRegActionCreator = (emailText) => (
     {type: updateEmailRegActionType, email: emailText});
 export default RegistrationReducer;

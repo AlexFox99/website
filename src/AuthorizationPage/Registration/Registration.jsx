@@ -1,86 +1,75 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
-import "./Registration.css";
 
-const Registration = (props) => {
-    let login = React.createRef();
-    let pass = React.createRef();
-    let passRep = React.createRef();
-    let email = React.createRef();
-    let onLoginChange = () => {
-        let loginText = login.current.value;
-        props.UpdateLogin(loginText);
+import s from "./Registration.module.css";
+import {NavLink} from "react-router-dom";
+
+class Registration extends React.Component {
+    onLoginChange = (e) => {
+        let loginText = e.target.value;
+        this.props.UpdateLogin(loginText);
     };
-    let onPassChange = () => {
-        let passText = pass.current.value;
-        props.UpdatePass(passText);
+    onPassChange = (e) => {
+        let passText = e.target.value;
+        this.props.UpdatePass(passText,this.props.lengthPass);
     };
-    let onPassRepChange = () => {
-        let passRepText = passRep.current.value;
-        props.UpdatePassRep(passRepText);
+    onPassRepChange = (e) => {
+        let passRepText = e.target.value;
+        this.props.UpdatePassRep(passRepText,this.props.lengthPassRep);
     };
-    let onEmailChange = () => {
-        let emailText = email.current.value;
-        props.UpdateEmail(emailText);
+    onEmailChange = (e) => {
+        let emailText = e.target.value;
+        this.props.UpdateEmail(emailText);
     };
-    let onclick = () => {
-        props.onClickReg();
-    }
-    return (
-        <div className={props.ClassNameReg[0].name}>
-            <div className={props.ClassNameReg[1].name}>
-                <div className={props.ClassNameReg[2].name}>
-                    {props.NamesReg[0].name}
-                </div>
-                <div className={props.ClassNameReg[3].name}>
-                    <div className={props.ClassNameReg[4].name}>
-                        <div className={props.ClassNameReg[5].name}>
-                            {props.NamesReg[1].name}</div>
-                        <input onChange={onLoginChange}
-                               value={props.valueLoginReg}
-                               ref={login}
-                               type={props.Type}
-                               className={props.ClassNameReg[6].name}/>
-                        {/*                   <div className={props.store.PageReg.ClassNameReg[7].name}>
+    onclick = () => {
+        this.props.onClickReg();
+    };
+
+    render() {
+        return (<div className={s.RegistrationPage}>
+                <div className={s.RegistrationContent}>
+                    <div className={s.NameReg}>
+                        {this.props.NameReg}
+                    </div>
+                    <div className={s.ForInputReg}>
+                        <div>
+                            <div>{this.props.NameUser}</div>
+                            <input onChange={this.onLoginChange}
+                                   value={this.props.valueLoginReg}
+                                   type={this.props.Type}
+                                   className={s.UserInputReg}/>
+                            {/*                   <div className={props.store.PageReg.ClassNameReg[7].name}>
                             {props.store.PageReg.NamesReg[2].name}</div>
                         <input type={props.store.Type} className={props.store.PageReg.ClassNameReg[8].name}/>*/}
-                        <div className={props.ClassNameReg[9].name}>
-                            {props.NamesReg[3].name}</div>
-                        <input onChange={onPassChange}
-                               value={props.valuePasswordReg}
-                               ref={pass}
-                               type={props.Type}
-                               className={props.ClassNameReg[10].name}/>
-                        <div className={props.ClassNameReg[11].name}>
-                            {props.NamesReg[4].name}</div>
-                        <input onChange={onPassRepChange}
-                               value={props.valuePassRepReg}
-                               ref={passRep}
-                               type={props.Type}
-                               className={props.ClassNameReg[12].name}/>
-                        <div className={props.ClassNameReg[13].name}>
-                            {props.NamesReg[5].name}</div>
-                        <input onChange={onEmailChange}
-                               value={props.valueEmail}
-                               ref={email}
-                               type={props.Type}
-                               className={props.ClassNameReg[14].name}/>
+                            <div>{this.props.NamePass}</div>
+                            <input onChange={this.onPassChange} value={this.props.valuePasswordReg}
+                                   type={this.props.Type} className={s.PasswordInputReg}/>
+                            <div>{this.props.NamePassRep}</div>
+                            <input onChange={this.onPassRepChange}
+                                   value={this.props.valuePassRepReg}
+                                   type={this.props.Type}
+                                   className={s.RepPasswordInputReg}/>
+                            <div>{this.props.NameEmail}</div>
+                            <input onChange={this.onEmailChange}
+                                   value={this.props.valueEmail}
+                                   type={this.props.Type}
+                                   className={s.EmailInputReg}/>
+                        </div>
+                    </div>
+                    <div className={s.ForNavLinkReg}>
+                        <NavLink to={this.props.LinkCancel}
+                                 className={s.CancelNavLink}>
+                            {this.props.NameCancel}
+                        </NavLink>
+                        <NavLink
+                            to={this.props.LinksBut}
+                            className={s.ButNavLinkReg}>
+                            {this.props.NameBut}
+                        </NavLink>
+                        <button onClick={this.onclick}/>
                     </div>
                 </div>
-                <div className={props.ClassNameReg[15].name}>
-                    <NavLink to={props.LinksReg[0].links}
-                             className={props.ClassNameReg[16].name}>
-                        {props.NamesReg[6].name}
-                    </NavLink>
-                    <NavLink
-                        to={props.LinksReg[1].links}
-                        className={props.ClassNameReg[17].name}>
-                        {props.NamesReg[7].name}
-                    </NavLink>
-                    <button onClick={onclick}/>
-                </div>
-            </div>
-        </div>
-    );
+            </div>);
+    }
 }
+
 export default Registration;

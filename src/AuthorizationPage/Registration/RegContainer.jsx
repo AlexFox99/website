@@ -1,4 +1,3 @@
-import React from "react";
 import {
     onClickRegActionCreator,
     onEmailChangeRegActionCreator,
@@ -11,8 +10,16 @@ import {connect} from "react-redux";
 
 let mapStateToProps = (state) => {
     return {
-        ClassNameReg: state.PageReg.ClassNameReg, NamesReg: state.PageReg.NamesReg,
-        LinksReg: state.PageReg.LinksReg,
+        NameReg: state.PageReg.NamesReg[0].name,
+        NameUser: state.PageReg.NamesReg[1].name,
+        NamePass: state.PageReg.NamesReg[3].name,
+        NamePassRep: state.PageReg.NamesReg[4].name,
+        NameEmail: state.PageReg.NamesReg[5].name,
+        NameCancel: state.PageReg.NamesReg[6].name,
+        NameBut: state.PageReg.NamesReg[7].name,
+        LinkCancel: state.PageReg.LinksReg[0].links,
+        LinksBut: state.PageReg.LinksReg[1].links,
+        lengthPass: state.PageReg.lengthPass, lengthPassRep: state.PageReg.lengthPassRep,
         valuePassRepReg: state.PageReg.PassRepText,
         valueLoginReg: state.PageReg.Login,
         valueEmail: state.PageReg.Email,
@@ -28,11 +35,11 @@ let mapDispatchToProps = (dispatch) => {
         UpdateLogin: (loginText) => {
             dispatch(onLoginChangeRegActionCreator(loginText))
         },
-        UpdatePass: (passText) => {
-            dispatch(onPassChangeRegActionCreator(passText))
+        UpdatePass: (passText, length) => {
+            dispatch(onPassChangeRegActionCreator(passText, length))
         },
-        UpdatePassRep: (passRepText) => {
-            dispatch(onPassRepChangeRegActionCreator(passRepText))
+        UpdatePassRep: (passRepText, length) => {
+            dispatch(onPassRepChangeRegActionCreator(passRepText, length))
         },
         UpdateEmail: (emailText) => {
             dispatch(onEmailChangeRegActionCreator(emailText))
