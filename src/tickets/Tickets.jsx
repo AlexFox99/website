@@ -10,12 +10,11 @@ const Tickets = (props) => {
                     tiketsid={tickets.id}
                     name={tickets.name}
                     disEnrolled={tickets.disEnrolled} defEnrolled={tickets.defEnrolled}
-                    disProcessing={tickets.disProcessing} defProcessing={tickets.defProcessing}
-                    disCompleted={tickets.disCompleted} defCompleted={tickets.defCompleted}
+                    disProcessing={tickets.disProcessing}
+                    disCompleted={tickets.disCompleted}
                     ClassNameTicket={props.ClassNameTicket} typeInputTicket={props.typeInputTicket}
                     valueInputTicket={props.valueInputTicket} NamesTicket={props.NamesTicket}
-                    UpdateStateIntoProccessing={props.UpdateStateIntoProccessing}
-                    UpdateStateIntoCompleted={props.UpdateStateIntoCompleted}
+                    UpdateState={props.UpdateState}
             />);
     let selectChange = () => {
         let id = select.current.value;

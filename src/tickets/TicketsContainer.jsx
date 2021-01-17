@@ -1,7 +1,6 @@
 import React from "react";
 import {
-    onChangeCompletedActionCreator,
-    onChangeProcessingActionCreator,
+    onChangeRadioButActionCreator,
     selectChangeActionCreator
 } from "../redux/reducer/TicketReducer";
 import Tickets from "./Tickets";
@@ -24,12 +23,9 @@ let mapDispatchToProps = (dispatch) => {
         UpdateIdSelect: (id) => {
             dispatch(selectChangeActionCreator(id))
         },
-        UpdateStateIntoProccessing: (directid, tiketsid) => {
-            dispatch(onChangeProcessingActionCreator(directid, tiketsid))
+        UpdateState: (value, directid, tiketsid) => {
+            dispatch(onChangeRadioButActionCreator(value, directid, tiketsid))
         },
-        UpdateStateIntoCompleted: (directid, tiketsid) => {
-            dispatch(onChangeCompletedActionCreator(directid, tiketsid))
-        }
     };
 };
 let TicketsContainer = connect(mapStateToProps, mapDispatchToProps)(Tickets);

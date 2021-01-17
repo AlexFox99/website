@@ -2,11 +2,9 @@ import React from "react";
 import "./ticket.css"
 
 const Ticket = (props) => {
-    let onchangeProcessing = () => {
-        props.UpdateStateIntoProccessing(props.directid, props.tiketsid);
-    }
-    let onchangeCompleted = () => {
-        props.UpdateStateIntoCompleted(props.directid, props.tiketsid);
+    let onchangeRadioBut = (e) => {
+        let value=e.target.value;
+        props.UpdateState(value,props.directid, props.tiketsid);
     }
     return (
         <div>
@@ -15,15 +13,15 @@ const Ticket = (props) => {
                        name={props.name}
                        type={props.typeInputTicket} value={props.valueInputTicket[0].value}
                 />{props.NamesTicket[0].name}
-                <input disabled={props.disProcessing} defaultChecked={props.defProcessing}
+                <input disabled={props.disProcessing}
                        name={props.name}
                        type={props.typeInputTicket} value={props.valueInputTicket[1].value}
-                       onChange={onchangeProcessing}
+                       onChange={onchangeRadioBut}
                 />{props.NamesTicket[1].name}
-                <input disabled={props.disCompleted} defaultChecked={props.defCompleted}
+                <input disabled={props.disCompleted}
                        name={props.name}
                        type={props.typeInputTicket} value={props.valueInputTicket[2].value}
-                       onChange={onchangeCompleted}
+                       onChange={onchangeRadioBut}
                 />{props.NamesTicket[2].name}
             </div>
         </div>

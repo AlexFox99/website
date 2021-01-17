@@ -1,5 +1,4 @@
-const onChangeProcessingTicActionType = 'ON-CHANGE-PROCESSING-TIC';
-const onChangeCompletedTicActionType = 'ON-CHANGE-COMPLETED-TIC';
+const onChangeRadioButTicActionType = 'ON-CHANGE-RADIO-BUT';
 const selectDirectTicActionType = 'SELECT-DIRECT-TIC';
 let InitialState = {
     Directs: [{
@@ -313,41 +312,44 @@ let InitialState = {
 const TicketReducer = (state = InitialState, action) => {
     /*state=this._state.PageTiket*/
     switch (action.type) {
-        case onChangeProcessingTicActionType: {
-            let stateCopy = {...state};
-            stateCopy.Directs = {...state.Directs};
-            stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].defEnrolled = false;
-            stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].disEnrolled = true;
-            stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].defProcessing = true;
-            stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].disProcessing = true;
-            stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].defCompleted = false;
-            stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].disCompleted = false;
-            return stateCopy;
-        }
-        case onChangeCompletedTicActionType: {
-            let stateCopy = {...state};
-            stateCopy.Directs = {...state.Directs};
-            stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].defEnrolled = false;
-            stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].disEnrolled = true;
-            stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].defProcessing = false;
-            stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].disProcessing = true;
-            stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].defCompleted = true;
-            stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].disCompleted = true;
-            return stateCopy;
+        case onChangeRadioButTicActionType: {
+            switch (action.value) {
+                case "1":{
+                    let stateCopy = {...state};
+                    stateCopy.Directs = {...state.Directs};
+                    stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].defEnrolled = false;
+                    stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].disEnrolled = true;
+                    stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].defProcessing = true;
+                    stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].disProcessing = true;
+                    stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].defCompleted = false;
+                    stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].disCompleted = false;
+                    return stateCopy;
+                }
+                case "2":{
+                    let stateCopy = {...state};
+                    stateCopy.Directs = {...state.Directs};
+                    stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].defEnrolled = false;
+                    stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].disEnrolled = true;
+                    stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].disProcessing = true;
+                    stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].defProcessing = false;
+                    stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].defCompleted = true;
+                    stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].disCompleted = true;
+                    return stateCopy;
+                }
+            }
+            break;
         }
         case selectDirectTicActionType: {
             let stateCopy = {...state};
             stateCopy.id = action.id;
             return stateCopy;
         }
-
         default:
             return state;
     }
 }
-export const onChangeProcessingActionCreator = (directid, tiketsid) => (
-    {type: onChangeProcessingTicActionType, directid: directid, tiketsid: tiketsid});
-export const onChangeCompletedActionCreator = (directid, tiketsid) => (
-    {type: onChangeCompletedTicActionType, directid: directid, tiketsid: tiketsid});
+export const onChangeRadioButActionCreator = (value,directid, tiketsid) => (
+    {type: onChangeRadioButTicActionType, value:value,directid: directid, tiketsid: tiketsid});
+
 export const selectChangeActionCreator = (id) => ({type: selectDirectTicActionType, id: id});
 export default TicketReducer;
