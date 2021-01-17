@@ -1,44 +1,44 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
-import "./ForgotPasswordPage.css";
+import s from "./ForgotPasswordPage.module.css";
 
-const ForgotPasswordPage = (props) => {
-    let email = React.createRef();
-    let onEmailChange = () => {
-        let emailText = email.current.value;
-        props.UpdateEmailForgot(emailText);
+class ForgotPasswordPage extends React.Component{
+    onEmailChange = (e) => {
+        let emailText = e.target.value;
+        this.props.UpdateEmailForgot(emailText);
     };
-    return (
-        <div className={props.ClassForPas[0].name}>
-            <div className={props.ClassForPas[1].name}>
-                <div className={props.ClassForPas[2].name}>
-                    {props.NamesForPas[0].name}
-                </div>
-                <div className={props.ClassForPas[3].name}>
-                    {props.NamesForPas[1].name}
-                </div>
-                <div className={props.ClassForPas[4].name}>
-                    <div className={props.ClassForPas[5].name}>
-                        {props.NamesForPas[2].name}
+    render() {
+        return (
+            <div className={s.ForgotPage}>
+                <div className={s.ForgotContent}>
+                    <div className={s.NameForgot}>
+                        {this.props.NamePage}
                     </div>
-                    <div className={props.ClassForPas[6].name}>
-                        <input onChange={onEmailChange}
-                               value={props.valueEmailForgot}
-                               ref={email}
-                               type={props.type}
-                               className={props.ClassForPas[7].name}/>
+                    <div className={s.TextForgot}>
+                        {this.props.NameInfo}
                     </div>
-                </div>
-                <div className={props.ClassForPas[8].name}>
-                    <NavLink to={props.LinksForPas[0].links}
-                             className={props.ClassForPas[9].name}>
-                        {props.NamesForPas[3].name}</NavLink>
-                    <NavLink to={props.LinksForPas[0].links}
-                             className={props.ClassForPas[10].name}>
-                        {props.NamesForPas[4].name}</NavLink>
+                    <div className={s.ForgotForInput}>
+                        <div className={s.ForgotNameInput}>
+                            {this.props.NameInput}
+                        </div>
+                        <div className={s.ForgotDivInput}>
+                            <input onChange={this.onEmailChange}
+                                   value={this.props.valueEmailForgot}
+                                   type={this.props.type}
+                                   className={s.ForgotInput}/>
+                        </div>
+                    </div>
+                    <div className={s.ForgotNavLink}>
+                        <NavLink to={this.props.Links}
+                                 className={s.ForgotCancelLink}>
+                            {this.props.NameForgotCancel}</NavLink>
+                        <NavLink to={this.props.Links}
+                                 className={s.ForgotLink}>
+                            {this.props.NameSend}</NavLink>
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
 export default ForgotPasswordPage;
