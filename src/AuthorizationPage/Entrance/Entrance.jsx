@@ -20,7 +20,7 @@ const Entrance = (props) => {
         debugger
         axios.get("/Ticket/All").then((response) => {
                 debugger;
-
+                alert(response);
             })
     };
     return (
