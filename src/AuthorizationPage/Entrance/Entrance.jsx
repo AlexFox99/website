@@ -1,7 +1,7 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import "./Entrance.css";
-
+import * as axios from "axios"
 const Entrance = (props) => {
     let login = React.createRef();
     let pass = React.createRef();
@@ -16,8 +16,16 @@ const Entrance = (props) => {
         let passText = pass.current.value;
         props.onPassChangeEnter(passText);
     };
+    let asGet = () => {
+        debugger
+        axios.get("/Ticket/All").then((response) => {
+                debugger;
+
+            })
+    };
     return (
         <div className={props.ClassNameEntrance[0].name}>
+            <button onClick={asGet}>asget</button>
             <div className={props.ClassNameEntrance[1].name}>
                 <div className={props.ClassNameEntrance[2].name}>
                     {props.NamesEntrance[0].name}
