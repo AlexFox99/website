@@ -5,14 +5,14 @@
     grid-auto-columns: 1fr;
 }
 
-.App-logo {
+.App_logo {
     height: 50px;
     width: 50px;
     padding-left: 10px;
     padding-top: 5px;
 }
 
-.App-header {
+.App_header {
     background-color: #212121;
     grid-area: hed;
     color: white;

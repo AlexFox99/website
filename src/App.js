@@ -1,4 +1,4 @@
-import './App.css';
+import s from './App.module.css';
 import React from "react";
 import {BrowserRouter, Redirect, Route} from "react-router-dom";
 /*import logo from "./logo.png";*/
@@ -7,34 +7,41 @@ import RegistrationContainer from "./AuthorizationPage/Registration/RegContainer
 import ForgotContainer from "./AuthorizationPage/ForgotPassword/ForgotContainer";
 import TicketsContainer from "./tickets/TicketsContainer";
 
-const App = (props) => {
-    return (
-        <BrowserRouter>
-            <div className={props.app.ClassNameApp[0].name}>
-                <header className={props.app.ClassNameApp[1].name}>
-                    {/*<img src={logo} className={props.state.ForApp.ClassNameApp[2].name} alt=""/>*/}LOGO
-                </header>
-                <div className={props.app.ClassNameApp[3].name}>
+class App extends React.Component{
+    link = "/";
+    linkAutho = "/Authorization";
+    linkEnt = "/Authorization/Entrance";
+    linkReg = "/Authorization/Registration";
+    linkTicket = "/Tickets";
+    linkForgot = "/Authorization/ForgotPassword";
+    render() {
+        return (
+            <BrowserRouter>
+                <div className={s.App}>
+                    <header className={s.App_header}>
+                        {/*<img src={logo} className={s.App_logo} alt=""/>*/}LOGO
+                    </header>
+                    <div className={s.App_Nav}>
+
+                    </div>
+                    <div className={s.App_Content}>
+                        <Route exact path={this.link} render={() => <Redirect to={this.linkEnt}/>}/>
+
+                        <Route exact path={this.linkAutho} render={() => <Redirect to={this.linkEnt}/>}/>
+
+                        <Route path={this.linkEnt} render={() => <EntranceContainer/>}/>
+
+                        <Route path={this.linkReg} render={() => <RegistrationContainer/>}/>
+
+                        <Route path={this.linkTicket} render={() => <TicketsContainer/>}/>
+
+                        <Route path={this.linkForgot} render={() => <ForgotContainer/>}/>
+                    </div>
 
                 </div>
-                <div className={props.app.ClassNameApp[4].name}>
-                    <Route exact path={props.app.LinksApp[0].links}
-                           render={() => <Redirect to={props.app.LinksApp[2].links}/>}/>
-                    <Route exact path={props.app.LinksApp[1].links}
-                           render={() => <Redirect to={props.app.LinksApp[2].links}/>}/>
-                    <Route path={props.app.LinksApp[2].links}
-                           render={() => <EntranceContainer/>}/>
-                    <Route path={props.app.LinksApp[3].links}
-                           render={() => <RegistrationContainer/>}/>
-                    <Route path={props.app.LinksApp[4].links}
-                           render={() => <TicketsContainer/>}/>
-                    <Route path={props.app.LinksApp[5].links}
-                           render={() => <ForgotContainer/>}/>
-                </div>
-
-            </div>
-        </BrowserRouter>
-    );
+            </BrowserRouter>
+        );
+    }
 }
 
 export default App;
