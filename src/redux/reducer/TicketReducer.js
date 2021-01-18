@@ -277,13 +277,6 @@ let InitialState = {
         }
     ],
     id: 0,
-    ClassNameTickets: [
-        {id: 0, name: "TicketsPage"},
-        {id: 1, name: "TicketsContent"},
-        {id: 2, name: "NameTickets"},
-        {id: 3, name: "SelectTickets"},
-        {id: 4, name: "TicketScroll"}
-    ],
     NamesTickets: [
         {id: 0, name: "Заявки"},
         {id: 1, name: "Район:"},
@@ -304,7 +297,6 @@ let InitialState = {
         {id: 5, value: 5},
         {id: 6, value: 6}
     ],
-    ClassNameTicket: [{id: 0, name: "TicketContent"}],
     typeInputTicket: "radio",
     valueInputTicket: [{id: 0, value: 0}, {id: 1, value: 1}, {id: 2, value: 2}],
     NamesTicket: [{id: 0, name: "поступила"}, {id: 1, name: "в обработке"}, {id: 2, name: "выполнена"}]
@@ -323,6 +315,7 @@ const TicketReducer = (state = InitialState, action) => {
                     stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].disProcessing = true;
                     stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].defCompleted = false;
                     stateCopy.Directs[action.directid].TiketsDirect[action.tiketsid].disCompleted = false;
+                    debugger
                     return stateCopy;
                 }
                 case "2":{
@@ -340,6 +333,7 @@ const TicketReducer = (state = InitialState, action) => {
             break;
         }
         case selectDirectTicActionType: {
+            debugger
             let stateCopy = {...state};
             stateCopy.id = action.id;
             return stateCopy;

@@ -1,14 +1,14 @@
 import React from "react";
-import "./ticket.css"
+import s from"./ticket.module.css"
 
-const Ticket = (props) => {
+let Ticket = (props) => {
     let onchangeRadioBut = (e) => {
         let value=e.target.value;
         props.UpdateState(value,props.directid, props.tiketsid);
     }
     return (
         <div>
-            <div className={props.ClassNameTicket[0].name}>{props.name}
+            <div className={s.TicketContent}>{props.name}
                 <input disabled={props.disEnrolled} defaultChecked={props.defEnrolled}
                        name={props.name}
                        type={props.typeInputTicket} value={props.valueInputTicket[0].value}

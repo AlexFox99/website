@@ -1,43 +1,45 @@
 import React from "react";
-import "./tickets.css"
+import s from"./tickets.module.css"
 import Ticket from "./ticket/Ticket";
 
-const Tickets = (props) => {
-    let select = React.createRef();
-    let ticket =
-        props.Directs[props.Id].TiketsDirect.map(tickets =>
-            <Ticket directid={props.Id}
+class Tickets extends React.Component{
+
+    ticket =()=>{
+        let ticket=this.props.Directs[this.props.Id].TiketsDirect.map(tickets =>
+            <Ticket directid={this.props.Id}
                     tiketsid={tickets.id}
                     name={tickets.name}
                     disEnrolled={tickets.disEnrolled} defEnrolled={tickets.defEnrolled}
                     disProcessing={tickets.disProcessing}
                     disCompleted={tickets.disCompleted}
-                    ClassNameTicket={props.ClassNameTicket} typeInputTicket={props.typeInputTicket}
-                    valueInputTicket={props.valueInputTicket} NamesTicket={props.NamesTicket}
-                    UpdateState={props.UpdateState}
+                    ClassNameTicket={this.props.ClassNameTicket} typeInputTicket={this.props.typeInputTicket}
+                    valueInputTicket={this.props.valueInputTicket} NamesTicket={this.props.NamesTicket}
+                    UpdateState={this.props.UpdateState}
             />);
-    let selectChange = () => {
-        let id = select.current.value;
-        props.UpdateIdSelect(id);
+        return ticket;
     }
-    let opt = props.optionValue.map(id =>
-        <option value={id.value}>{props.NamesTickets[id.id + 2].name}</option>
+    selectChange = (e) => {
+        let id = e.target.value;
+        this.props.UpdateIdSelect(id);
+    }
+    opt = this.props.optionValue.map(id =>
+        <option value={id.value}>{this.props.NamesTickets[id.id + 2].name}</option>
     );
-    return (
-        <div className={props.ClassNameTickets[0].name}>
-            <div className={props.ClassNameTickets[1].name}>
-                <div className={props.ClassNameTickets[2].name}>{props.NamesTickets[0].name}</div>
-                <div className={props.ClassNameTickets[3].name}>{props.NamesTickets[1].name}
-                    <select ref={select} onChange={selectChange}>
-                        {opt}
-                    </select></div>
-                <div className={props.ClassNameTickets[4].name}>
-                    {
-                        ticket
-                    }
+    render() {
+        return (
+            <div className={s.TicketsPage}>
+                <div className={s.TicketsContent}>
+                    <div className={s.NameTickets}>{this.props.NamesTickets[0].name}</div>{/*"Заявки"*/}
+                    <div className={s.SelectTickets}>{this.props.NamesTickets[1].name}{/*"Район:"*/}
+                        <select onChange={this.selectChange}>
+                            {this.opt}
+                        </select></div>
+                    <div className={s.TicketScroll}>
+                        {this.ticket()}
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
 export default Tickets;
