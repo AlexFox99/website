@@ -24,6 +24,8 @@
 }
 
 .App_Content {
+    height: 100%;
+    overflow: hidden;
     background-color: #171C20;
     grid-area: cont;
 }

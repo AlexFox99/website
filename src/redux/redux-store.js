@@ -9,7 +9,7 @@ let reducers = combineReducers({
         ForApp: AppReducer,
         PageEntrance: EntranceReducer,
         PageReg: RegistrationReducer,
-        PageTicket: TicketReducer,
+        /*PageTicket: TicketReducer,*/
         PageForPas: ForgotReducer
     }
 );
