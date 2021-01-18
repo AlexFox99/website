@@ -59,7 +59,7 @@ class Entrance extends React.Component {
     render() {
         return (
             <div className={s.EntrancePage}>
-                <button onClick={this.asGet}>asget</button>
+                {/*<button onClick={this.asGet}>asget</button>*/}
                 <div className={s.EntranceContent}>
                     <div className={s.NameEntrance}>
                         {this.props.NameEntr}
