@@ -5,7 +5,6 @@
     display: grid;
     grid-template-columns: 250px 1fr ;
     grid-template-rows: 1fr;
-    gap: 0px 0px;
     grid-template-areas:"SideBar Content"
 }
 .SideBar{
@@ -15,35 +14,26 @@
 }
 .Content{
     grid-area: Content;
-    margin:10px;
+
 }
 .ForStatus{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1px;
     grid-template-rows: 1fr;
-    gap: 0px 0px;
     grid-template-areas:
             "StatusEnrolled StatusProcessing StatusCompleted . .";
     grid-area: 2 / 2 / 4 / 5;
 }
 .HelperBar{
-    display: grid;
-    grid-template-columns: 1fr 0.5fr 1.5fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 0px 0px;
-    grid-template-areas:
-            ". . Sort"
-            ". . .";
-    grid-area: 1 / 2 / 2 / 5;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .Sort{
+    margin: 10px;
     grid-area: Sort;
     text-align: right;
     align-items: center;
     justify-content: right;
-
-
 }
 .StatusEnrolled{
     border-radius: 3px;
@@ -78,7 +68,84 @@
 .NullTicket{
     border-radius: 3px;
     margin:10px;
-    width: 200px;
+    width: 300px;
     height: 50px;
     background-color: #CCC9D9;
+}
+.ItemsBut{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    margin: 10px;
+}
+.Img{
+    height: 40px;
+    width: 40px;
+}
+.Button{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+.StatusNames{
+    width: 100%;
+    border-bottom: 1px solid #e5e5e5;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+            "StatusEnrolledName StatusEnrolledQuantity";
+}
+.StatusName{
+    grid-area:StatusEnrolledName ;
+    margin: 10px;
+}
+.StatusQuantity{
+    grid-area:StatusEnrolledQuantity ;
+    margin: 10px;
+    text-align: right;
+    align-items: center;
+    justify-content: right;
+}
+.TicketEnrolled{
+    border-radius: 3px;
+    margin:10px;
+    width: 300px;
+    height: 50px;
+    background-color: #434243;
+    border-bottom: 1px solid #3498db;
+    border-top: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-left: 5px solid red;
+}
+.TicketProcessing{
+    border-radius: 3px;
+    margin:10px;
+    width: 300px;
+    height: 50px;
+    background-color: #434243;
+    border-bottom: 1px solid #3498db;
+    border-top: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-left: 5px solid orange;
+}
+.TicketCompleted{
+    border-radius: 3px;
+    margin:10px;
+    width: 300px;
+    height: 50px;
+    background-color: #434243;
+    border-bottom: 1px solid #3498db;
+    border-top: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-left: 5px solid green;
+}
+.TicketName{
+    margin-left:10px;
+}
+.scrol{
+    overflow-y: scroll;
+    height: 100vh;
 }
