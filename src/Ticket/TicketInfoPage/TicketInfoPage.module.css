@@ -1,0 +1,88 @@
+.TicketInfoPage {
+    min-height: 100vh;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10% 1fr;
+    grid-template-areas:
+            "NameTicket" "Content";
+}
+.NameTicket {
+    background-color: #424242;
+    grid-area: NameTicket;
+}
+.Content {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    grid-area: Content;
+    display: grid;
+    grid-template-columns: 1fr 25%;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+            "ContentTicket SideBarRight";
+}
+.SideBarRight {
+    background-color: #424242;
+    height: 65%;
+    border-radius: 3px;
+    border: 1px solid #3498db;
+    margin-left: 10px;
+    margin-right: 10px;
+    grid-area: SideBarRight;
+}
+.ContentTicket {
+    grid-area: ContentTicket;
+    margin-left: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+            "Detail" "HistoryTicket";
+}
+.Detail {
+    background-color: #212121;
+    grid-area: Detail;
+    border-radius: 3px;
+    border: 1px solid #3498db;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 15% 1fr;
+    grid-template-areas:
+            "DetailName" "DetailDescription";
+}
+.HistoryTicket {
+    background-color: #727272;
+    grid-area: HistoryTicket;
+    border-radius: 3px;
+}
+.HistoryTicketDescription{
+    margin: 3px;
+    height: 250px;
+    border-radius: 3px;
+    background-color: #424242;
+}
+.DetailName{
+    grid-area:DetailName;
+    border-bottom: 1px solid #e5e5e5;
+}
+.DetailNames{
+    margin-left: 10px;
+}
+.DetailDescription{
+    grid-area:DetailDescription;
+    background-color: #424242;
+    display: grid;
+    grid-template-columns: 10% 1fr;
+    grid-template-rows:1fr;
+    grid-template-areas:
+            "DetailDescriptionType DetailDescriptionInfo";
+}
+.DetailDescriptionType{
+    grid-area:DetailDescriptionType;
+    margin-left: 10px;
+}
+.DetailDescriptionInfo{
+    grid-area:DetailDescriptionInfo;
+}

@@ -6,7 +6,8 @@ import EntranceContainer from "./AuthorizationPage/Entrance/EnteranceContainer";
 import RegistrationContainer from "./AuthorizationPage/Registration/RegContainer";
 import ForgotContainer from "./AuthorizationPage/ForgotPassword/ForgotContainer";
 import TicketsContainer from "./tickets/TicketsContainer";
-import TicketPage from "./TicketPage/TicketPage";
+import TicketPage from "./Ticket/TicketPage/TicketPage";
+import TicketInfoPage from "./Ticket/TicketInfoPage/TicketInfoPage";
 
 class App extends React.Component{
     link = "/";
@@ -34,7 +35,7 @@ class App extends React.Component{
 
                         <Route path={this.linkReg} render={() => <RegistrationContainer/>}/>
 
-                        <Route path={this.linkTicket} render={() => <TicketPage/>}/>
+                        <Route path={this.linkTicket} render={() => <TicketInfoPage/>}/>
 
                         <Route path={this.linkForgot} render={() => <ForgotContainer/>}/>
                     </div>
