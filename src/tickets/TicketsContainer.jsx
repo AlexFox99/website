@@ -1,3 +1,4 @@
+/*
 import React from "react";
 import {
     onChangeRadioButActionCreator,
@@ -29,4 +30,4 @@ let mapDispatchToProps = (dispatch) => {
     };
 };
 let TicketsContainer = connect(mapStateToProps, mapDispatchToProps)(Tickets);
-export default TicketsContainer;
+export default TicketsContainer;*/

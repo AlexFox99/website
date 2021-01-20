@@ -36,7 +36,7 @@ class App extends React.Component{
 
                         <Route path={this.linkReg} render={() => <RegistrationContainer/>}/>
 
-                        <Route path={this.linkTicket} render={() => <TicketInfoContainer/>}/>
+                        <Route path={this.linkTicket} render={() => <TicketPage/>}/>
 
                         <Route path={this.linkForgot} render={() => <ForgotContainer/>}/>
                     </div>

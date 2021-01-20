@@ -1,126 +1,116 @@
 import React from "react";
 import s from "./TicketPage.module.css";
+import TicketEnrolled from "./TicketStatus/TicketEnrolled/TicketEnrolled";
+import TicketProcessing from "./TicketStatus/TicketProcessing/TicketProcessing";
+import TicketCompleted from "./TicketStatus/TicketCompleted/TicketCompleted";
 
-let TicketPage = (props) => {
-    let iEnrolled=12;
-    let iProcessing=1;
-    let iCompleted=3;
-    let getTicketEnrolled = () => {
+class TicketPage extends React.Component{
+    iEnrolled=12;
+    iProcessing=1;
+    iCompleted=1;
+    getTicketEnrolled = () => {
         let array = [];
-        for (let j = 0; j < iEnrolled; j++) {
-            array[j] +=
-                <div className={s.TicketEnrolled}>
-                    <div className={s.TicketName}>
-                        {"Заявка есть"}
-                    </div>
-                </div>;
+        for (let j = 0; j < this.iEnrolled; j++) {
+            array[j] =<TicketEnrolled/>
         }
         return (array);
     }
-    let getTicketProcessing=()=>{
+    getTicketProcessing=()=>{
         let array = [];
-        for (let j = 0; j < iProcessing; j++) {
-            array[j] +=
-                <div className={s.TicketProcessing}>
-                    <div className={s.TicketName}>
-                        {"Заявка есть"}
-                    </div>
-                </div>;
+        for (let j = 0; j < this.iProcessing; j++) {
+            array[j] =<TicketProcessing/>
         }
         return (array);
     }
-    let getTicketCompleted = () => {
+    getTicketCompleted = () => {
         let array = [];
-        for (let j = 0; j < iCompleted; j++) {
-            array[j] +=
-                <div className={s.TicketCompleted}>
-                    <div className={s.TicketName}>
-                        {"Заявка есть"}
-                    </div>
-                </div>;
+        for (let j = 0; j < this.iCompleted; j++) {
+            array[j] =<TicketCompleted/>
         }
         return (array);
     }
-    return (
-        <div className={s.ContentPage}>
-            <div className={s.SideBar}>
-                <div className={s.ItemsBut}>
-                    <button className={s.Button}>
-                        <img className={s.Img} src="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/54742/vertical-traffic-light-emoji-clipart-md.png" alt=""/>
-                        {"Светофор"}
-                    </button>
-                </div>
-                <div className={s.ItemsBut}>
-                    <button className={s.Button} disabled={true}>
-                        <img className={s.Img} src="" alt=""/>
-                        {"Знаки"}
-                    </button>
-                </div>
-                <div className={s.ItemsBut}>
-                    <button className={s.Button} disabled={true}>
-                        <img className={s.Img} src="" alt=""/>
-                        {"Графити"}
-                    </button>
-                </div>
-                <div className={s.ItemsBut}>
-                    <button className={s.Button} disabled={true}>
-                        <img className={s.Img} src="" alt=""/>
-                        {"Кнопки"}
-                    </button>
-                </div>
-            </div>
-            <div className={s.Content}>
-                <div className={s.HelperBar}>
-
-                    <div className={s.Sort}>
-                        {"Сортировка по району:"}
-                        <select name="" id="">
-                            <option value="Все">{"Все"}</option>
-                            <option value="Железнодорожный">{"Железнодорожный"}</option>
-                            <option value="Кировский">{"Кировский"}</option>
-                            <option value="Ленинский">{"Ленинский"}</option>
-                            <option value="Октябрьский">{"Октябрьский"}</option>
-                            <option value="Свердловский">{"Свердловский"}</option>
-                            <option value="Советский">{"Советский"}</option>
-                            <option value="Центральный">{"Центральный"}</option>
-                        </select>
-
+    render() {
+        return (
+            <div className={s.ContentPage}>
+                <div className={s.SideBar}>
+                    <div className={s.ItemsBut}>
+                        <button className={s.Button}>
+                            <img className={s.Img} src="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/54742/vertical-traffic-light-emoji-clipart-md.png" alt=""/>
+                            {"Светофор"}
+                        </button>
+                    </div>
+                    <div className={s.ItemsBut}>
+                        <button className={s.Button} disabled={true}>
+                            <img className={s.Img} src="" alt=""/>
+                            {"Знаки"}
+                        </button>
+                    </div>
+                    <div className={s.ItemsBut}>
+                        <button className={s.Button} disabled={true}>
+                            <img className={s.Img} src="" alt=""/>
+                            {"Графити"}
+                        </button>
+                    </div>
+                    <div className={s.ItemsBut}>
+                        <button className={s.Button} disabled={true}>
+                            <img className={s.Img} src="" alt=""/>
+                            {"Кнопки"}
+                        </button>
                     </div>
                 </div>
-                <div className={s.ForStatus}>
-                    <div className={s.StatusEnrolled}>
-                        <div className={s.StatusNames}>
-                            <div className={s.StatusName}>{"Поступила"}</div>
-                            <div className={s.StatusQuantity}>{"Заявок: "+iEnrolled}</div>
+                <div className={s.Content}>
+                    <div className={s.HelperBar}>
+
+                        <div className={s.Sort}>
+                            {"Сортировка по району:"}
+                            <select>
+                                <option value="Все">{"Все"}</option>
+                                <option value="Железнодорожный">{"Железнодорожный"}</option>
+                                <option value="Кировский">{"Кировский"}</option>
+                                <option value="Ленинский">{"Ленинский"}</option>
+                                <option value="Октябрьский">{"Октябрьский"}</option>
+                                <option value="Свердловский">{"Свердловский"}</option>
+                                <option value="Советский">{"Советский"}</option>
+                                <option value="Центральный">{"Центральный"}</option>
+                            </select>
 
                         </div>
-                        {iEnrolled===0?<div className={s.NullTicket}></div>:<div className={s.scrol}>
-                            {getTicketEnrolled()}
-                        </div>}
                     </div>
-                    <div className={s.StatusProcessing}>
-                        <div className={s.StatusNames}>
-                            <div className={s.StatusName}>{"В работе"}</div>
-                            <div className={s.StatusQuantity}>{"Заявок: "+iProcessing}</div>
+                    <div className={s.ForStatus}>
+                        <div className={s.StatusEnrolled}>
+                            <div className={s.StatusNames}>
+                                <div className={s.StatusName}>{"Поступила"}</div>
+                                <div className={s.StatusQuantity}>{"Заявок: "+this.iEnrolled}</div>
 
+                            </div>
+                            {this.iEnrolled===0?<div className={s.NullTicket}></div>:<div className={s.scrol}>
+                                {this.getTicketEnrolled()}
+                            </div>}
                         </div>
-                        {iProcessing===0?<div className={s.NullTicket}></div>:<div className={s.scrol}>
-                            {getTicketProcessing()}
-                        </div>}
-                    </div>
-                    <div className={s.StatusCompleted}>
-                        <div className={s.StatusNames}>
-                            <div className={s.StatusName}>{"Решено"}</div>
-                            <div className={s.StatusQuantity}>{"Заявок: "+iCompleted}</div>
+                        <div className={s.StatusProcessing}>
+                            <div className={s.StatusNames}>
+                                <div className={s.StatusName}>{"В работе"}</div>
+                                <div className={s.StatusQuantity}>{"Заявок: "+this.iProcessing}</div>
 
+                            </div>
+                            {this.iProcessing===0?<div className={s.NullTicket}></div>:<div className={s.scrol}>
+                                {this.getTicketProcessing()}
+                            </div>}
                         </div>
-                        {iCompleted===0?<div className={s.NullTicket}></div>:<div className={s.scrol}>
-                            {getTicketCompleted()}
-                        </div>}
+                        <div className={s.StatusCompleted}>
+                            <div className={s.StatusNames}>
+                                <div className={s.StatusName}>{"Решено"}</div>
+                                <div className={s.StatusQuantity}>{"Заявок: "+this.iCompleted}</div>
+
+                            </div>
+                            {this.iCompleted===0?<div className={s.NullTicket}></div>:<div className={s.scrol}>
+                                {this.getTicketCompleted()}
+                            </div>}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
 export default TicketPage;
