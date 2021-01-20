@@ -8,7 +8,7 @@ let TicketPage = (props) => {
     let getTicketEnrolled = () => {
         let array = [];
         for (let j = 0; j < iEnrolled; j++) {
-            array[j] =
+            array[j] +=
                 <div className={s.TicketEnrolled}>
                     <div className={s.TicketName}>
                         {"Заявка есть"}
@@ -20,7 +20,7 @@ let TicketPage = (props) => {
     let getTicketProcessing=()=>{
         let array = [];
         for (let j = 0; j < iProcessing; j++) {
-            array[j] =
+            array[j] +=
                 <div className={s.TicketProcessing}>
                     <div className={s.TicketName}>
                         {"Заявка есть"}
@@ -32,7 +32,7 @@ let TicketPage = (props) => {
     let getTicketCompleted = () => {
         let array = [];
         for (let j = 0; j < iCompleted; j++) {
-            array[j] =
+            array[j] +=
                 <div className={s.TicketCompleted}>
                     <div className={s.TicketName}>
                         {"Заявка есть"}
