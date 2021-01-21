@@ -1,3 +1,5 @@
+import {useHistory} from "react-router-dom";
+
 const onClickButtonEnterActionType = 'ON-CLICK-BUTTON-ENTER';
 const onLoginChangeEnterActionType = 'UPDATE-LOGIN-ENTER';
 const onChangePassEnterActionType = 'UPDATE-PASSWORD-ENTER';
@@ -19,15 +21,40 @@ let InitialState = {
 const EntranceReducer = (state = InitialState, action) => {
     /*state=this._state.PageEntrance*/
     let stateCopy = {};
+
     switch (action.type) {
         case onClickButtonEnterActionType:
             stateCopy = {...state};
-            alert(stateCopy.Login + " " + stateCopy.Password);
-
-            stateCopy.Login = "";
-            stateCopy.Password = "";
-            stateCopy.PasswordText = "";
-            stateCopy.length=0;
+            let rightLogin="admin";
+            let rightPassword="admin"
+            if((rightLogin===stateCopy.Login)&&(rightPassword===stateCopy.Password)){
+                stateCopy.Login = "";
+                stateCopy.Password = "";
+                stateCopy.PasswordText = "";
+                stateCopy.length=0;
+                action.history.push("/TicketPage");
+            }
+            else if(rightLogin===stateCopy.Login){
+                stateCopy.Login = "";
+                stateCopy.Password = "";
+                stateCopy.PasswordText = "";
+                stateCopy.length=0;
+                alert("Password not correct");
+            }
+            else if(rightPassword===stateCopy.Password){
+                stateCopy.Login = "";
+                stateCopy.Password = "";
+                stateCopy.PasswordText = "";
+                stateCopy.length=0;
+                alert("Login not correct");
+            }
+            else {
+                stateCopy.Login = "";
+                stateCopy.Password = "";
+                stateCopy.PasswordText = "";
+                stateCopy.length=0;
+                alert("not correct")
+            }
             return stateCopy;
         case onLoginChangeEnterActionType:
             stateCopy = {...state};
@@ -60,7 +87,7 @@ const EntranceReducer = (state = InitialState, action) => {
             return state;
     }
 }
-export const onClickEnterActionCreator = () => ({type: onClickButtonEnterActionType});
+export const onClickEnterActionCreator = (history) => ({type: onClickButtonEnterActionType,history:history});
 export const onLoginChangeEnterActionCreator = (loginText) => (
     {type: onLoginChangeEnterActionType, login: loginText});
 export const onPassChangeEnterActionCreator = (passText,length) => (

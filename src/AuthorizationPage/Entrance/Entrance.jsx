@@ -1,11 +1,12 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
+import {NavLink,withRouter} from "react-router-dom";
 import s from "./Entrance.module.css";
 import * as axios from "axios"
-
 class Entrance extends React.Component {
+
     onClick = () => {
-        this.props.onClickEnter();
+        const { history } = this.props;
+        this.props.onClickEnter(history);
     };
     onLoginChange = (e) => {
         let loginText = e.target.value;
@@ -103,4 +104,4 @@ class Entrance extends React.Component {
     }
 }
 
-export default Entrance;
+export default withRouter(Entrance);

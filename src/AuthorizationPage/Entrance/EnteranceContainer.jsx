@@ -22,8 +22,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        onClickEnter: () => {
-            dispatch(onClickEnterActionCreator())
+        onClickEnter: (history) => {
+            dispatch(onClickEnterActionCreator(history))
         },
         onLoginChangeEnter: (loginText) => {
             dispatch(onLoginChangeEnterActionCreator(loginText))
