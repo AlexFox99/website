@@ -6,16 +6,16 @@ import Detail from "./Detail/Detail";
 class TicketInfoPage extends React.Component{
     Details=()=>{
         let TypeDescription=this.props.TypeDescription;
-        debugger
         let array=TypeDescription.map(a=>
             <Detail DetailDescriptionType={a.Type} DetailDescriptionInfo={a.Description}/>
         );
         return(array);
     }
     Buttons=()=>{
-        let button=this.props.StateTicket.map(a=>
-            <div className={s.ForButton}><button className={s.Button}>{a.State}</button></div>
-        )
+        let button=[];
+        for(let i=1;i<this.props.StateTicket.length;i++){
+            button[i]=<div className={s.ForButton}><button className={s.Button}>{this.props.StateTicket[i].status}</button></div>
+        }
         return(button);
     }
     render() {
