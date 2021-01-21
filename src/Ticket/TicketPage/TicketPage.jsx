@@ -1,34 +1,9 @@
 import React from "react";
 import s from "./TicketPage.module.css";
-import TicketEnrolled from "./TicketStatus/TicketEnrolled/TicketEnrolled";
-import TicketProcessing from "./TicketStatus/TicketProcessing/TicketProcessing";
-import TicketCompleted from "./TicketStatus/TicketCompleted/TicketCompleted";
+import StatusColumn from "./TicketStatus/StatusColumn";
 
 class TicketPage extends React.Component{
-    iEnrolled=12;
-    iProcessing=1;
-    iCompleted=1;
-    getTicketEnrolled = () => {
-        let array = [];
-        for (let j = 0; j < this.iEnrolled; j++) {
-            array[j] =<TicketEnrolled/>
-        }
-        return (array);
-    }
-    getTicketProcessing=()=>{
-        let array = [];
-        for (let j = 0; j < this.iProcessing; j++) {
-            array[j] =<TicketProcessing/>
-        }
-        return (array);
-    }
-    getTicketCompleted = () => {
-        let array = [];
-        for (let j = 0; j < this.iCompleted; j++) {
-            array[j] =<TicketCompleted/>
-        }
-        return (array);
-    }
+    id=0;
     Buttons=()=>{
         let buttons=this.props.TypeTicket.map(a=>
             <div className={s.ItemsBut}>
@@ -39,6 +14,10 @@ class TicketPage extends React.Component{
             </div>
         )
         return(buttons)
+    }
+    Alert=(e)=>{
+        let id = e.target.value;
+        this.props.UpdateIdSelect(id);
     }
     Option=()=>{
         let opt=this.props.optionValue.map(a=>
@@ -56,43 +35,19 @@ class TicketPage extends React.Component{
                     <div className={s.HelperBar}>
                         <div className={s.Sort}>
                             {this.props.NameForSelectDirect}
-                            <select name={this.props.NameForSelectDirect} id="0">
+                            <select name={this.props.NameForSelectDirect} id={0} onChange={this.Alert}>
                                 {this.Option()}
                             </select>
                         </div>
                     </div>
-                    <div className={s.ForStatus}>
-                        <div className={s.StatusEnrolled}>
-                            <div className={s.StatusNames}>
-                                <div className={s.StatusName}>{"Поступила"}</div>
-                                <div className={s.StatusQuantity}>{this.props.QuantityName+this.iEnrolled}</div>
-
-                            </div>
-                            {this.iEnrolled===0?<div className={s.NullTicket}></div>:<div className={s.scrol}>
-                                {this.getTicketEnrolled()}
-                            </div>}
-                        </div>
-                        <div className={s.StatusProcessing}>
-                            <div className={s.StatusNames}>
-                                <div className={s.StatusName}>{"В работе"}</div>
-                                <div className={s.StatusQuantity}>{this.props.QuantityName+this.iProcessing}</div>
-
-                            </div>
-                            {this.iProcessing===0?<div className={s.NullTicket}></div>:<div className={s.scrol}>
-                                {this.getTicketProcessing()}
-                            </div>}
-                        </div>
-                        <div className={s.StatusCompleted}>
-                            <div className={s.StatusNames}>
-                                <div className={s.StatusName}>{"Решено"}</div>
-                                <div className={s.StatusQuantity}>{this.props.QuantityName+this.iCompleted}</div>
-
-                            </div>
-                            {this.iCompleted===0?<div className={s.NullTicket}></div>:<div className={s.scrol}>
-                                {this.getTicketCompleted()}
-                            </div>}
-                        </div>
-                    </div>
+                    <StatusColumn
+                        Id={this.props.Id}
+                        Distrit={this.props.optionValue}
+                        name={this.props.QuantityName}
+                        StatusTicket={this.props.StatusTicket}
+                        Ticket={this.props.Ticket}
+                        ClickDirectInfo={this.props.ClickDirect}
+                    />
                 </div>
             </div>
         );

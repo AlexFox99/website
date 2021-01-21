@@ -3,8 +3,10 @@ import {connect} from "react-redux";
 import TicketInfoPage from "./TicketInfoPage";
 
 let mapStateToProps = (state) => {
+    let i=state.PageTicketInfo.TicketInfo.TypeDescription;
+    debugger
     return {
-        TypeDescription:state.PageTicketInfo.TypeDescription,
+        TypeDescription:state.PageTicketInfo.TicketInfo.TypeDescription,
         src:state.PageTicketInfo.src,
         NameTicket:state.PageTicketInfo.NamesTicketInfo[0].name,
         SideBarName:state.PageTicketInfo.NamesTicketInfo[1].name,
@@ -12,7 +14,7 @@ let mapStateToProps = (state) => {
         HistoryTicket:state.PageTicketInfo.NamesTicketInfo[3].name,
         Img:state.PageTicketInfo.NamesTicketInfo[4].name,
         HistoryText:state.PageTicketInfo.HistoryText,
-        StateTicket:state.PageTicketInfo.StateTicket
+        StateTicket:state.PageTicketInfo.StatusTicket
     };
 };
 let mapDispatchToProps = (dispatch) => {

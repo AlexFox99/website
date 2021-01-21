@@ -6,8 +6,9 @@ import Detail from "./Detail/Detail";
 class TicketInfoPage extends React.Component{
     Details=()=>{
         let TypeDescription=this.props.TypeDescription;
+        debugger
         let array=TypeDescription.map(a=>
-            <Detail DetailDescriptionType={a.TypeDescription.Type} DetailDescriptionInfo={a.TypeDescription.Description}/>
+            <Detail DetailDescriptionType={a.Type} DetailDescriptionInfo={a.Description}/>
         );
         return(array);
     }
