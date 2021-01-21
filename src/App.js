@@ -5,17 +5,16 @@ import {BrowserRouter, Redirect, Route} from "react-router-dom";
 import EntranceContainer from "./AuthorizationPage/Entrance/EnteranceContainer";
 import RegistrationContainer from "./AuthorizationPage/Registration/RegContainer";
 import ForgotContainer from "./AuthorizationPage/ForgotPassword/ForgotContainer";
-import TicketsContainer from "./tickets/TicketsContainer";
-import TicketPage from "./Ticket/TicketPage/TicketPage";
-import TicketInfoPage from "./Ticket/TicketInfoPage/TicketInfoPage";
 import TicketInfoContainer from "./Ticket/TicketInfoPage/TicketInfoContainer";
+import TicketPageContainer from "./Ticket/TicketPage/TicketPageContainer";
 
 class App extends React.Component{
     link = "/";
     linkAutho = "/Authorization";
     linkEnt = "/Authorization/Entrance";
     linkReg = "/Authorization/Registration";
-    linkTicket = "/Tickets";
+    linkPageTicket = "/TicketPage";
+    linkPageTicketInfo = "/TicketInfoPage";
     linkForgot = "/Authorization/ForgotPassword";
     render() {
         return (
@@ -36,9 +35,11 @@ class App extends React.Component{
 
                         <Route path={this.linkReg} render={() => <RegistrationContainer/>}/>
 
-                        <Route path={this.linkTicket} render={() => <TicketPage/>}/>
-
                         <Route path={this.linkForgot} render={() => <ForgotContainer/>}/>
+
+                        <Route path={this.linkPageTicket} render={() => <TicketPageContainer/>}/>
+
+                        <Route path={this.linkPageTicketInfo} render={() => <TicketInfoContainer/>}/>
                     </div>
 
                 </div>

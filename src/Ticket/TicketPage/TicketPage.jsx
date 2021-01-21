@@ -29,58 +29,43 @@ class TicketPage extends React.Component{
         }
         return (array);
     }
+    Buttons=()=>{
+        let buttons=this.props.TypeTicket.map(a=>
+            <div className={s.ItemsBut}>
+                <button className={s.Button} disabled={a.disable}>
+                    <img className={s.Img} src={a.src} alt=""/>
+                    {a.TypeName}
+                </button>
+            </div>
+        )
+        return(buttons)
+    }
+    Option=()=>{
+        let opt=this.props.optionValue.map(a=>
+            <option value={a.value}>{a.name}</option>
+        )
+        return(opt)
+    }
     render() {
         return (
             <div className={s.ContentPage}>
                 <div className={s.SideBar}>
-                    <div className={s.ItemsBut}>
-                        <button className={s.Button}>
-                            <img className={s.Img} src="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/54742/vertical-traffic-light-emoji-clipart-md.png" alt=""/>
-                            {"Светофор"}
-                        </button>
-                    </div>
-                    <div className={s.ItemsBut}>
-                        <button className={s.Button} disabled={true}>
-                            <img className={s.Img} src="" alt=""/>
-                            {"Знаки"}
-                        </button>
-                    </div>
-                    <div className={s.ItemsBut}>
-                        <button className={s.Button} disabled={true}>
-                            <img className={s.Img} src="" alt=""/>
-                            {"Графити"}
-                        </button>
-                    </div>
-                    <div className={s.ItemsBut}>
-                        <button className={s.Button} disabled={true}>
-                            <img className={s.Img} src="" alt=""/>
-                            {"Кнопки"}
-                        </button>
-                    </div>
+                    {this.Buttons()}
                 </div>
                 <div className={s.Content}>
                     <div className={s.HelperBar}>
-
                         <div className={s.Sort}>
-                            {"Сортировка по району:"}
-                            <select>
-                                <option value="Все">{"Все"}</option>
-                                <option value="Железнодорожный">{"Железнодорожный"}</option>
-                                <option value="Кировский">{"Кировский"}</option>
-                                <option value="Ленинский">{"Ленинский"}</option>
-                                <option value="Октябрьский">{"Октябрьский"}</option>
-                                <option value="Свердловский">{"Свердловский"}</option>
-                                <option value="Советский">{"Советский"}</option>
-                                <option value="Центральный">{"Центральный"}</option>
+                            {this.props.NameForSelectDirect}
+                            <select name={this.props.NameForSelectDirect} id="0">
+                                {this.Option()}
                             </select>
-
                         </div>
                     </div>
                     <div className={s.ForStatus}>
                         <div className={s.StatusEnrolled}>
                             <div className={s.StatusNames}>
                                 <div className={s.StatusName}>{"Поступила"}</div>
-                                <div className={s.StatusQuantity}>{"Заявок: "+this.iEnrolled}</div>
+                                <div className={s.StatusQuantity}>{this.props.QuantityName+this.iEnrolled}</div>
 
                             </div>
                             {this.iEnrolled===0?<div className={s.NullTicket}></div>:<div className={s.scrol}>
@@ -90,7 +75,7 @@ class TicketPage extends React.Component{
                         <div className={s.StatusProcessing}>
                             <div className={s.StatusNames}>
                                 <div className={s.StatusName}>{"В работе"}</div>
-                                <div className={s.StatusQuantity}>{"Заявок: "+this.iProcessing}</div>
+                                <div className={s.StatusQuantity}>{this.props.QuantityName+this.iProcessing}</div>
 
                             </div>
                             {this.iProcessing===0?<div className={s.NullTicket}></div>:<div className={s.scrol}>
@@ -100,7 +85,7 @@ class TicketPage extends React.Component{
                         <div className={s.StatusCompleted}>
                             <div className={s.StatusNames}>
                                 <div className={s.StatusName}>{"Решено"}</div>
-                                <div className={s.StatusQuantity}>{"Заявок: "+this.iCompleted}</div>
+                                <div className={s.StatusQuantity}>{this.props.QuantityName+this.iCompleted}</div>
 
                             </div>
                             {this.iCompleted===0?<div className={s.NullTicket}></div>:<div className={s.scrol}>

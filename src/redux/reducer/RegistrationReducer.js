@@ -16,7 +16,7 @@ let InitialState = {
     ],
     LinksReg: [
         {id: 0, links: "/Authorization/Entrance"},
-        {id: 1, links: "/Tickets"}
+        {id: 1, links: "/TicketPage"}
     ],
     Login: "",
     Password: "", PasswordText: "", PassRep: "", PassRepText: "", Email: "", Type: "text",

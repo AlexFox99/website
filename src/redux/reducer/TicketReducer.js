@@ -277,28 +277,24 @@ let InitialState = {
     ],
     id: 0,
     NamesTickets: [
-        {id: 0, name: "Заявки"},
-        {id: 1, name: "Район:"},
-        {id: 2, name: "Железнодорожный"},
-        {id: 3, name: "Кировский"},
-        {id: 4, name: "Ленинский"},
-        {id: 5, name: "Октябрьский"},
-        {id: 6, name: "Свердловский"},
-        {id: 7, name: "Советский"},
-        {id: 8, name: "Центральный"}
+        {id: 0, name: "Сортировка по району:"},
+        {id: 1, name: "Заявок: "}
     ],
     optionValue: [
-        {id: 0, value: 0},
-        {id: 1, value: 1},
-        {id: 2, value: 2},
-        {id: 3, value: 3},
-        {id: 4, value: 4},
-        {id: 5, value: 5},
-        {id: 6, value: 6}
+        {id: 0, value: 0, name: "Все"},
+        {id: 1, value: 1, name: "Железнодорожный"},
+        {id: 2, value: 2, name: "Кировский"},
+        {id: 3, value: 3, name: "Ленинский"},
+        {id: 4, value: 4, name: "Октябрьский"},
+        {id: 5, value: 5, name: "Свердловский"},
+        {id: 6, value: 6, name: "Советский"},
+        {id: 7, value: 7, name: "Центральный"}
     ],
-    typeInputTicket: "radio",
-    valueInputTicket: [{id: 0, value: 0}, {id: 1, value: 1}, {id: 2, value: 2}],
-    NamesTicket: [{id: 0, name: "поступила"}, {id: 1, name: "в обработке"}, {id: 2, name: "выполнена"}]
+    TypeTicket:[{id:0,TypeName:"Светофор",disable:false,src:"https://creazilla-store.fra1.digitaloceanspaces.com/emojis/54742/vertical-traffic-light-emoji-clipart-md.png"},
+        {id:1,TypeName:"Знаки",disable:true,src:""},
+        {id:2,TypeName:"Графити",disable:true,src:""},
+        {id:3,TypeName:"Кнопки",disable:true,src:""}],
+    StatusTicket:[{id:0,status:"Поступила"},{id:1,status:"В работе"},{id:2,status:"Решено"}]
 }
 const TicketReducer = (state = InitialState, action) => {
     return(state);
