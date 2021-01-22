@@ -1,4 +1,5 @@
-const onClickButtonRegActionType = 'ON-CLICK-BUTTON-REG';
+const onClickButtonRegActionType = 'ON-CLICK-BUTTON-REGISTRATION';
+const onClickButtonCancelActionType = 'ON-CLICK-BUTTON-CANCEL';
 const updateLoginRegActionType = 'UPDATE-LOGIN-REG';
 const updatePasswordRegActionType = 'UPDATE-PASSWORD-REG';
 const updatePasswordRepRegActionType = 'UPDATE-PASSWORD-REP-REG';
@@ -27,7 +28,6 @@ const RegistrationReducer = (state = InitialState, action) => {
     switch (action.type) {
         case onClickButtonRegActionType: {
             let stateCopy = {...state};
-            alert(stateCopy.Login + " " + stateCopy.Password + " " + stateCopy.PassRep + " " + stateCopy.Email);
             stateCopy.Login = "";
             stateCopy.Password = "";
             stateCopy.PasswordText = "";
@@ -36,7 +36,22 @@ const RegistrationReducer = (state = InitialState, action) => {
             stateCopy.Email = "";
             stateCopy.lengthPass=0;
             stateCopy.lengthPassRep=0;
+            action.history.push(stateCopy.LinksReg[1].links);
             return stateCopy;
+        }
+        case onClickButtonCancelActionType:{
+            let stateCopy = {...state};
+            stateCopy.Login = "";
+            stateCopy.Password = "";
+            stateCopy.PasswordText = "";
+            stateCopy.PassRep = "";
+            stateCopy.PassRepText = "";
+            stateCopy.Email = "";
+            stateCopy.lengthPass=0;
+            stateCopy.lengthPassRep=0;
+            action.history.push(stateCopy.LinksReg[0].links);
+            return stateCopy;
+
         }
         case updateLoginRegActionType: {
             let stateCopy = {...state};
@@ -100,7 +115,8 @@ const RegistrationReducer = (state = InitialState, action) => {
             return state;
     }
 }
-export const onClickRegActionCreator = () => ({type: onClickButtonRegActionType});
+export const onClickRegActionCreator = (history) => ({type: onClickButtonRegActionType,history:history});
+export const onClickCancelActionCreator = (history) => ({type: onClickButtonCancelActionType,history:history});
 export const onLoginChangeRegActionCreator = (loginText) => (
     {type: updateLoginRegActionType, login: loginText});
 export const onPassChangeRegActionCreator = (passText, length) => (

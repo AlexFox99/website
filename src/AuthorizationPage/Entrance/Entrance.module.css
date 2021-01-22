@@ -10,6 +10,10 @@
 
 .ForNavLink {
     background-color: #727272;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:"Forgot Reg Enter"
 }
 
 .EntranceContent {
@@ -76,6 +80,7 @@
 }
 
 .RegButNavLink {
+    grid-area:Reg;
     margin: 8px;
     background-color: #F7F7F9;
     background-image: linear-gradient(to bottom, #4e4c4c, #807f80);
@@ -100,6 +105,7 @@
 }
 
 .ForgotPassNavLink {
+    grid-area: Forgot;
     margin: 8px;
     text-align: left;
     color: white;
@@ -116,6 +122,7 @@
 }
 
 .EnterBut {
+    grid-area: Enter;
     margin: 8px;
     background-color: #2980b9;
     border: 1px solid #2980b9;

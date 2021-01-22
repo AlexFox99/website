@@ -1,5 +1,5 @@
 import {
-    onClickEnterActionCreator,
+    onClickEnterActionCreator, onClickForForgotActionCreator, onClickForRegActionCreator,
     onLoginChangeEnterActionCreator,
     onPassChangeEnterActionCreator
 } from "../../redux/reducer/EntranceReducer";
@@ -12,8 +12,6 @@ const mapStateToProps = (state) => {
         NameLogin:state.PageEntrance.NamesEntrance[1].name,
         NamePassword:state.PageEntrance.NamesEntrance[2].name,
         NameForgot:state.PageEntrance.NamesEntrance[3].name,
-        LinksEntrForgot:state.PageEntrance.LinksEntrance[0].links,
-        LinksEntrReg:state.PageEntrance.LinksEntrance[1].links,
         NameReg:state.PageEntrance.NamesEntrance[4].name,
         valueLogin: state.PageEntrance.Login,
         valuePass: state.PageEntrance.PasswordText,
@@ -24,6 +22,12 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onClickEnter: (history) => {
             dispatch(onClickEnterActionCreator(history))
+        },
+        onClickForgot: (history) => {
+            dispatch(onClickForForgotActionCreator(history))
+        },
+        onClickReg: (history) => {
+            dispatch(onClickForRegActionCreator(history))
         },
         onLoginChangeEnter: (loginText) => {
             dispatch(onLoginChangeEnterActionCreator(loginText))

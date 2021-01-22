@@ -1,7 +1,7 @@
 import React from "react";
 
 import s from "./Registration.module.css";
-import {NavLink} from "react-router-dom";
+import {NavLink, withRouter} from "react-router-dom";
 
 class Registration extends React.Component {
     onLoginChange = (e) => {
@@ -21,9 +21,13 @@ class Registration extends React.Component {
         this.props.UpdateEmail(emailText);
     };
     onclick = () => {
-        this.props.onClickReg();
+        const { history } = this.props;
+        this.props.onClickReg(history);
     };
-
+    onclickCancel=()=>{
+        const { history } = this.props;
+        this.props.onClickCancel(history);
+    }
     render() {
         return (<div className={s.RegistrationPage}>
                 <div className={s.RegistrationContent}>
@@ -56,20 +60,13 @@ class Registration extends React.Component {
                         </div>
                     </div>
                     <div className={s.ForNavLinkReg}>
-                        <NavLink to={this.props.LinkCancel}
-                                 className={s.CancelNavLink}>
-                            {this.props.NameCancel}
-                        </NavLink>
-                        <NavLink
-                            to={this.props.LinksBut}
-                            className={s.ButNavLinkReg}>
-                            {this.props.NameBut}
-                        </NavLink>
-                        <button onClick={this.onclick}/>
+                        <button className={s.CancelNavLink} onClick={this.onclickCancel}>{this.props.NameCancel}</button>
+                        <button className={s.ButNavLinkReg} onClick={this.onclick}>{this.props.NameBut}</button>
+
                     </div>
                 </div>
             </div>);
     }
 }
 
-export default Registration;
+export default withRouter(Registration);

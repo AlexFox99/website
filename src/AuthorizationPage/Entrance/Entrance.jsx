@@ -8,6 +8,14 @@ class Entrance extends React.Component {
         const { history } = this.props;
         this.props.onClickEnter(history);
     };
+    OnClickForgot=()=>{
+        const { history } = this.props;
+        this.props.onClickForgot(history);
+    }
+    OnClickReg=()=>{
+        const { history } = this.props;
+        this.props.onClickReg(history);
+    }
     onLoginChange = (e) => {
         let loginText = e.target.value;
         this.props.onLoginChangeEnter(loginText);
@@ -50,9 +58,7 @@ class Entrance extends React.Component {
                         "state_id":1,"state":{"id":1,"name":"Поступила"}},
                     "traffic_light_id":1,"traffic_light":{"id":1,"long_":42,"lat":-42,
                         "district_id":1,"district":{"id":1,"name":"Железнодорожный"}},"description":"Светофор не работает"}];*/
-        debugger
         axios.get("/Ticket/All").then((response) => {
-            debugger;
             alert(response);
         })
     };
@@ -85,15 +91,8 @@ class Entrance extends React.Component {
                         </div>
                     </div>
                     <div className={s.ForNavLink}>
-                        <NavLink to={this.props.LinksEntrForgot}
-                                 className={s.ForgotPassNavLink}>
-                            {this.props.NameForgot}
-                        </NavLink>
-                        <NavLink to={this.props.LinksEntrReg}>
-                            <button className={s.RegButNavLink}>
-                                {this.props.NameReg}
-                            </button>
-                        </NavLink>
+                        <p className={s.ForgotPassNavLink} onClick={this.OnClickForgot}>{this.props.NameForgot}</p>
+                        <button className={s.RegButNavLink} onClick={this.OnClickReg}>{this.props.NameReg}</button>
                         <button onClick={this.onClick}
                                 className={s.EnterBut}>
                             {this.props.NameEntr}</button>

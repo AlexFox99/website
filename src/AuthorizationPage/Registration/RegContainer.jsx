@@ -1,4 +1,5 @@
 import {
+    onClickCancelActionCreator,
     onClickRegActionCreator,
     onEmailChangeRegActionCreator,
     onLoginChangeRegActionCreator,
@@ -17,8 +18,6 @@ let mapStateToProps = (state) => {
         NameEmail: state.PageReg.NamesReg[5].name,
         NameCancel: state.PageReg.NamesReg[6].name,
         NameBut: state.PageReg.NamesReg[7].name,
-        LinkCancel: state.PageReg.LinksReg[0].links,
-        LinksBut: state.PageReg.LinksReg[1].links,
         lengthPass: state.PageReg.lengthPass, lengthPassRep: state.PageReg.lengthPassRep,
         valuePassRepReg: state.PageReg.PassRepText,
         valueLoginReg: state.PageReg.Login,
@@ -29,8 +28,11 @@ let mapStateToProps = (state) => {
 };
 let mapDispatchToProps = (dispatch) => {
     return {
-        onClickReg: () => {
-            dispatch(onClickRegActionCreator())
+        onClickReg: (history) => {
+            dispatch(onClickRegActionCreator(history))
+        },
+        onClickCancel:(history)=>{
+            dispatch(onClickCancelActionCreator(history))
         },
         UpdateLogin: (loginText) => {
             dispatch(onLoginChangeRegActionCreator(loginText))

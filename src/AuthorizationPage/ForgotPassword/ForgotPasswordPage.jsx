@@ -1,5 +1,5 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
+import {NavLink, withRouter} from "react-router-dom";
 import s from "./ForgotPasswordPage.module.css";
 
 class ForgotPasswordPage extends React.Component{
@@ -7,6 +7,14 @@ class ForgotPasswordPage extends React.Component{
         let emailText = e.target.value;
         this.props.UpdateEmailForgot(emailText);
     };
+    ClickCancel=()=>{
+        const { history } = this.props;
+        this.props.OnClickReturn(history);
+    }
+    ClickSend=()=>{
+        const { history } = this.props;
+        this.props.OnClickSend(history);
+    }
     render() {
         return (
             <div className={s.ForgotPage}>
@@ -29,16 +37,14 @@ class ForgotPasswordPage extends React.Component{
                         </div>
                     </div>
                     <div className={s.ForgotNavLink}>
-                        <NavLink to={this.props.Links}
-                                 className={s.ForgotCancelLink}>
-                            {this.props.NameForgotCancel}</NavLink>
-                        <NavLink to={this.props.Links}
-                                 className={s.ForgotLink}>
-                            {this.props.NameSend}</NavLink>
+                        <button className={s.ForgotCancelLink} onClick={this.ClickCancel}>
+                            {this.props.NameForgotCancel}</button>
+                        <button className={s.ForgotLink} onClick={this.ClickSend}>
+                            {this.props.NameSend}</button>
                     </div>
                 </div>
             </div>
         );
     }
 }
-export default ForgotPasswordPage;
+export default withRouter(ForgotPasswordPage);

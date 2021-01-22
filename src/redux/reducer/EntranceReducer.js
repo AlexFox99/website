@@ -1,8 +1,8 @@
-import {useHistory} from "react-router-dom";
-
 const onClickButtonEnterActionType = 'ON-CLICK-BUTTON-ENTER';
 const onLoginChangeEnterActionType = 'UPDATE-LOGIN-ENTER';
 const onChangePassEnterActionType = 'UPDATE-PASSWORD-ENTER';
+const onClickButtonForForgotActionType='ON-CLICK-BUTTON-FORGOT';
+const onClickButtonForRegActionType='ON-CLICK-BUTTON-REG';
 let InitialState = {
     NamesEntrance: [
         {id: 0, name: "Войти"},
@@ -13,7 +13,8 @@ let InitialState = {
     ],
     LinksEntrance: [
         {id: 0, links: "/Authorization/ForgotPassword"},
-        {id: 1, links: "/Authorization/Registration"}
+        {id: 1, links: "/Authorization/Registration"},
+        {id: 2, links: "/TicketPage"}
     ],
     Login: "",
     Password: "", PasswordText: "", Type: "text",length:0
@@ -23,6 +24,24 @@ const EntranceReducer = (state = InitialState, action) => {
     let stateCopy = {};
 
     switch (action.type) {
+        case onClickButtonForRegActionType:{
+            stateCopy = {...state};
+            stateCopy.Login = "";
+            stateCopy.Password = "";
+            stateCopy.PasswordText = "";
+            stateCopy.length=0;
+            action.history.push(stateCopy.LinksEntrance[1].links);
+            return(stateCopy);
+        }
+        case onClickButtonForForgotActionType:{
+            stateCopy = {...state};
+            stateCopy.Login = "";
+            stateCopy.Password = "";
+            stateCopy.PasswordText = "";
+            stateCopy.length=0;
+            action.history.push(stateCopy.LinksEntrance[0].links);
+            return(stateCopy);
+        }
         case onClickButtonEnterActionType:
             stateCopy = {...state};
             let rightLogin="admin";
@@ -32,7 +51,7 @@ const EntranceReducer = (state = InitialState, action) => {
                 stateCopy.Password = "";
                 stateCopy.PasswordText = "";
                 stateCopy.length=0;
-                action.history.push("/TicketPage");
+                action.history.push(stateCopy.LinksEntrance[2].links);
             }
             else if(rightLogin===stateCopy.Login){
                 stateCopy.Login = "";
@@ -88,6 +107,8 @@ const EntranceReducer = (state = InitialState, action) => {
     }
 }
 export const onClickEnterActionCreator = (history) => ({type: onClickButtonEnterActionType,history:history});
+export const onClickForForgotActionCreator=(history)=>({type: onClickButtonForForgotActionType,history:history});
+export const onClickForRegActionCreator=(history)=>({type: onClickButtonForRegActionType,history:history});
 export const onLoginChangeEnterActionCreator = (loginText) => (
     {type: onLoginChangeEnterActionType, login: loginText});
 export const onPassChangeEnterActionCreator = (passText,length) => (

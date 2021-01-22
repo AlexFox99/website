@@ -1,5 +1,9 @@
 import React from "react";
-import {onEmailChangeForgotActionCreator} from "../../redux/reducer/ForgotReducer";
+import {
+    onClickReturnActionCreator,
+    onClickSendActionCreator,
+    onEmailChangeForgotActionCreator
+} from "../../redux/reducer/ForgotReducer";
 import ForgotPasswordPage from "./ForgotPasswordPage";
 import {connect} from "react-redux";
 
@@ -10,8 +14,6 @@ let mapStateToProps = (state) => {
         NameInput:state.PageForPas.NamesForPas[2].name,
         NameForgotCancel:state.PageForPas.NamesForPas[3].name,
         NameSend:state.PageForPas.NamesForPas[4].name,
-
-        Links: state.PageForPas.LinksForPas[0].links,
         valueEmailForgot: state.PageForPas.Email,
         type: state.PageForPas.Type
     };
@@ -19,7 +21,13 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
     return {
         UpdateEmailForgot: (emailText) => {
-            dispatch(onEmailChangeForgotActionCreator(emailText))
+            dispatch(onEmailChangeForgotActionCreator(emailText));
+        },
+        OnClickSend:(history)=>{
+            dispatch(onClickSendActionCreator(history));
+        },
+        OnClickReturn:(history)=>{
+            dispatch(onClickReturnActionCreator(history));
         }
     };
 };
