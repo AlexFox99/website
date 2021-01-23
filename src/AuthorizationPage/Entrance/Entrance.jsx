@@ -3,7 +3,6 @@ import {NavLink,withRouter} from "react-router-dom";
 import s from "./Entrance.module.css";
 import * as axios from "axios"
 class Entrance extends React.Component {
-
     onClick = () => {
         const { history } = this.props;
         this.props.onClickEnter(history);
@@ -58,8 +57,11 @@ class Entrance extends React.Component {
                         "state_id":1,"state":{"id":1,"name":"Поступила"}},
                     "traffic_light_id":1,"traffic_light":{"id":1,"long_":42,"lat":-42,
                         "district_id":1,"district":{"id":1,"name":"Железнодорожный"}},"description":"Светофор не работает"}];*/
-        axios.get("/Ticket/All").then((response) => {
-            alert(response);
+        debugger
+        axios.get("http://84.22.135.132:5000/TicketType").then((response) => {
+            debugger
+            let anime=response;
+            alert(anime.data[0].name);
         })
     };
 

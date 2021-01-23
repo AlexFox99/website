@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./TicketPage.module.css";
 import StatusColumn from "./TicketStatus/StatusColumn";
+import * as axios from "axios";
 
 class TicketPage extends React.Component{
     id=0;
@@ -25,6 +26,13 @@ class TicketPage extends React.Component{
         )
         return(opt)
     }
+    click=()=>{
+        axios.get("http://84.22.135.132:5000/Ticket/TrafficLight")
+            .then(res => {
+                debugger
+                alert(res.data)
+            });
+    }
     render() {
         return (
             <div className={s.ContentPage}>
@@ -33,6 +41,7 @@ class TicketPage extends React.Component{
                 </div>
                 <div className={s.Content}>
                     <div className={s.HelperBar}>
+                        <button onClick={this.click}>get</button>
                         <div className={s.Sort}>
                             {this.props.NameForSelectDirect}
                             <select name={this.props.NameForSelectDirect} id={0} onChange={this.Alert}>

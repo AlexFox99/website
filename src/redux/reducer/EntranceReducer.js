@@ -1,3 +1,5 @@
+import * as axios from "axios";
+
 const onClickButtonEnterActionType = 'ON-CLICK-BUTTON-ENTER';
 const onLoginChangeEnterActionType = 'UPDATE-LOGIN-ENTER';
 const onChangePassEnterActionType = 'UPDATE-PASSWORD-ENTER';
@@ -46,34 +48,28 @@ const EntranceReducer = (state = InitialState, action) => {
             stateCopy = {...state};
             let rightLogin="admin";
             let rightPassword="admin"
-            if((rightLogin===stateCopy.Login)&&(rightPassword===stateCopy.Password)){
-                stateCopy.Login = "";
-                stateCopy.Password = "";
-                stateCopy.PasswordText = "";
-                stateCopy.length=0;
-                action.history.push(stateCopy.LinksEntrance[2].links);
-            }
-            else if(rightLogin===stateCopy.Login){
-                stateCopy.Login = "";
-                stateCopy.Password = "";
-                stateCopy.PasswordText = "";
-                stateCopy.length=0;
-                alert("Password not correct");
-            }
-            else if(rightPassword===stateCopy.Password){
-                stateCopy.Login = "";
-                stateCopy.Password = "";
-                stateCopy.PasswordText = "";
-                stateCopy.length=0;
-                alert("Login not correct");
-            }
-            else {
-                stateCopy.Login = "";
-                stateCopy.Password = "";
-                stateCopy.PasswordText = "";
-                stateCopy.length=0;
-                alert("not correct")
-            }
+            let data = {
+                login:stateCopy.Login,
+                pass:stateCopy.Password,
+                email:"admin1",
+                // same for other inputs ..
+            };
+            axios.post("http://84.22.135.132:5000/WebUser/Login", data,[{'Content-Type': 'application/json'}])
+                .then(res => {
+                    debugger
+                    if(res.data.message===null){
+                        alert(res.data.error);
+                    }
+                    else if(res.data.error===null){
+                        alert(res.data.message);
+                        action.history.push(stateCopy.LinksEntrance[2].links);
+                    }
+
+                });
+            stateCopy.Login = "";
+            stateCopy.Password = "";
+            stateCopy.PasswordText = "";
+            stateCopy.length=0;
             return stateCopy;
         case onLoginChangeEnterActionType:
             stateCopy = {...state};

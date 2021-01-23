@@ -605,7 +605,7 @@ let InitialState = {
         {id: 6, value: 6, name: "Советский"},
         {id: 7, value: 7, name: "Центральный"}
     ],
-    TypeTicket:[{id:0,TypeName:"Светофор",disable:false,src:"https://creazilla-store.fra1.digitaloceanspaces.com/emojis/54742/vertical-traffic-light-emoji-clipart-md.png"},
+    TypeTicket:[{id:0,TypeName:"Светофор",disable:false,src:"http://84.22.135.132:5000/Image/test.jpg"},
         {id:1,TypeName:"Знаки",disable:true,src:""},
         {id:2,TypeName:"Графити",disable:true,src:""},
         {id:3,TypeName:"Кнопки",disable:true,src:""}],

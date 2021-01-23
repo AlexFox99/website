@@ -1,3 +1,5 @@
+import * as axios from "axios"
+
 const onClickButtonRegActionType = 'ON-CLICK-BUTTON-REGISTRATION';
 const onClickButtonCancelActionType = 'ON-CLICK-BUTTON-CANCEL';
 const updateLoginRegActionType = 'UPDATE-LOGIN-REG';
@@ -28,6 +30,25 @@ const RegistrationReducer = (state = InitialState, action) => {
     switch (action.type) {
         case onClickButtonRegActionType: {
             let stateCopy = {...state};
+            let data = {
+                login:stateCopy.Login,
+                pass:stateCopy.Password,
+                email:stateCopy.Email,
+                // same for other inputs ..
+            };
+            axios.post("http://84.22.135.132:5000/WebUser/Create", data,[{'Content-Type': 'application/json'}])
+                .then(res => {
+                    debugger
+
+                    if(res.data.message===null){
+                        alert(res.data.error);
+                    }
+                    else if(res.data.error===null){
+                        alert(res.data.message);
+                        action.history.push(stateCopy.LinksReg[1].links);
+                    }
+                }
+                );
             stateCopy.Login = "";
             stateCopy.Password = "";
             stateCopy.PasswordText = "";
@@ -36,7 +57,7 @@ const RegistrationReducer = (state = InitialState, action) => {
             stateCopy.Email = "";
             stateCopy.lengthPass=0;
             stateCopy.lengthPassRep=0;
-            action.history.push(stateCopy.LinksReg[1].links);
+            /*action.history.push(stateCopy.LinksReg[1].links);*/
             return stateCopy;
         }
         case onClickButtonCancelActionType:{
