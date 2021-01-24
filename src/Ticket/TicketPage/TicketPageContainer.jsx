@@ -7,14 +7,14 @@ import {
 
 let mapStateToProps = (state) => {
     return {
-    /*PageTicket*/
-        ticket:state.PageTicket.ticket,
-        TypeTicket:state.PageTicket.typeTicket,
-        optionValue:state.PageTicket.optionValue,
-        NameForSelectDirect:state.PageTicket.NamesTickets[0].name,
-        QuantityName:state.PageTicket.NamesTickets[1].name,
-        StatusTicket:state.PageTicket.Status,
-        directs:state.PageTicket.direct,ID:state.PageTicket.id
+        /*PageTicket*/
+        ticket: state.PageTicket.ticket,
+        TypeTicket: state.PageTicket.typeTicket,
+        optionValue: state.PageTicket.optionValue,
+        NameForSelectDirect: state.PageTicket.NamesTickets[0].name,
+        QuantityName: state.PageTicket.NamesTickets[1].name,
+        StatusTicket: state.PageTicket.Status,
+        directs: state.PageTicket.direct, ID: state.PageTicket.id
     };
 };
 let mapDispatchToProps = (dispatch) => {
@@ -22,23 +22,23 @@ let mapDispatchToProps = (dispatch) => {
         UpdateIdSelect: (id) => {
             dispatch(selectChangeActionCreator(id))
         },
-        ClickDirect:(id)=>{
+        ClickDirect: (id) => {
             dispatch(ClickDirectInfoActionCreator(id))
         },
-        data:(data)=>{
+        data: (data) => {
             dispatch(dataActionCreator(data))
         },
-        state:(state)=>{
+        state: (state) => {
             dispatch(stateActionCreator(state))
         },
-        type:(type)=>{
+        type: (type) => {
             dispatch(typeActionCreator(type))
         },
-        direct:(direct)=>{
+        direct: (direct) => {
             dispatch(directActionCreator(direct))
         }
     }
-    ;
+        ;
 };
 let TicketPageContainer = connect(mapStateToProps, mapDispatchToProps)(TicketPage);
 export default TicketPageContainer;

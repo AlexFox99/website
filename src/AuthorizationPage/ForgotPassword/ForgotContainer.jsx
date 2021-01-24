@@ -8,11 +8,11 @@ import {connect} from "react-redux";
 
 let mapStateToProps = (state) => {
     return {
-        NamePage:state.PageForPas.NamesForPas[0].name,
-        NameInfo:state.PageForPas.NamesForPas[1].name,
-        NameInput:state.PageForPas.NamesForPas[2].name,
-        NameForgotCancel:state.PageForPas.NamesForPas[3].name,
-        NameSend:state.PageForPas.NamesForPas[4].name,
+        NamePage: state.PageForPas.NamesForPas[0].name,
+        NameInfo: state.PageForPas.NamesForPas[1].name,
+        NameInput: state.PageForPas.NamesForPas[2].name,
+        NameForgotCancel: state.PageForPas.NamesForPas[3].name,
+        NameSend: state.PageForPas.NamesForPas[4].name,
         valueEmailForgot: state.PageForPas.Email,
         type: state.PageForPas.Type
     };
@@ -22,10 +22,10 @@ let mapDispatchToProps = (dispatch) => {
         UpdateEmailForgot: (emailText) => {
             dispatch(onEmailChangeForgotActionCreator(emailText));
         },
-        OnClickSend:(history)=>{
+        OnClickSend: (history) => {
             dispatch(onClickSendActionCreator(history));
         },
-        OnClickReturn:(history)=>{
+        OnClickReturn: (history) => {
             dispatch(onClickReturnActionCreator(history));
         }
     };

@@ -8,7 +8,7 @@ import ForgotContainer from "./AuthorizationPage/ForgotPassword/ForgotContainer"
 import TicketInfoContainer from "./Ticket/TicketInfoPage/TicketInfoContainer";
 import TicketPageContainer from "./Ticket/TicketPage/TicketPageContainer";
 
-class App extends React.Component{
+class App extends React.Component {
     link = "/";
     linkAutho = "/Authorization";
     linkEnt = "/Authorization/Entrance";
@@ -16,6 +16,7 @@ class App extends React.Component{
     linkPageTicket = "/TicketPage";
     linkPageTicketInfo = "/TicketInfoPage";
     linkForgot = "/Authorization/ForgotPassword";
+
     render() {
         return (
             <BrowserRouter>

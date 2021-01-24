@@ -1,20 +1,21 @@
 import React from "react";
-import {NavLink, withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import s from "./ForgotPasswordPage.module.css";
 
-class ForgotPasswordPage extends React.Component{
+class ForgotPasswordPage extends React.Component {
     onEmailChange = (e) => {
         let emailText = e.target.value;
         this.props.UpdateEmailForgot(emailText);
     };
-    ClickCancel=()=>{
-        const { history } = this.props;
+    ClickCancel = () => {
+        const {history} = this.props;
         this.props.OnClickReturn(history);
     }
-    ClickSend=()=>{
-        const { history } = this.props;
+    ClickSend = () => {
+        const {history} = this.props;
         this.props.OnClickSend(history);
     }
+
     render() {
         return (
             <div className={s.ForgotPage}>
@@ -47,4 +48,5 @@ class ForgotPasswordPage extends React.Component{
         );
     }
 }
+
 export default withRouter(ForgotPasswordPage);

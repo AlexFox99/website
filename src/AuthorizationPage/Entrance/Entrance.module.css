@@ -13,7 +13,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
-    grid-template-areas:"Forgot Reg Enter"
+    grid-template-areas: "Forgot Reg Enter"
 }
 
 .EntranceContent {
@@ -80,7 +80,7 @@
 }
 
 .RegButNavLink {
-    grid-area:Reg;
+    grid-area: Reg;
     margin: 8px;
     background-color: #F7F7F9;
     background-image: linear-gradient(to bottom, #4e4c4c, #807f80);

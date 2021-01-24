@@ -2,13 +2,13 @@ import React from "react";
 import s from "./TicketCompleted.module.css"
 import {useHistory} from "react-router-dom";
 
-let TicketCompleted=(props)=>{
+let TicketCompleted = (props) => {
     const history = useHistory();
-    let viewProfile = ()=>{
+    let viewProfile = () => {
         props.ClickDirectInfo(props.id);
         history.push("/TicketInfoPage");
     };
-    return(
+    return (
         <div className={s.TicketCompleted} onClick={viewProfile}>
             <div className={s.TicketName}>
                 {props.name}

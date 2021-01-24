@@ -1,25 +1,25 @@
 const selectDirectTicActionType = 'SELECT-DIRECT-TIC';
 const ClickDirectInfoActionType = 'CLICK-DIRECT-INFO';
-const dataActionType= 'DATA';
-const stateActionType= 'STATE';
-const typeActionType= 'TYPE';
-const directActionType= 'DIRECT';
+const dataActionType = 'DATA';
+const stateActionType = 'STATE';
+const typeActionType = 'TYPE';
+const directActionType = 'DIRECT';
 let InitialState = {
-    ticket:[],Status:[],typeTicket:[],TicketInfo:[],direct:[],id:"0",
+    ticket: [], Status: [], typeTicket: [], TicketInfo: [], direct: [], id: "0",
     NamesTickets: [
         {id: 0, name: "Сортировка по району:"},
         {id: 1, name: "Заявок: "}
     ],
     optionValue: {id: 0, value: 0, name: "Все"},
     NamesTicketInfo: [
-        {id:0,name:"Имя заявки"},
-        {id:1,name:"Панель состояний"},
-        {id:2,name:"Детали заявки"},
-        {id:3,name:"История заявки"},
-        {id:4,name:"Изображения прикреплены:"}
+        {id: 0, name: "Имя заявки"},
+        {id: 1, name: "Панель состояний"},
+        {id: 2, name: "Детали заявки"},
+        {id: 3, name: "История заявки"},
+        {id: 4, name: "Изображения прикреплены:"}
     ],
-    src:"http://avanpress.ru/wp-content/uploads/2017/03/Светофор.jpg",
-    HistoryText:"Пришла от пользователя В 66.66.6666"
+    src: "http://avanpress.ru/wp-content/uploads/2017/03/Светофор.jpg",
+    HistoryText: "Пришла от пользователя В 66.66.6666"
 
 }
 const TicketReducer = (state = InitialState, action) => {
@@ -27,38 +27,31 @@ const TicketReducer = (state = InitialState, action) => {
         case selectDirectTicActionType: {
             let stateCopy = {...state};
             stateCopy.id = action.id;
-            debugger
             return stateCopy;
         }
         case ClickDirectInfoActionType: {
             let stateCopy = {...state};
-            debugger
-            stateCopy.TicketInfo=stateCopy.ticket[action.id];
-            debugger
+            stateCopy.TicketInfo = stateCopy.ticket[action.id];
             return stateCopy;
         }
-        case dataActionType:{
+        case dataActionType: {
             let stateCopy = {...state};
-            stateCopy.ticket=action.data;
-            debugger
+            stateCopy.ticket = action.data;
             return stateCopy;
         }
-        case stateActionType:{
+        case stateActionType: {
             let stateCopy = {...state};
-            stateCopy.Status=action.state;
-            debugger
+            stateCopy.Status = action.state;
             return stateCopy;
         }
-        case typeActionType:{
+        case typeActionType: {
             let stateCopy = {...state};
-            stateCopy.typeTicket=action.typeTicket;
-            debugger
+            stateCopy.typeTicket = action.typeTicket;
             return stateCopy;
         }
-        case directActionType:{
+        case directActionType: {
             let stateCopy = {...state};
-            stateCopy.direct=action.direct;
-            debugger
+            stateCopy.direct = action.direct;
             return stateCopy;
         }
         default:
@@ -67,8 +60,8 @@ const TicketReducer = (state = InitialState, action) => {
 }
 export const selectChangeActionCreator = (id) => ({type: selectDirectTicActionType, id: id});
 export const ClickDirectInfoActionCreator = (id) => ({type: ClickDirectInfoActionType, id: id});
-export const dataActionCreator=(data)=>({type: dataActionType, data: data});
-export const stateActionCreator=(state)=>({type: stateActionType, state: state});
-export const typeActionCreator=(type)=>({type: typeActionType, typeTicket: type});
-export const directActionCreator=(direct)=>({type: directActionType, direct: direct});
+export const dataActionCreator = (data) => ({type: dataActionType, data: data});
+export const stateActionCreator = (state) => ({type: stateActionType, state: state});
+export const typeActionCreator = (type) => ({type: typeActionType, typeTicket: type});
+export const directActionCreator = (direct) => ({type: directActionType, direct: direct});
 export default TicketReducer;

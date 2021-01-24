@@ -20,16 +20,16 @@ let InitialState = {
 const ForgotReducer = (state = InitialState, action) => {
     /*state=this._state.PageReg*/
     switch (action.type) {
-        case onClickButtonReturnActionType:{
+        case onClickButtonReturnActionType: {
             let stateCopy = {...state};
-            stateCopy.Email ="";
+            stateCopy.Email = "";
             action.history.push(stateCopy.LinksForPas[0].links);
             return stateCopy;
         }
-        case onClickButtonSendActionType:{
+        case onClickButtonSendActionType: {
             let stateCopy = {...state};
-            alert("Письмо отправленно на электронную почту: "+stateCopy.Email);
-            stateCopy.Email ="";
+            alert("Письмо отправленно на электронную почту: " + stateCopy.Email);
+            stateCopy.Email = "";
             action.history.push(stateCopy.LinksForPas[0].links);
             return stateCopy;
         }
@@ -44,6 +44,6 @@ const ForgotReducer = (state = InitialState, action) => {
 }
 export const onEmailChangeForgotActionCreator = (emailText) => (
     {type: updateEmailForgotActionType, email: emailText});
-export const onClickReturnActionCreator = (history) => ({type: onClickButtonReturnActionType,history:history});
-export const onClickSendActionCreator = (history) => ({type: onClickButtonSendActionType,history:history});
+export const onClickReturnActionCreator = (history) => ({type: onClickButtonReturnActionType, history: history});
+export const onClickSendActionCreator = (history) => ({type: onClickButtonSendActionType, history: history});
 export default ForgotReducer;

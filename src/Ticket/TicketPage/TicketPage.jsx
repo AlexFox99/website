@@ -19,13 +19,13 @@ class TicketPage extends React.Component {
         axios.get("http://84.22.135.132:5000/District")
             .then(res => {
                 let direct = res.data;
-                debugger
                 this.props.direct(direct);
             });
     }
+
     Buttons = () => {
         let buttons = this.props.TypeTicket.map(a => {
-                if (a.name == "Светофор") {
+                if (a.name === "Светофор") {
                     return (<div className={s.ItemsBut}>
                         <button className={s.Button} onClick={this.click}>
                             <img className={s.Img} src={"http://84.22.135.132:5000" + a.url} alt=""/>
@@ -46,14 +46,12 @@ class TicketPage extends React.Component {
     }
     Alert = (e) => {
         let id = e.target.value;
-        debugger
         this.props.UpdateIdSelect(id);
     }
     Option = () => {
         let opt1;
-        if(this.props.directs.length>0){
-            debugger
-            opt1=this.props.directs.map(a =>
+        if (this.props.directs.length > 0) {
+            opt1 = this.props.directs.map(a =>
                 <option value={a.id}>{a.name}</option>)
         }
         return (opt1)

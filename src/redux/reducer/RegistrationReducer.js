@@ -31,23 +31,20 @@ const RegistrationReducer = (state = InitialState, action) => {
         case onClickButtonRegActionType: {
             let stateCopy = {...state};
             let data = {
-                login:stateCopy.Login,
-                pass:stateCopy.Password,
-                email:stateCopy.Email,
+                login: stateCopy.Login,
+                pass: stateCopy.Password,
+                email: stateCopy.Email,
                 // same for other inputs ..
             };
-            axios.post("http://84.22.135.132:5000/WebUser/Create", data,[{'Content-Type': 'application/json'}])
+            axios.post("http://84.22.135.132:5000/WebUser/Create", data, [{'Content-Type': 'application/json'}])
                 .then(res => {
-                    debugger
-
-                    if(res.data.message===null){
-                        alert(res.data.error);
+                        if (res.data.message === null) {
+                            alert(res.data.error);
+                        } else if (res.data.error === null) {
+                            alert(res.data.message);
+                            action.history.push(stateCopy.LinksReg[1].links);
+                        }
                     }
-                    else if(res.data.error===null){
-                        alert(res.data.message);
-                        action.history.push(stateCopy.LinksReg[1].links);
-                    }
-                }
                 );
             stateCopy.Login = "";
             stateCopy.Password = "";
@@ -55,12 +52,12 @@ const RegistrationReducer = (state = InitialState, action) => {
             stateCopy.PassRep = "";
             stateCopy.PassRepText = "";
             stateCopy.Email = "";
-            stateCopy.lengthPass=0;
-            stateCopy.lengthPassRep=0;
+            stateCopy.lengthPass = 0;
+            stateCopy.lengthPassRep = 0;
             /*action.history.push(stateCopy.LinksReg[1].links);*/
             return stateCopy;
         }
-        case onClickButtonCancelActionType:{
+        case onClickButtonCancelActionType: {
             let stateCopy = {...state};
             stateCopy.Login = "";
             stateCopy.Password = "";
@@ -68,8 +65,8 @@ const RegistrationReducer = (state = InitialState, action) => {
             stateCopy.PassRep = "";
             stateCopy.PassRepText = "";
             stateCopy.Email = "";
-            stateCopy.lengthPass=0;
-            stateCopy.lengthPassRep=0;
+            stateCopy.lengthPass = 0;
+            stateCopy.lengthPassRep = 0;
             action.history.push(stateCopy.LinksReg[0].links);
             return stateCopy;
 
@@ -136,8 +133,8 @@ const RegistrationReducer = (state = InitialState, action) => {
             return state;
     }
 }
-export const onClickRegActionCreator = (history) => ({type: onClickButtonRegActionType,history:history});
-export const onClickCancelActionCreator = (history) => ({type: onClickButtonCancelActionType,history:history});
+export const onClickRegActionCreator = (history) => ({type: onClickButtonRegActionType, history: history});
+export const onClickCancelActionCreator = (history) => ({type: onClickButtonCancelActionType, history: history});
 export const onLoginChangeRegActionCreator = (loginText) => (
     {type: updateLoginRegActionType, login: loginText});
 export const onPassChangeRegActionCreator = (passText, length) => (

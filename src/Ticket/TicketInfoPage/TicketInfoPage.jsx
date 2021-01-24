@@ -3,20 +3,21 @@ import s from "./TicketInfoPage.module.css";
 import Detail from "./Detail/Detail";
 
 
-class TicketInfoPage extends React.Component{
-    Details=()=>{
-        debugger;
-        let array=<div>
+class TicketInfoPage extends React.Component {
+    Details = () => {
+        let array = <div>
             <Detail DetailDescriptionType={"Описание:"} DetailDescriptionInfo={this.props.Ticket.ticket.description}/>
-            <Detail DetailDescriptionType={"Дата добавления:"} DetailDescriptionInfo={this.props.Ticket.ticket.date_add}/>
+            <Detail DetailDescriptionType={"Дата добавления:"}
+                    DetailDescriptionInfo={this.props.Ticket.ticket.date_add}/>
             <Detail DetailDescriptionType={"От кого:"} DetailDescriptionInfo={
-                this.props.Ticket.ticket.mobile_user.surname+" "
-                +this.props.Ticket.ticket.mobile_user.name+" "+this.props.Ticket.ticket.mobile_user.phone}/>
+                this.props.Ticket.ticket.mobile_user.surname + " "
+                + this.props.Ticket.ticket.mobile_user.name + " " +
+                this.props.Ticket.ticket.mobile_user.phone}/>
         </div>
-        return(array);
+        return (array);
     }
-    Buttons=()=>{
-        let button=this.props.StateTicket.map(ar=> {
+    Buttons = () => {
+        let button = this.props.StateTicket.map(ar => {
             switch (ar.name) {
                 case "В обработке": {
                     return (<div className={s.ForButton}>
@@ -30,10 +31,11 @@ class TicketInfoPage extends React.Component{
                 }
             }
         });
-        return(button);
+        return (button);
     }
+
     render() {
-        return(
+        return (
             <div className={s.TicketInfoPage}>
                 <div className={s.NameTicket}>
                     <div className={s.NameTicketText}>{this.props.Ticket.ticket.id}</div>
@@ -62,7 +64,7 @@ class TicketInfoPage extends React.Component{
                                     <div>
                                         {this.props.Img}
                                     </div>
-{/*                                    <img className={s.img} src={this.props.src} alt=""/>
+                                    {/*                                    <img className={s.img} src={this.props.src} alt=""/>
                                     <img className={s.img} src={this.props.src}  alt=""/>
                                     <img className={s.img} src={this.props.src}  alt=""/>
                                     <img className={s.img} src={this.props.src}  alt=""/>*/}
@@ -75,4 +77,5 @@ class TicketInfoPage extends React.Component{
         );
     }
 }
+
 export default TicketInfoPage;

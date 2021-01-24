@@ -31,7 +31,7 @@ let mapDispatchToProps = (dispatch) => {
         onClickReg: (history) => {
             dispatch(onClickRegActionCreator(history))
         },
-        onClickCancel:(history)=>{
+        onClickCancel: (history) => {
             dispatch(onClickCancelActionCreator(history))
         },
         UpdateLogin: (loginText) => {
