@@ -1,5 +1,6 @@
 import {connect} from "react-redux";
 import TicketInfoPage from "./TicketInfoPage";
+import {ClickCompActionCreator, ClickProcActionCreator} from "../../redux/reducer/TicketReducer";
 
 let mapStateToProps = (state) => {
     return {
@@ -15,7 +16,14 @@ let mapStateToProps = (state) => {
     };
 };
 let mapDispatchToProps = (dispatch) => {
-    return {};
+    return {
+        ClickProc:(id_ticket,id_status)=>{
+            dispatch(ClickProcActionCreator(id_ticket,id_status))
+        },
+        ClickComp:(id_ticket,id_status)=>{
+            dispatch(ClickCompActionCreator(id_ticket,id_status))
+        },
+    };
 };
 let TicketInfoContainer = connect(mapStateToProps, mapDispatchToProps)(TicketInfoPage);
 export default TicketInfoContainer;

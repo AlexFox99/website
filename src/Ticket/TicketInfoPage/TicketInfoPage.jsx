@@ -16,17 +16,25 @@ class TicketInfoPage extends React.Component {
         </div>
         return (array);
     }
+    ClickProc=(idStatus)=>{
+        alert(this.props.Ticket.ticket.id+" "+idStatus);
+        this.props.ClickProc(this.props.Ticket.ticket.id,idStatus)
+    }
+    ClickComp=(idStatus)=>{
+        alert(this.props.Ticket.ticket.id+" "+idStatus);
+        this.props.ClickComp(this.props.Ticket.ticket.id,idStatus)
+    }
     Buttons = () => {
         let button = this.props.StateTicket.map(ar => {
             switch (ar.name) {
                 case "В обработке": {
                     return (<div className={s.ForButton}>
-                        <button className={s.Button}>{ar.name}</button>
+                        <button className={s.Button} onClick={()=>this.ClickProc(ar.id)}>{ar.name}</button>
                     </div>);
                 }
                 case "Выполнена": {
                     return (<div className={s.ForButton}>
-                        <button className={s.Button}>{ar.name}</button>
+                        <button className={s.Button} onClick={()=>this.ClickComp(ar.id)}>{ar.name}</button>
                     </div>);
                 }
             }
