@@ -1,18 +1,20 @@
-import React from "react";
 import {connect} from "react-redux";
 import TicketPage from "./TicketPage";
-import {ClickDirectInfoActionCreator, selectChangeActionCreator} from "../../redux/reducer/TicketReducer";
+import {
+    ClickDirectInfoActionCreator, dataActionCreator, directActionCreator,
+    selectChangeActionCreator, stateActionCreator, typeActionCreator
+} from "../../redux/reducer/TicketReducer";
 
 let mapStateToProps = (state) => {
     return {
     /*PageTicket*/
-        TypeTicket:state.PageTicket.TypeTicket,
+        ticket:state.PageTicket.ticket,
+        TypeTicket:state.PageTicket.typeTicket,
         optionValue:state.PageTicket.optionValue,
         NameForSelectDirect:state.PageTicket.NamesTickets[0].name,
         QuantityName:state.PageTicket.NamesTickets[1].name,
-        StatusTicket:state.PageTicket.StatusTicket,
-        Ticket:state.PageTicket.TicketsDirect,
-        Id:state.PageTicket.id,
+        StatusTicket:state.PageTicket.Status,
+        directs:state.PageTicket.direct,ID:state.PageTicket.id
     };
 };
 let mapDispatchToProps = (dispatch) => {
@@ -22,6 +24,18 @@ let mapDispatchToProps = (dispatch) => {
         },
         ClickDirect:(id)=>{
             dispatch(ClickDirectInfoActionCreator(id))
+        },
+        data:(data)=>{
+            dispatch(dataActionCreator(data))
+        },
+        state:(state)=>{
+            dispatch(stateActionCreator(state))
+        },
+        type:(type)=>{
+            dispatch(typeActionCreator(type))
+        },
+        direct:(direct)=>{
+            dispatch(directActionCreator(direct))
         }
     }
     ;

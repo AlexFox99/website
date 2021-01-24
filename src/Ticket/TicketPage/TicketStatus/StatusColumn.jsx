@@ -5,46 +5,51 @@ import TicketProcessing from "./TicketProcessing/TicketProcessing";
 import TicketCompleted from "./TicketCompleted/TicketCompleted";
 
 let StatusColumn = (props) => {
-    let getQuantityTicketEnt=()=>{
+    let getQuantityTicketEnt=(name,id)=>{
         let quantityTicketEnt;
         let j=0;
-        switch (props.Id) {
-            case props.Distrit[0].value.toString():{
-                for (let i=0;i<props.Ticket.length;i++){
-                    if(props.Ticket[i].StatusEnrolled==true){
+        switch (id) {
+            case "0":{
+                for(let i=0;i<props.Ticket.length;i++){
+                    if(props.Ticket[i].ticket.state.name==name){
                         j++;
                     }
                 }
                 break;
             }
-            case props.Distrit[props.Id].value.toString():{
+            default:{
                 for(let i=0;i<props.Ticket.length;i++){
-                    if ((props.Ticket[i].StatusEnrolled === true)&&(props.Ticket[i].Direct===props.Distrit[props.Id].name)) {
+                    debugger
+                    if((props.Ticket[i].ticket.state.name==name)&&
+                        (props.Ticket[i].traffic_light.district.name==props.directs[id-1].name)){
                         j++;
                     }
                 }
                 break;
             }
         }
+
         quantityTicketEnt=j;
+        debugger
         return(quantityTicketEnt);
     }
-    let getQuantityTicketProc=()=>{
+    let getQuantityTicketProc=(name,id)=>{
         let quantityTicketProc;
         let j=0;
-        switch (props.Id) {
-            case props.Distrit[0].value.toString(): {
-                for (let i = 0; i < props.Ticket.length; i++) {
-                    if (props.Ticket[i].StatusProcessing == true) {
+        switch (id) {
+            case "0":{
+                for(let i=0;i<props.Ticket.length;i++){
+                    if(props.Ticket[i].ticket.state.name==name){
                         j++;
                     }
                 }
                 break;
             }
-            case props.Distrit[props.Id].value.toString(): {
-                for (let i = 0; i < props.Ticket.length; i++) {
-                    if ((props.Ticket[i].StatusProcessing === true) &&
-                        (props.Ticket[i].Direct === props.Distrit[props.Id].name)) {
+            default:{
+                for(let i=0;i<props.Ticket.length;i++){
+                    debugger
+                    if((props.Ticket[i].ticket.state.name==name)&&
+                        (props.Ticket[i].traffic_light.district.name==props.directs[id].name)){
                         j++;
                     }
                 }
@@ -54,22 +59,22 @@ let StatusColumn = (props) => {
         quantityTicketProc=j;
         return(quantityTicketProc);
     }
-    let getQuantityTicketComp=()=>{
+    let getQuantityTicketComp=(name,id)=>{
         let quantityTicketComp;
         let j=0;
-        switch (props.Id) {
-            case props.Distrit[0].value.toString(): {
-                for (let i = 0; i < props.Ticket.length; i++) {
-                    if (props.Ticket[i].StatusCompleted == true) {
+        switch (id) {
+            case "0":{
+                for(let i=0;i<props.Ticket.length;i++){
+                    if(props.Ticket[i].ticket.state.name==name){
                         j++;
                     }
                 }
                 break;
             }
-            case props.Distrit[props.Id].value.toString(): {
-                for (let i = 0; i < props.Ticket.length; i++) {
-                    if ((props.Ticket[i].StatusCompleted === true) &&
-                        (props.Ticket[i].Direct === props.Distrit[props.Id].name)) {
+            default:{
+                for(let i=0;i<props.Ticket.length;i++){
+                    if((props.Ticket[i].ticket.state.name==name)&&
+                        (props.Ticket[i].traffic_light.district.name==props.directs[id].name)){
                         j++;
                     }
                 }
@@ -79,104 +84,148 @@ let StatusColumn = (props) => {
         quantityTicketComp=j;
         return(quantityTicketComp);
     }
-    let getTicketEnrolled=()=>{
-        let array;
-        switch (props.Id) {
-            case props.Distrit[0].value.toString(): {
-                array = props.Ticket.map(a => {
-                        if (a.StatusEnrolled === true) {
-                            return (<TicketEnrolled name={a.name} id={a.id} ClickDirectInfo={props.ClickDirectInfo}/>)
-                        }
+    let getTicketEnrolled=(name,id)=>{
+        let array=[];
+        switch (id) {
+            case "0":{
+                for(let i=0;i<props.Ticket.length;i++)
+                {
+                    if(props.Ticket[i].ticket.state.name==name){
+                        array[i]=<TicketEnrolled name={props.Ticket[i].ticket_id+" "+
+                        props.Ticket[i].traffic_light.district.name} id={i}
+                                                 ClickDirectInfo={props.ClickDirectInfo}/>
                     }
-                );
+                }
                 break;
             }
-            case props.Distrit[props.Id].value.toString():{
-                array = props.Ticket.map(a => {
-                        if ((a.StatusEnrolled === true)&&(a.Direct===props.Distrit[props.Id].name)) {
-                            return (<TicketEnrolled name={a.name} id={a.id} ClickDirectInfo={props.ClickDirectInfo}/>)
-                        }
+            default:{
+                for(let i=0;i<props.Ticket.length;i++)
+                {
+                    if((props.Ticket[i].ticket.state.name==name)&&
+                        (props.Ticket[i].traffic_light.district.name==props.directs[id-1].name)){
+                        array[i]=<TicketEnrolled name={props.Ticket[i].ticket_id+" "+
+                        props.Ticket[i].traffic_light.district.name} id={i}
+                                                 ClickDirectInfo={props.ClickDirectInfo}/>
                     }
-                );
+                }
                 break;
             }
         }
+
         return(array);
     }
-    let getTicketProcessing=()=>{
-        let array;
-        switch (props.Id) {
-            case props.Distrit[0].value.toString(): {
-                array = props.Ticket.map(a => {
-                        if (a.StatusProcessing === true) {
-                            return (<TicketProcessing name={a.name} id={a.id} ClickDirectInfo={props.ClickDirectInfo}/>)
-                        }
+    let getTicketProcessing=(name,id)=>{
+        let array=[];
+        switch (id) {
+            case "0":{
+                for(let i=0;i<props.Ticket.length;i++)
+                {
+                    if(props.Ticket[i].ticket.state.name==name){
+                        array[i]=<TicketProcessing name={props.Ticket[i].ticket_id+" "+
+                        props.Ticket[i].traffic_light.district.name} id={i} ClickDirectInfo={props.ClickDirectInfo}/>
                     }
-                );
+                }
                 break;
             }
-            case props.Distrit[props.Id].value.toString():{
-                array = props.Ticket.map(a => {
-                        if ((a.StatusProcessing === true)&&(a.Direct===props.Distrit[props.Id].name)) {
-                            return (<TicketProcessing name={a.name} id={a.id} ClickDirectInfo={props.ClickDirectInfo}/>)
-                        }
+            default:{
+                for(let i=0;i<props.Ticket.length;i++)
+                {
+                    if((props.Ticket[i].ticket.state.name==name)&&
+                        (props.Ticket[i].traffic_light.district.name==props.directs[id].name)){
+                        array[i]=<TicketProcessing name={props.Ticket[i].ticket_id+" "+
+                        props.Ticket[i].traffic_light.district.name} id={i} ClickDirectInfo={props.ClickDirectInfo}/>
                     }
-                );
-                break;
-            }
-        }
-        return (array);
-    }
-    let getTicketCompleted = () => {
-        let array;
-        switch (props.Id) {
-            case props.Distrit[0].value.toString(): {
-                array = props.Ticket.map(a => {
-                        if (a.StatusCompleted === true) {
-                            return (<TicketCompleted name={a.name} id={a.id} ClickDirectInfo={props.ClickDirectInfo}/>)
-                        }
-                    }
-                );
-                break;
-            }
-            case props.Distrit[props.Id].value.toString():{
-                array = props.Ticket.map(a => {
-                        if ((a.StatusCompleted === true)&&(a.Direct===props.Distrit[props.Id].name)) {
-                            return (<TicketCompleted name={a.name} id={a.id} ClickDirectInfo={props.ClickDirectInfo}/>)
-                        }
-                    }
-                );
+                }
                 break;
             }
         }
         return (array);
     }
-    let IfNull=(id,quantity,StatusF)=>{
-        if(quantity<=0){
-            return(<div className={s.NullTicket}></div>);
+    let getTicketCompleted = (name,id) => {
+        let array=[];
+        switch (id) {
+            case "0":{
+                for(let i=0;i<props.Ticket.length;i++)
+                {
+                    if(props.Ticket[i].ticket.state.name==name){
+                        array[i]=<TicketCompleted name={props.Ticket[i].ticket_id+" "+
+                        props.Ticket[i].traffic_light.district.name} id={i} ClickDirectInfo={props.ClickDirectInfo}/>
+                    }
+                }
+                break;
+            }
+            default:{
+                for(let i=0;i<props.Ticket.length;i++)
+                {
+                    if((props.Ticket[i].ticket.state.name==name)&&
+                        (props.Ticket[i].traffic_light.district.name==props.directs[id].name)){
+                        array[i]=<TicketCompleted name={props.Ticket[i].ticket_id+" "+
+                        props.Ticket[i].traffic_light.district.name} id={i} ClickDirectInfo={props.ClickDirectInfo}/>
+                    }
+                }
+                break;
+            }
         }
-        else{
-            return (
-                <div className={s.scrol}>
-                    {StatusF}
-                </div>
-            );
+        return (array);
+    }
+    let IfNull = (quantity, Fun,name,i) => {
+        debugger
+        if (quantity <= 0) {
+            debugger
+            return (<div className={s.NullTicket}></div>);
+        } else {
+            return (<div className={s.scrol}>
+                {Fun(name,i)}
+            </div>)
         }
     }
     let StatusGet=()=>{
-        let quantity=[getQuantityTicketEnt(),getQuantityTicketProc(),getQuantityTicketComp()];
+/*        let quantity=[getQuantityTicketEnt(),getQuantityTicketProc(),getQuantityTicketComp()];
         let styleForStatus=[s.StatusEnrolled,s.StatusProcessing,s.StatusCompleted];
-        let StatusF=[getTicketEnrolled(),getTicketProcessing(),getTicketCompleted()];
-        let ar=props.StatusTicket.map(a=>
-            <div className={styleForStatus[a.id]}>
-                <div className={s.StatusNames}>
-                    <div className={s.StatusName}>{a.name}</div>
-                    <div className={s.StatusQuantity}>{props.name + quantity[a.id]}</div>
-                </div>
-                {IfNull(a.id,quantity[a.id],StatusF[a.id])}
-            </div>
-        );
-        return(ar);
+        /!*let StatusF=[getTicketEnrolled(),getTicketProcessing(),getTicketCompleted()];*!/
+        debugger*/
+        debugger
+        let i=props.id;
+        let a;
+        if(props.StatusTicket.length>0){
+            debugger
+            a=props.StatusTicket.map(ar=>{
+                switch (ar.name) {
+                    case "Поступила":{
+                        return(<div className={s.StatusEnrolled}>
+                            <div className={s.StatusNames}>
+                                <div className={s.StatusName}>{ar.name}</div>
+                                <div className={s.StatusQuantity}>{"Заявок: "+getQuantityTicketEnt(ar.name,i)}</div>
+                            </div>
+                            {IfNull(getQuantityTicketEnt(ar.name,i),getTicketEnrolled,ar.name,i)}
+                        </div>);
+                    }
+                    case "В обработке":{
+                        return(<div className={s.StatusProcessing}>
+                            <div className={s.StatusNames}>
+                                <div className={s.StatusName}>{ar.name}</div>
+                                <div className={s.StatusQuantity}>{"Заявок: "+getQuantityTicketProc(ar.name,i)}</div>
+                            </div>
+                            {IfNull(getQuantityTicketProc(ar.name,i),getTicketProcessing,ar.name,i)}
+                        </div>);
+                    }
+                    case "Выполнена":{
+                        return(<div className={s.StatusCompleted}>
+                            <div className={s.StatusNames}>
+                                <div className={s.StatusName}>{ar.name}</div>
+                                <div className={s.StatusQuantity}>{"Заявок: "+getQuantityTicketComp(ar.name,i)}</div>
+                            </div>
+                            {IfNull(getQuantityTicketComp(ar.name,i),getTicketCompleted,ar.name,i)}
+                        </div>);
+                    }
+                }
+                }
+            );
+        }
+/*        let ar=props.StatusTicket.map(
+
+        )*/
+        return(a);
     }
     return (
         <div className={s.ForStatus}>
