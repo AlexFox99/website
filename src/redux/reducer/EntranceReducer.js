@@ -46,8 +46,6 @@ const EntranceReducer = (state = InitialState, action) => {
         }
         case onClickButtonEnterActionType:
             stateCopy = {...state};
-            let rightLogin="admin";
-            let rightPassword="admin"
             let data = {
                 login:stateCopy.Login,
                 pass:stateCopy.Password,
