@@ -1,7 +1,7 @@
 import React from "react";
 
 import s from "./Registration.module.css";
-import {NavLink, withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 
 class Registration extends React.Component {
     onLoginChange = (e) => {
