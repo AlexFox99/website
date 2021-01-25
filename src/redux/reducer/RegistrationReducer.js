@@ -16,10 +16,11 @@ let InitialState = {
         {id: 5, name: "Email"},
         {id: 6, name: "Отмена"},
         {id: 7, name: "Зарегистрировать"}
-    ],
+    ],link_id:2,
     LinksReg: [
         {id: 0, links: "/Authorization/Entrance"},
-        {id: 1, links: "/TicketPage"}
+        {id: 1, links: "/TicketPage"},
+        {id: 2, links: "/Authorization/Registration"}
     ],
     Login: "",
     Password: "", PasswordText: "", PassRep: "", PassRepText: "", Email: "", Type: "text",

@@ -2,6 +2,7 @@ import React from "react";
 import s from "./TicketPage.module.css";
 import StatusColumn from "./TicketStatus/StatusColumn";
 import * as axios from "axios";
+import Navbar from "../../navbar/Navbar";
 
 class TicketPage extends React.Component {
     constructor(props) {
@@ -67,31 +68,37 @@ class TicketPage extends React.Component {
 
     render() {
         return (
-            <div className={s.ContentPage}>
-                <div className={s.SideBar}>
-                    {this.Buttons()}
-                </div>
-                <div className={s.Content}>
-                    <div className={s.HelperBar}>
-                        <div className={s.Sort}>
-                            {this.props.NameForSelectDirect}
-                            <select name={this.props.NameForSelectDirect} id={0} onChange={this.Alert}>
-                                <option value={this.props.optionValue.value}>{this.props.optionValue.name}</option>
-                                {this.Option()}
-                            </select>
+            <div>
+                <Navbar links={this.props.links[this.props.link_id].link}
+                        buttonVisible={true} user={this.props.user}
+                />
+                    <div className={s.ContentPage}>
+                        <div className={s.SideBar}>
+                            {this.Buttons()}
+                        </div>
+                        <div className={s.Content}>
+                            <div className={s.HelperBar}>
+                                <div className={s.Sort}>
+                                    {this.props.NameForSelectDirect}
+                                    <select name={this.props.NameForSelectDirect} id={0} onChange={this.Alert}>
+                                        <option
+                                            value={this.props.optionValue.value}>{this.props.optionValue.name}</option>
+                                        {this.Option()}
+                                    </select>
+                                </div>
+                            </div>
+                            <StatusColumn
+                                id={this.props.ID}
+                                directs={this.props.directs}
+                                Ticket={this.props.ticket}
+                                StatusTicket={this.props.StatusTicket}
+                                ClickDirectInfo={this.props.ClickDirect}
+                            />
                         </div>
                     </div>
-                    <StatusColumn
-                        id={this.props.ID}
-                        directs={this.props.directs}
-                        Ticket={this.props.ticket}
-                        StatusTicket={this.props.StatusTicket}
-                        ClickDirectInfo={this.props.ClickDirect}
-                    />
-                </div>
             </div>
-        );
+    );
     }
-}
+    }
 
-export default TicketPage;
+    export default TicketPage;

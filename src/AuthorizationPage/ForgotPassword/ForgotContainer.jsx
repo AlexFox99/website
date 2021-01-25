@@ -14,7 +14,8 @@ let mapStateToProps = (state) => {
         NameForgotCancel: state.PageForPas.NamesForPas[3].name,
         NameSend: state.PageForPas.NamesForPas[4].name,
         valueEmailForgot: state.PageForPas.Email,
-        type: state.PageForPas.Type
+        type: state.PageForPas.Type,
+        links:state.PageForPas.LinksForPas,link_id:state.PageForPas.link_id,
     };
 };
 let mapDispatchToProps = (dispatch) => {

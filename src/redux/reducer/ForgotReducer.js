@@ -11,9 +11,10 @@ let InitialState = {
         {id: 2, name: "Email Адрес"},
         {id: 3, name: "Отмена"},
         {id: 4, name: "Отправить письмо"}
-    ],
+    ],link_id:1,
     LinksForPas: [
-        {id: 0, links: "/Authorization/Entrance"}
+        {id: 0, links: "/Authorization/Entrance"},
+        {id: 1, links: "/Authorization/ForgotPassword"}
     ],
     Email: "", Type: "text"
 }

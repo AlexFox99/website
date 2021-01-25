@@ -9,7 +9,7 @@ let reducers = combineReducers({
         PageReg: RegistrationReducer,
         PageForPas: ForgotReducer,
         PageTicket: TicketReducer,
-        PageTicketInfo: TicketReducer,
+        PageTicketInfo: TicketReducer
     }
 );
 let store = createStore(reducers);

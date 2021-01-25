@@ -8,8 +8,9 @@ const typeActionType = 'TYPE';
 const directActionType = 'DIRECT';
 const ClickProcActionType='CLICK-PROC';
 const ClickCompActionType='CLICK-COMP';
+const imgActionType='IMG';
 let InitialState = {
-    ticket: [], Status: [], typeTicket: [], TicketInfo: [], direct: [], id: "0",
+    ticket: [], Status: [], typeTicket: [], TicketInfo: [], direct: [], id: "0",img:[],
     NamesTickets: [
         {id: 0, name: "Сортировка по району:"},
         {id: 1, name: "Заявок: "}
@@ -22,6 +23,7 @@ let InitialState = {
         {id: 3, name: "История заявки"},
         {id: 4, name: "Изображения прикреплены:"}
     ],
+    links:[{id:0,link:"/TicketPage"},{id:1,link:"/TicketInfoPage"}],link_id:0,
     src: "http://avanpress.ru/wp-content/uploads/2017/03/Светофор.jpg",
     HistoryText: "Пришла от пользователя В 66.66.6666"
 
@@ -94,6 +96,12 @@ const TicketReducer = (state = InitialState, action) => {
                 });
             return state;
         }
+            case imgActionType:{
+                let stateCopy = {...state};
+                stateCopy.img=action.img;
+                debugger
+                return stateCopy;
+            }
         default:
             return state;
     }
@@ -108,4 +116,5 @@ export const ClickProcActionCreator = (id_ticket,id_status) => ({type: ClickProc
     StatusId:id_status});
 export const ClickCompActionCreator = (id_ticket,id_status) => ({type: ClickCompActionType, idTicket: id_ticket,
 StatusId:id_status});
+export const imgActionCreator=(img)=>({type: imgActionType, img: img});
 export default TicketReducer;

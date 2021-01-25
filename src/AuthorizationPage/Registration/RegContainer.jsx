@@ -23,7 +23,8 @@ let mapStateToProps = (state) => {
         valueLoginReg: state.PageReg.Login,
         valueEmail: state.PageReg.Email,
         valuePasswordReg: state.PageReg.PasswordText,
-        Type: state.PageReg.Type
+        Type: state.PageReg.Type,
+        links:state.PageReg.LinksReg,link_id:state.PageReg.link_id
     };
 };
 let mapDispatchToProps = (dispatch) => {

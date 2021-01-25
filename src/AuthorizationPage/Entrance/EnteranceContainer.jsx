@@ -13,6 +13,7 @@ const mapStateToProps = (state) => {
         NamePassword: state.PageEntrance.NamesEntrance[2].name,
         NameForgot: state.PageEntrance.NamesEntrance[3].name,
         NameReg: state.PageEntrance.NamesEntrance[4].name,
+        links:state.PageEntrance.LinksEntrance,link_id:state.PageEntrance.link_id,
         valueLogin: state.PageEntrance.Login,
         valuePass: state.PageEntrance.PasswordText,
         type: state.PageEntrance.Type, length: state.PageEntrance.length
