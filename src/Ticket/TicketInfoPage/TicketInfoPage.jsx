@@ -52,16 +52,10 @@ class TicketInfoPage extends React.Component {
         });
         return (button);
     }
-    imgClick=(a)=>{
-        const {history} = this.props;
-        history.push("/Photo/"+a);
-
-    }
     getUrlImage = () => {
         let img = this.props.image.map(a => {
                 debugger
-                return (<img className={s.img} src={"/Photo/" + a} alt={""}/*http://84.22.135.132:5000/*/
-                             onClick={()=>this.imgClick(a)}/>)
+                return (<img className={s.img} src={"/Photo/" + a} alt={""}/*http://84.22.135.132:5000/*//>)
             }
         )
         return (img);
