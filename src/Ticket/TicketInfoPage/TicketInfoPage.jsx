@@ -3,6 +3,7 @@ import s from "./TicketInfoPage.module.css";
 import Detail from "./Detail/Detail";
 import * as axios from "axios";
 import Navbar from "../../navbar/Navbar";
+import {withRouter} from "react-router-dom";
 
 
 class TicketInfoPage extends React.Component {
@@ -29,11 +30,9 @@ class TicketInfoPage extends React.Component {
         return (array);
     }
     ClickProc = (idStatus) => {
-        alert(this.props.Ticket.ticket.id + " " + idStatus);
         this.props.ClickProc(this.props.Ticket.ticket.id, idStatus)
     }
     ClickComp = (idStatus) => {
-        alert(this.props.Ticket.ticket.id + " " + idStatus);
         this.props.ClickComp(this.props.Ticket.ticket.id, idStatus)
     }
     Buttons = () => {
@@ -53,10 +52,16 @@ class TicketInfoPage extends React.Component {
         });
         return (button);
     }
+    imgClick=(a)=>{
+        const {history} = this.props;
+        history.push("Photo/"+a);
+
+    }
     getUrlImage = () => {
         let img = this.props.image.map(a => {
                 debugger
-                return (<img className={s.img} src={"http://84.22.135.132:5000/Photo/" + a} alt={""}/>)
+                return (<img className={s.img} src={"http://84.22.135.132:5000/Photo/" + a} alt={""}
+                             onClick={()=>this.imgClick(a)}/>)
             }
         )
         return (img);
@@ -115,4 +120,4 @@ class TicketInfoPage extends React.Component {
     }
 }
 
-export default TicketInfoPage;
+export default withRouter(TicketInfoPage);

@@ -33,6 +33,7 @@ const TicketReducer = (state = InitialState, action) => {
         case selectDirectTicActionType: {
             let stateCopy = {...state};
             stateCopy.id = action.id;
+            debugger
             return stateCopy;
         }
         case ClickDirectInfoActionType: {

@@ -23,6 +23,13 @@ class TicketPage extends React.Component {
                 this.props.direct(direct);
             });
     }
+    componentDidMount() {
+        axios.get("http://84.22.135.132:5000/Ticket/TrafficLight")
+            .then(res => {
+                let data = res.data;
+                this.props.data(data);
+            });
+    }
 
     Buttons = () => {
         let buttons = this.props.TypeTicket.map(a => {
@@ -50,10 +57,11 @@ class TicketPage extends React.Component {
         this.props.UpdateIdSelect(id);
     }
     Option = () => {
-        let opt1;
+        let opt1=[];
         if (this.props.directs.length > 0) {
-            opt1 = this.props.directs.map(a =>
-                <option value={a.id}>{a.name}</option>)
+            for(let i=0;i<this.props.directs.length;i++){
+                opt1[i]=<option value={i+1}>{this.props.directs[i].name}</option>
+            }
         }
         return (opt1)
     }

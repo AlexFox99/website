@@ -47,21 +47,24 @@ const EntranceReducer = (state = InitialState, action) => {
         }
         case onClickButtonEnterActionType:
             stateCopy = {...state};
-            let data = {
-                login: stateCopy.Login,
-                pass: stateCopy.Password,
-                email: "admin1",
-                // same for other inputs ..
-            };
-            axios.post("http://84.22.135.132:5000/WebUser/Login", data, [{'Content-Type': 'application/json'}])
-                .then(res => {
-                    if (res.data.message === null) {
-                        alert(res.data.error);
-                    } else if (res.data.error === null) {
-                        alert(res.data.message);
-                        action.history.push(stateCopy.LinksEntrance[2].links);
-                    }
-                });
+            if((stateCopy.Login!=="")&&(stateCopy.Password!=="")){
+                let data = {
+                    login: stateCopy.Login,
+                    pass: stateCopy.Password,
+                    email: "admin1",
+                    // same for other inputs ..
+                };
+                axios.post("http://84.22.135.132:5000/WebUser/Login", data, [{'Content-Type': 'application/json'}])
+                    .then(res => {
+                        if (res.data.message === null) {
+                            alert(res.data.error);
+                        } else if (res.data.error === null) {
+                            alert(res.data.message);
+                            action.history.push(stateCopy.LinksEntrance[2].links);
+                        }
+                    });
+            }
+            else {alert("Поля пустые")}
             stateCopy.user=stateCopy.Login;
             stateCopy.Login = "";
             stateCopy.Password = "";

@@ -9,19 +9,15 @@ let Navbar = (props) => {
     let ClickLogOut=()=>{
         axios.post("http://84.22.135.132:5000/WebUser/Logout", [{'Content-Type': 'application/json'}])
             .then(res => {
-                debugger
                 if (res.data.message === null) {
-                    debugger
                     alert(res.data.error);
                 } else if (res.data.error === null) {
-                    debugger
                     alert(res.data.message);
                     history.push("/Authorization/Entrance");
                 }
             });
     }
     let visible = () => {
-        debugger
         if (props.buttonVisible === true) {
             return (<div className={s.App_Nav}><NavLink className={s.NavLink} to={props.links}>{props.links}</NavLink>
                 <div className={s.User_Text}><p className={s.User}>{props.user}</p></div>

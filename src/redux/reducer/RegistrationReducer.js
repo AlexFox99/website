@@ -31,22 +31,26 @@ const RegistrationReducer = (state = InitialState, action) => {
     switch (action.type) {
         case onClickButtonRegActionType: {
             let stateCopy = {...state};
-            let data = {
-                login: stateCopy.Login,
-                pass: stateCopy.Password,
-                email: stateCopy.Email,
-                // same for other inputs ..
-            };
-            axios.post("http://84.22.135.132:5000/WebUser/Create", data, [{'Content-Type': 'application/json'}])
-                .then(res => {
-                        if (res.data.message === null) {
-                            alert(res.data.error);
-                        } else if (res.data.error === null) {
-                            alert(res.data.message);
-                            action.history.push(stateCopy.LinksReg[1].links);
+            let emailValid = stateCopy.Email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+            if((stateCopy.Password===stateCopy.PassRep)&&(stateCopy.Login!=="")&&(stateCopy.Email!=="")&&(emailValid)){
+                let data = {
+                    login: stateCopy.Login,
+                    pass: stateCopy.Password,
+                    email: stateCopy.Email,
+                    // same for other inputs ..
+                };
+                axios.post("http://84.22.135.132:5000/WebUser/Create", data, [{'Content-Type': 'application/json'}])
+                    .then(res => {
+                            if (res.data.message === null) {
+                                alert(res.data.error);
+                            } else if (res.data.error === null) {
+                                alert(res.data.message);
+                                action.history.push(stateCopy.LinksReg[1].links);
+                            }
                         }
-                    }
-                );
+                    );
+            }
+            else {alert("Ошибка заполнения полей")}
             stateCopy.Login = "";
             stateCopy.Password = "";
             stateCopy.PasswordText = "";
