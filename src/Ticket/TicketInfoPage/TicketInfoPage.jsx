@@ -9,7 +9,7 @@ import {withRouter} from "react-router-dom";
 class TicketInfoPage extends React.Component {
     constructor(props) {
         super(props);
-        axios.get("Ticket/Photos?id=" + this.props.Ticket.ticket.id)/*http://84.22.135.132:5000/*/
+        axios.get("/Ticket/Photos?id=" + this.props.Ticket.ticket.id)/*http://84.22.135.132:5000/*/
             .then(res => {
                 let img = res.data;
                 debugger
@@ -54,13 +54,13 @@ class TicketInfoPage extends React.Component {
     }
     imgClick=(a)=>{
         const {history} = this.props;
-        history.push("Photo/"+a);
+        history.push("/Photo/"+a);
 
     }
     getUrlImage = () => {
         let img = this.props.image.map(a => {
                 debugger
-                return (<img className={s.img} src={"Photo/" + a} alt={""}/*http://84.22.135.132:5000/*/
+                return (<img className={s.img} src={"/Photo/" + a} alt={""}/*http://84.22.135.132:5000/*/
                              onClick={()=>this.imgClick(a)}/>)
             }
         )

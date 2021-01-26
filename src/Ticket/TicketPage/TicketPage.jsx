@@ -7,24 +7,24 @@ import Navbar from "../../navbar/Navbar";
 class TicketPage extends React.Component {
     constructor(props) {
         super(props);
-        axios.get("TicketType")/*http://84.22.135.132:5000/*/
+        axios.get("/TicketType")/*http://84.22.135.132:5000/*/
             .then(res => {
                 let Type = res.data;
                 this.props.type(Type);
             });
-        axios.get("TicketState")/*http://84.22.135.132:5000/*/
+        axios.get("/TicketState")/*http://84.22.135.132:5000/*/
             .then(res => {
                 let state = res.data;
                 this.props.state(state);
             });
-        axios.get("District")/*http://84.22.135.132:5000/*/
+        axios.get("/District")/*http://84.22.135.132:5000/*/
             .then(res => {
                 let direct = res.data;
                 this.props.direct(direct);
             });
     }
     componentDidMount() {
-        axios.get("Ticket/TrafficLight")/*http://84.22.135.132:5000/*/
+        axios.get("/Ticket/TrafficLight")/*http://84.22.135.132:5000/*/
             .then(res => {
                 let data = res.data;
                 this.props.data(data);
@@ -36,14 +36,14 @@ class TicketPage extends React.Component {
                 if (a.name === "Светофор") {
                     return (<div className={s.ItemsBut}>
                         <button className={s.Button} onClick={this.click}>
-                            <img className={s.Img} src={"http://84.22.135.132:5000" + a.url} alt=""/>
+                            <img className={s.Img} src={a.url} alt=""/>{/*"http://84.22.135.132:5000" + */}
                             {a.name}
                         </button>
                     </div>)
                 } else {
                     return (<div className={s.ItemsBut}>
                         <button className={s.Button} disabled={true}>
-                            <img className={s.Img} src={"http://84.22.135.132:5000" + a.url} alt=""/>
+                            <img className={s.Img} src={a.url} alt=""/>{/*"http://84.22.135.132:5000" + */}
                             {a.name}
                         </button>
                     </div>)
@@ -66,7 +66,7 @@ class TicketPage extends React.Component {
         return (opt1)
     }
     click = () => {
-        axios.get("Ticket/TrafficLight")/*http://84.22.135.132:5000/*/
+        axios.get("/Ticket/TrafficLight")/*http://84.22.135.132:5000/*/
             .then(res => {
                 let data = res.data;
                 this.props.data(data);
