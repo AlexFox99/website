@@ -45,7 +45,7 @@ const EntranceReducer = (state = InitialState, action) => {
             action.history.push(stateCopy.LinksEntrance[0].links);
             return (stateCopy);
         }
-        case onClickButtonEnterActionType:
+        case onClickButtonEnterActionType:{
             stateCopy = {...state};
             if((stateCopy.Login!=="")&&(stateCopy.Password!=="")){
                 let data = {
@@ -71,6 +71,7 @@ const EntranceReducer = (state = InitialState, action) => {
             stateCopy.PasswordText = "";
             stateCopy.length = 0;
             return stateCopy;
+        }
         case onLoginChangeEnterActionType:
             stateCopy = {...state};
             stateCopy.Login = action.login;
