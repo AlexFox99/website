@@ -8,7 +8,7 @@ import Navbar from "../../navbar/Navbar";
 class TicketInfoPage extends React.Component {
     constructor(props) {
         super(props);
-        axios.get("http://84.22.135.132:5000/Ticket/Photos?id=" + this.props.Ticket.ticket.id)
+        axios.get("/Ticket/Photos?id=" + this.props.Ticket.ticket.id)/*http://84.22.135.132:5000/*/
             .then(res => {
                 let img = res.data;
                 debugger
@@ -56,7 +56,7 @@ class TicketInfoPage extends React.Component {
     getUrlImage = () => {
         let img = this.props.image.map(a => {
                 debugger
-                return (<img className={s.img} src={"http://84.22.135.132:5000/Photo/" + a} alt={""}/>)
+                return (<img className={s.img} src={"/Photo/" + a} alt={""}/>)/*http://84.22.135.132:5000/*/
             }
         )
         return (img);

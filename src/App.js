@@ -22,7 +22,7 @@ class App extends React.Component {
             <BrowserRouter>
                 <div className={s.App}>
                     <header className={s.App_header}>
-                        {/*<img src={logo} className={s.App_logo} alt=""/>*/}LOGO
+                        {/*<img src={logo} className={s.App_logo} alt=""/>*/}
                     </header>
                     <div className={s.App_Content}>
                         <Route exact path={this.link} render={() => <Redirect to={this.linkEnt}/>}/>
