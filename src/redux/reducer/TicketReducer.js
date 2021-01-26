@@ -67,7 +67,7 @@ const TicketReducer = (state = InitialState, action) => {
                 state_id: action.StatusId,
             };
             debugger
-            axios.post("http://84.22.135.132:5000/Ticket/Update", data, [{'Content-Type': 'application/json'}])
+            axios.post("Ticket/Update", data, [{'Content-Type': 'application/json'}])/*http://84.22.135.132:5000/*/
                 .then(res => {
                     debugger
                     if (res.data.message === null) {
@@ -85,7 +85,7 @@ const TicketReducer = (state = InitialState, action) => {
                 state_id: action.StatusId,
             };
             debugger
-            axios.post("http://84.22.135.132:5000/Ticket/Update", data, [{'Content-Type': 'application/json'}])
+            axios.post("Ticket/Update", data, [{'Content-Type': 'application/json'}])/*http://84.22.135.132:5000/*/
                 .then(res => {
                     debugger
                     if (res.data.message === null) {

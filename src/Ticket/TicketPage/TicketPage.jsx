@@ -7,24 +7,24 @@ import Navbar from "../../navbar/Navbar";
 class TicketPage extends React.Component {
     constructor(props) {
         super(props);
-        axios.get("http://84.22.135.132:5000/TicketType")
+        axios.get("TicketType")/*http://84.22.135.132:5000/*/
             .then(res => {
                 let Type = res.data;
                 this.props.type(Type);
             });
-        axios.get("http://84.22.135.132:5000/TicketState")
+        axios.get("TicketState")/*http://84.22.135.132:5000/*/
             .then(res => {
                 let state = res.data;
                 this.props.state(state);
             });
-        axios.get("http://84.22.135.132:5000/District")
+        axios.get("District")/*http://84.22.135.132:5000/*/
             .then(res => {
                 let direct = res.data;
                 this.props.direct(direct);
             });
     }
     componentDidMount() {
-        axios.get("http://84.22.135.132:5000/Ticket/TrafficLight")
+        axios.get("Ticket/TrafficLight")/*http://84.22.135.132:5000/*/
             .then(res => {
                 let data = res.data;
                 this.props.data(data);
@@ -66,7 +66,7 @@ class TicketPage extends React.Component {
         return (opt1)
     }
     click = () => {
-        axios.get("http://84.22.135.132:5000/Ticket/TrafficLight")
+        axios.get("Ticket/TrafficLight")/*http://84.22.135.132:5000/*/
             .then(res => {
                 let data = res.data;
                 this.props.data(data);

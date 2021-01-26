@@ -39,7 +39,7 @@ const RegistrationReducer = (state = InitialState, action) => {
                     email: stateCopy.Email,
                     // same for other inputs ..
                 };
-                axios.post("http://84.22.135.132:5000/WebUser/Create", data, [{'Content-Type': 'application/json'}])
+                axios.post("WebUser/Create", data, [{'Content-Type': 'application/json'}])/*http://84.22.135.132:5000/*/
                     .then(res => {
                             if (res.data.message === null) {
                                 alert(res.data.error);
