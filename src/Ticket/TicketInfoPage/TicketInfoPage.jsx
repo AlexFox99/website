@@ -26,6 +26,9 @@ class TicketInfoPage extends React.Component {
                 this.props.Ticket.ticket.mobile_user.surname + " "
                 + this.props.Ticket.ticket.mobile_user.name + " " +
                 this.props.Ticket.ticket.mobile_user.phone}/>
+            <Detail DetailDescriptionType={"ГеоЛакация:"} DetailDescriptionInfo={
+                this.props.Ticket.ticket.lat + " "
+                + this.props.Ticket.ticket.long_}/>
         </div>
         return (array);
     }
