@@ -15,7 +15,7 @@ let mapStateToProps = (state) => {
         QuantityName: state.PageTicket.NamesTickets[1].name,
         StatusTicket: state.PageTicket.Status,
         directs: state.PageTicket.direct, ID: state.PageTicket.id,
-        user:state.PageEntrance.user,links:state.PageTicket.links,link_id:state.PageTicket.link_id
+        user: state.PageEntrance.user, links: state.PageTicket.links, link_id: state.PageTicket.link_id
     };
 };
 let mapDispatchToProps = (dispatch) => {

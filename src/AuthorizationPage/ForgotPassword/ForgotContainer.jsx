@@ -15,7 +15,7 @@ let mapStateToProps = (state) => {
         NameSend: state.PageForPas.NamesForPas[4].name,
         valueEmailForgot: state.PageForPas.Email,
         type: state.PageForPas.Type,
-        links:state.PageForPas.LinksForPas,link_id:state.PageForPas.link_id,
+        links: state.PageForPas.LinksForPas, link_id: state.PageForPas.link_id,
     };
 };
 let mapDispatchToProps = (dispatch) => {

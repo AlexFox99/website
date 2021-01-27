@@ -11,19 +11,19 @@ let mapStateToProps = (state) => {
         HistoryTicket: state.PageTicketInfo.NamesTicketInfo[3].name,
         Img: state.PageTicketInfo.NamesTicketInfo[4].name,
         HistoryText: state.PageTicketInfo.HistoryText,
-        StateTicket: state.PageTicketInfo.Status,image:state.PageTicketInfo.img,
-        user:state.PageEntrance.user,links:state.PageTicket.links,link_id:state.PageTicket.link_id
+        StateTicket: state.PageTicketInfo.Status, image: state.PageTicketInfo.img,
+        user: state.PageEntrance.user, links: state.PageTicket.links, link_id: state.PageTicket.link_id
     };
 };
 let mapDispatchToProps = (dispatch) => {
     return {
-        ClickProc:(id_ticket,id_status)=>{
-            dispatch(ClickProcActionCreator(id_ticket,id_status))
+        ClickProc: (id_ticket, id_status) => {
+            dispatch(ClickProcActionCreator(id_ticket, id_status))
         },
-        ClickComp:(id_ticket,id_status)=>{
-            dispatch(ClickCompActionCreator(id_ticket,id_status))
+        ClickComp: (id_ticket, id_status) => {
+            dispatch(ClickCompActionCreator(id_ticket, id_status))
         },
-        img:(img)=>{
+        img: (img) => {
             dispatch(imgActionCreator(img))
         }
     };

@@ -12,7 +12,6 @@ class TicketInfoPage extends React.Component {
         axios.get("/Ticket/Photos?id=" + this.props.Ticket.ticket.id)/*http://84.22.135.132:5000/*/
             .then(res => {
                 let img = res.data;
-                debugger
                 this.props.img(img);
             });
     }
@@ -57,16 +56,13 @@ class TicketInfoPage extends React.Component {
     }
     getUrlImage = () => {
         let img = this.props.image.map(a => {
-                debugger
                 return (<img className={s.img} src={"/Photo/" + a} alt={""}/*http://84.22.135.132:5000/*//>)
             }
         )
         return (img);
     }
     image = () => {
-        debugger
         if (this.props.image.length > 0) {
-            debugger
             return (
                 <div className={s.ForImage}>
                     <div>

@@ -1,12 +1,12 @@
 import React from "react";
 import s from "./Navbar.module.css";
 import {NavLink, withRouter} from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import * as axios from "axios";
 
 let Navbar = (props) => {
     const history = useHistory();
-    let ClickLogOut=()=>{
+    let ClickLogOut = () => {
         axios.post("/WebUser/Logout", [{'Content-Type': 'application/json'}])/*http://84.22.135.132:5000*/
             .then(res => {
                 if (res.data.message === null) {

@@ -12,12 +12,12 @@ let InitialState = {
         {id: 2, name: "Пароль"},
         {id: 3, name: "Забыли свой пароль?"},
         {id: 4, name: "Регистрация"}
-    ],link_id:3,user:"",
+    ], link_id: 3, user: "",
     LinksEntrance: [
         {id: 0, links: "/Authorization/ForgotPassword"},
         {id: 1, links: "/Authorization/Registration"},
         {id: 2, links: "/TicketPage"},
-        {id:3,links:"/Authorization/Entrance"}
+        {id: 3, links: "/Authorization/Entrance"}
     ],
     Login: "",
     Password: "", PasswordText: "", Type: "text", length: 0
@@ -45,9 +45,9 @@ const EntranceReducer = (state = InitialState, action) => {
             action.history.push(stateCopy.LinksEntrance[0].links);
             return (stateCopy);
         }
-        case onClickButtonEnterActionType:{
+        case onClickButtonEnterActionType: {
             stateCopy = {...state};
-            if((stateCopy.Login!=="")&&(stateCopy.Password!=="")){
+            if ((stateCopy.Login !== "") && (stateCopy.Password !== "")) {
                 let data = {
                     login: stateCopy.Login,
                     pass: stateCopy.Password,
@@ -63,9 +63,10 @@ const EntranceReducer = (state = InitialState, action) => {
                             action.history.push(stateCopy.LinksEntrance[2].links);
                         }
                     });
+            } else {
+                alert("Поля пустые")
             }
-            else {alert("Поля пустые")}
-            stateCopy.user=stateCopy.Login;
+            stateCopy.user = stateCopy.Login;
             stateCopy.Login = "";
             stateCopy.Password = "";
             stateCopy.PasswordText = "";

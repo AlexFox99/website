@@ -8,6 +8,7 @@
     align-items: center;
     justify-items: left;
 }
+
 .NavLink {
     grid-area: NAVLINK;
     margin: 8px;
@@ -28,16 +29,20 @@
     text-decoration: underline;
     color: white;
 }
-.User{
+
+.User {
     color: white;
 }
-.button{
+
+.button {
 }
-.User_Text{
-    grid-area:USER;
+
+.User_Text {
+    grid-area: USER;
     margin-right: 10px;
 }
-.ForBut{
-    grid-area:BUTTON;
+
+.ForBut {
+    grid-area: BUTTON;
     margin-right: 10px;
 }
