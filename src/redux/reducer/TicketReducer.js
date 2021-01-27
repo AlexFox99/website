@@ -65,32 +65,36 @@ const TicketReducer = (state = InitialState, action) => {
                 id: action.idTicket,
                 state_id: action.StatusId,
             };
+            debugger;
             axios.post("/Ticket/Update", data, [{'Content-Type': 'application/json'}])/*http://84.22.135.132:5000/*/
                 .then(res => {
                     if (res.data.message === null) {
                         alert(res.data.error);
                     } else if (res.data.error === null) {
+                        debugger;
                         alert(res.data.message);
                     }
 
                 });
-            return state;
+            break;
         }
         case ClickCompActionType: {
             let data = {
                 id: action.idTicket,
                 state_id: action.StatusId,
             };
+            debugger;
             axios.post("/Ticket/Update", data, [{'Content-Type': 'application/json'}])/*http://84.22.135.132:5000/*/
                 .then(res => {
                     if (res.data.message === null) {
                         alert(res.data.error);
                     } else if (res.data.error === null) {
+                        debugger;
                         alert(res.data.message);
                     }
 
                 });
-            return state;
+                break;
         }
         case imgActionType: {
             let stateCopy = {...state};

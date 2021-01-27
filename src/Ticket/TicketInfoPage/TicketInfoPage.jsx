@@ -32,9 +32,11 @@ class TicketInfoPage extends React.Component {
         return (array);
     }
     ClickProc = (idStatus) => {
+        debugger
         this.props.ClickProc(this.props.Ticket.ticket.id, idStatus)
     }
     ClickComp = (idStatus) => {
+        debugger
         this.props.ClickComp(this.props.Ticket.ticket.id, idStatus)
     }
     Buttons = () => {

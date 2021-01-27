@@ -18,9 +18,11 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
     return {
         ClickProc: (id_ticket, id_status) => {
+            debugger
             dispatch(ClickProcActionCreator(id_ticket, id_status))
         },
         ClickComp: (id_ticket, id_status) => {
+            debugger
             dispatch(ClickCompActionCreator(id_ticket, id_status))
         },
         img: (img) => {
