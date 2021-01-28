@@ -33,7 +33,7 @@ let mapDispatchToProps = (dispatch) => {
         img: (img) => {
             dispatch(imgActionCreator(img))
         },
-        history:(history)=>{dispatch(historyActionCreator(history))}
+        Hist:(history)=>{dispatch(historyActionCreator(history))}
     };
 };
 let TicketInfoContainer = connect(mapStateToProps, mapDispatchToProps)(TicketInfoPage);

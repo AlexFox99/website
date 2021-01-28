@@ -25,7 +25,6 @@ let InitialState = {
         {id: 4, name: "Изображения прикреплены:"}
     ],
     links: [{id: 0, link: "/TicketPage"}, {id: 1, link: "/TicketInfoPage"}], link_id: 0,
-    src: "http://avanpress.ru/wp-content/uploads/2017/03/Светофор.jpg",
     history:[]
 
 }
@@ -67,7 +66,8 @@ const TicketReducer = (state = InitialState, action) => {
                 state_id: action.StatusId,
             };
             debugger;
-            axios.post("/Ticket/Update", data, [{'Content-Type': 'application/json'}])/*http://84.22.135.132:5000/*/
+            /*let v="http://84.22.135.132:5000"*/
+            axios.post("/Ticket/Update", data, [{'Content-Type': 'application/json'}])
                 .then(res => {
                     if (res.data.message === null) {
                         alert(res.data.error);
@@ -85,7 +85,8 @@ const TicketReducer = (state = InitialState, action) => {
                 state_id: action.StatusId,
             };
             debugger;
-            axios.post("/Ticket/Update", data, [{'Content-Type': 'application/json'}])/*http://84.22.135.132:5000/*/
+            /*let v="http://84.22.135.132:5000"*/
+            axios.post("/Ticket/Update", data, [{'Content-Type': 'application/json'}])
                 .then(res => {
                     if (res.data.message === null) {
                         alert(res.data.error);
@@ -105,6 +106,7 @@ const TicketReducer = (state = InitialState, action) => {
         case historyActionType:{
             let stateCopy={...state};
             stateCopy.history=action.history;
+            debugger
             return stateCopy;
         }
         default:

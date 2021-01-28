@@ -54,7 +54,8 @@ const EntranceReducer = (state = InitialState, action) => {
                     email: "admin1",
                     // same for other inputs ..
                 };
-                axios.post("/WebUser/Login", data, [{'Content-Type': 'application/json'}])/*http://84.22.135.132:5000/*/
+                /*let V="http://84.22.135.132:5000";*/
+                axios.post("/WebUser/Login", data, [{'Content-Type': 'application/json'}])
                     .then(res => {
                         if (res.data.message === null) {
                             alert(res.data.error);

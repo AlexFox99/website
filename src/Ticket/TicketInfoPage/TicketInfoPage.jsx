@@ -7,38 +7,31 @@ import {withRouter} from "react-router-dom";
 
 
 class TicketInfoPage extends React.Component {
-    constructor(props) {
-        super(props);
-        axios.get("/Ticket/Photos?id=" + this.props.Ticket.ticket.id)/*http://84.22.135.132:5000/*/
-            .then(res => {
-                let img = res.data;
-                this.props.img(img);
-            });
-        axios.get("tickethistory/" + this.props.Ticket.ticket.id)/*http://84.22.135.132:5000/*/
-            .then(res => {
-                let history = res.data;
-                this.props.history(history);
-            });
-    }
     componentDidMount() {
-        axios.get("/Ticket/Photos?id=" + this.props.Ticket.ticket.id)/*http://84.22.135.132:5000/*/
+        /*let v="http://84.22.135.132:5000"*/
+        axios.get("/Ticket/Photos?id=" + this.props.Ticket.ticket.id)
             .then(res => {
                 let img = res.data;
                 this.props.img(img);
             });
-        axios.get("tickethistory/" + this.props.Ticket.ticket.id)/*http://84.22.135.132:5000/*/
+        debugger
+        axios.get("/tickethistory/" + this.props.Ticket.ticket.id)
             .then(res => {
+                debugger
                 let history = res.data;
-                this.props.history(history);
+                this.props.Hist(history);
             });
     }
     History= () =>{
+        debugger
         let gethistory=()=>{
             let historyText=this.props.HistoryText.map(ar=><div>{ar.date+" из статуса "+ar.ticket_state_old.name
-            +" перешла в "+ar.ticket_state_new.name}</div>)
+            +" перешла в "+ar.ticket_state_new.name}</div>);
+            debugger
             return(historyText);
         }
         let History=<div>{gethistory()}</div>;
+        debugger
         return(History);
     }
         Details = () => {
@@ -50,7 +43,7 @@ class TicketInfoPage extends React.Component {
                 this.props.Ticket.ticket.mobile_user.surname + " "
                 + this.props.Ticket.ticket.mobile_user.name + " " +
                 this.props.Ticket.ticket.mobile_user.phone}/>
-            <Detail DetailDescriptionType={"ГеоЛакация:"} DetailDescriptionInfo={
+            <Detail DetailDescriptionType={"Геолокация:"} DetailDescriptionInfo={
                 this.props.Ticket.ticket.lat + " "
                 + this.props.Ticket.ticket.long_}/>
         </div>
@@ -127,7 +120,7 @@ class TicketInfoPage extends React.Component {
                                 <div className={s.HistoryTicketText}>{this.props.HistoryTicket}</div>
                                 <div className={s.HistoryTicketDescription}>
                                     <div className={s.HistoryTicketText}>
-                                        {this.History}
+                                        {this.History()}
                                     </div>
                                     {this.image()}
                                 </div>
