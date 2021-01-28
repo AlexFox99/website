@@ -9,6 +9,7 @@ const directActionType = 'DIRECT';
 const ClickProcActionType = 'CLICK-PROC';
 const ClickCompActionType = 'CLICK-COMP';
 const imgActionType = 'IMG';
+const historyActionType='HISTORY';
 let InitialState = {
     ticket: [], Status: [], typeTicket: [], TicketInfo: [], direct: [], id: "0", img: [],
     NamesTickets: [
@@ -25,7 +26,7 @@ let InitialState = {
     ],
     links: [{id: 0, link: "/TicketPage"}, {id: 1, link: "/TicketInfoPage"}], link_id: 0,
     src: "http://avanpress.ru/wp-content/uploads/2017/03/Светофор.jpg",
-    HistoryText: "Пришла от пользователя В 66.66.6666"
+    history:[]
 
 }
 const TicketReducer = (state = InitialState, action) => {
@@ -101,6 +102,11 @@ const TicketReducer = (state = InitialState, action) => {
             stateCopy.img = action.img;
             return stateCopy;
         }
+        case historyActionType:{
+            let stateCopy={...state};
+            stateCopy.history=action.history;
+            return stateCopy;
+        }
         default:
             return state;
     }
@@ -120,4 +126,5 @@ export const ClickCompActionCreator = (id_ticket, id_status) => ({
     StatusId: id_status
 });
 export const imgActionCreator = (img) => ({type: imgActionType, img: img});
+export const historyActionCreator = (history) => ({type: historyActionType, history: history});
 export default TicketReducer;

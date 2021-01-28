@@ -14,9 +14,34 @@ class TicketInfoPage extends React.Component {
                 let img = res.data;
                 this.props.img(img);
             });
+        axios.get("tickethistory/" + this.props.Ticket.ticket.id)/*http://84.22.135.132:5000/*/
+            .then(res => {
+                let history = res.data;
+                this.props.history(history);
+            });
     }
-
-    Details = () => {
+    componentDidMount() {
+        axios.get("/Ticket/Photos?id=" + this.props.Ticket.ticket.id)/*http://84.22.135.132:5000/*/
+            .then(res => {
+                let img = res.data;
+                this.props.img(img);
+            });
+        axios.get("tickethistory/" + this.props.Ticket.ticket.id)/*http://84.22.135.132:5000/*/
+            .then(res => {
+                let history = res.data;
+                this.props.history(history);
+            });
+    }
+    History= () =>{
+        let gethistory=()=>{
+            let historyText=this.props.HistoryText.map(ar=><div>{ar.date+" из статуса "+ar.ticket_state_old.name
+            +" перешла в "+ar.ticket_state_new.name}</div>)
+            return(historyText);
+        }
+        let History=<div>{gethistory()}</div>;
+        return(History);
+    }
+        Details = () => {
         let array = <div>
             <Detail DetailDescriptionType={"Описание:"} DetailDescriptionInfo={this.props.Ticket.ticket.description}/>
             <Detail DetailDescriptionType={"Дата добавления:"}
@@ -102,7 +127,7 @@ class TicketInfoPage extends React.Component {
                                 <div className={s.HistoryTicketText}>{this.props.HistoryTicket}</div>
                                 <div className={s.HistoryTicketDescription}>
                                     <div className={s.HistoryTicketText}>
-                                        {/*{this.props.HistoryText}*/}
+                                        {this.History}
                                     </div>
                                     {this.image()}
                                 </div>
