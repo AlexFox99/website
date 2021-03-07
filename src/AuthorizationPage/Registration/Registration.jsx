@@ -59,11 +59,11 @@ class Registration extends React.Component {
                                        value={this.props.valuePassRepReg}
                                        type={this.props.Type}
                                        className={s.RepPasswordInputReg}/>
-                                <div>{this.props.NameEmail}</div>
-                                <input onChange={this.onEmailChange}
+                                {/*<div>{this.props.NameEmail}</div>*/}
+     {/*                           <input onChange={this.onEmailChange}
                                        value={this.props.valueEmail}
                                        type={this.props.Type}
-                                       className={s.EmailInputReg}/>
+                                       className={s.EmailInputReg}/>*/}
                             </div>
                         </div>
                         <div className={s.ForNavLinkReg}>

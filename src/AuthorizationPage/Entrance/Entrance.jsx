@@ -56,7 +56,7 @@ class Entrance extends React.Component {
                             </div>
                         </div>
                         <div className={s.ForNavLink}>
-                            <p className={s.ForgotPassNavLink} onClick={this.OnClickForgot}>{this.props.NameForgot}</p>
+                            {/*<p className={s.ForgotPassNavLink} onClick={this.OnClickForgot}>{this.props.NameForgot}</p>*/}
                             <button className={s.RegButNavLink} onClick={this.OnClickReg}>{this.props.NameReg}</button>
                             <button onClick={this.onClick}
                                     className={s.EnterBut}>

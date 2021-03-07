@@ -13,13 +13,13 @@ const historyActionType='HISTORY';
 let InitialState = {
     ticket: [], Status: [], typeTicket: [], TicketInfo: [], direct: [], id: "0", img: [],
     NamesTickets: [
-        {id: 0, name: "Сортировка по району:"},
+        {id: 0, name: "Фильтрация по району:"},
         {id: 1, name: "Заявок: "}
     ],
     optionValue: {id: 0, value: 0, name: "Все"},
     NamesTicketInfo: [
         {id: 0, name: "Имя заявки"},
-        {id: 1, name: "Панель состояний"},
+        {id: 1, name: "Действия"},
         {id: 2, name: "Детали заявки"},
         {id: 3, name: "История заявки"},
         {id: 4, name: "Изображения прикреплены:"}
@@ -67,7 +67,7 @@ const TicketReducer = (state = InitialState, action) => {
             };
             debugger;
             /*let v="http://84.22.135.132:5000"*/
-            axios.post("/Ticket/Update", data, [{'Content-Type': 'application/json'}])
+            axios.post("http://84.22.135.132:5000/Ticket/Update", data, [{'Content-Type': 'application/json'}])
                 .then(res => {
                     if (res.data.message === null) {
                         alert(res.data.error);
@@ -86,7 +86,7 @@ const TicketReducer = (state = InitialState, action) => {
             };
             debugger;
             /*let v="http://84.22.135.132:5000"*/
-            axios.post("/Ticket/Update", data, [{'Content-Type': 'application/json'}])
+            axios.post("http://84.22.135.132:5000/Ticket/Update", data, [{'Content-Type': 'application/json'}])
                 .then(res => {
                     if (res.data.message === null) {
                         alert(res.data.error);

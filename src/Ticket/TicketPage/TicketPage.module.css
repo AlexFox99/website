@@ -74,7 +74,7 @@
 .NullTicket {
     border-radius: 3px;
     margin: 10px;
-    width: 300px;
+    width: 90%;
     height: 50px;
     background-color: #CCC9D9;
 }
@@ -127,5 +127,6 @@
 
 .scrol {
     overflow-y: scroll;
+    width: 100%;
     height: 100vh;
 }

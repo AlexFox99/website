@@ -7,7 +7,7 @@ import * as axios from "axios";
 let Navbar = (props) => {
     const history = useHistory();
     let ClickLogOut = () => {
-        axios.post("/WebUser/Logout", [{'Content-Type': 'application/json'}])/*http://84.22.135.132:5000*/
+        axios.post("http://84.22.135.132:5000/WebUser/Logout", [{'Content-Type': 'application/json'}])/*http://84.22.135.132:5000*/
             .then(res => {
                 if (res.data.message === null) {
                     alert(res.data.error);
@@ -19,15 +19,15 @@ let Navbar = (props) => {
     }
     let visible = () => {
         if (props.buttonVisible === true) {
-            return (<div className={s.App_Nav}><NavLink className={s.NavLink} to={props.links}>{props.links}</NavLink>
+            return (<div className={s.App_Nav}>{/*<NavLink className={s.NavLink} to={props.links}>{props.links}</NavLink>*/}
                 <div className={s.User_Text}><p className={s.User}>{props.user}</p></div>
                 <div className={s.ForBut}>
-                    <button className={s.button} onClick={ClickLogOut}>{"Logout"}</button>
+                    <button className={s.button} onClick={ClickLogOut}>{"Выход"}</button>
                 </div>
             </div>);
         } else {
             return (<div className={s.App_Nav}>
-                <NavLink className={s.NavLink} to={props.links}>{props.links}</NavLink>
+                {/*<NavLink className={s.NavLink} to={props.links}>{props.links}</NavLink>*/}
             </div>)
         }
     }

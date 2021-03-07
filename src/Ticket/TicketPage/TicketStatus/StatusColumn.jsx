@@ -87,7 +87,7 @@ let StatusColumn = (props) => {
                 for (let i = 0; i < props.Ticket.length; i++) {
                     if (props.Ticket[i].ticket.state.name === name) {
                         array[i] = <TicketEnrolled name={props.Ticket[i].ticket_id + " " +
-                        props.Ticket[i].traffic_light.district.name} id={i}
+                        props.Ticket[i].traffic_light.district.name} id={i} nomber={props.Ticket[i].ticket_id}
                                                    ClickDirectInfo={props.ClickDirectInfo}/>
                     }
                 }
@@ -98,7 +98,7 @@ let StatusColumn = (props) => {
                     if ((props.Ticket[i].ticket.state.name === name) &&
                         (props.Ticket[i].traffic_light.district.name === props.directs[id - 1].name)) {
                         array[i] = <TicketEnrolled name={props.Ticket[i].ticket_id + " " +
-                        props.Ticket[i].traffic_light.district.name} id={i}
+                        props.Ticket[i].traffic_light.district.name} id={i} nomber={props.Ticket[i].ticket_id}
                                                    ClickDirectInfo={props.ClickDirectInfo}/>
                     }
                 }
@@ -115,7 +115,7 @@ let StatusColumn = (props) => {
                 for (let i = 0; i < props.Ticket.length; i++) {
                     if (props.Ticket[i].ticket.state.name === name) {
                         array[i] = <TicketProcessing name={props.Ticket[i].ticket_id + " " +
-                        props.Ticket[i].traffic_light.district.name} id={i} ClickDirectInfo={props.ClickDirectInfo}/>
+                        props.Ticket[i].traffic_light.district.name} id={i} nomber={props.Ticket[i].ticket_id} ClickDirectInfo={props.ClickDirectInfo}/>
                     }
                 }
                 break;
@@ -125,7 +125,7 @@ let StatusColumn = (props) => {
                     if ((props.Ticket[i].ticket.state.name === name) &&
                         (props.Ticket[i].traffic_light.district.name === props.directs[id - 1].name)) {
                         array[i] = <TicketProcessing name={props.Ticket[i].ticket_id + " " +
-                        props.Ticket[i].traffic_light.district.name} id={i} ClickDirectInfo={props.ClickDirectInfo}/>
+                        props.Ticket[i].traffic_light.district.name} id={i} nomber={props.Ticket[i].ticket_id} ClickDirectInfo={props.ClickDirectInfo}/>
                     }
                 }
                 break;
@@ -140,7 +140,7 @@ let StatusColumn = (props) => {
                 for (let i = 0; i < props.Ticket.length; i++) {
                     if (props.Ticket[i].ticket.state.name === name) {
                         array[i] = <TicketCompleted name={props.Ticket[i].ticket_id + " " +
-                        props.Ticket[i].traffic_light.district.name} id={i} ClickDirectInfo={props.ClickDirectInfo}/>
+                        props.Ticket[i].traffic_light.district.name} id={i} nomber={props.Ticket[i].ticket_id} ClickDirectInfo={props.ClickDirectInfo}/>
                     }
                 }
                 break;
@@ -150,7 +150,7 @@ let StatusColumn = (props) => {
                     if ((props.Ticket[i].ticket.state.name === name) &&
                         (props.Ticket[i].traffic_light.district.name === props.directs[id - 1].name)) {
                         array[i] = <TicketCompleted name={props.Ticket[i].ticket_id + " " +
-                        props.Ticket[i].traffic_light.district.name} id={i} ClickDirectInfo={props.ClickDirectInfo}/>
+                        props.Ticket[i].traffic_light.district.name} id={i} nomber={props.Ticket[i].ticket_id} ClickDirectInfo={props.ClickDirectInfo}/>
                     }
                 }
                 break;

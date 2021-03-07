@@ -9,13 +9,13 @@ import {withRouter} from "react-router-dom";
 class TicketInfoPage extends React.Component {
     componentDidMount() {
         /*let v="http://84.22.135.132:5000"*/
-        axios.get("/Ticket/Photos?id=" + this.props.Ticket.ticket.id)
+        axios.get("http://84.22.135.132:5000/Ticket/Photos?id=" + this.props.Ticket.ticket.id)
             .then(res => {
                 let img = res.data;
                 this.props.img(img);
             });
         debugger
-        axios.get("/tickethistory/" + this.props.Ticket.ticket.id)
+        axios.get("http://84.22.135.132:5000/tickethistory/" + this.props.Ticket.ticket.id)
             .then(res => {
                 debugger
                 let history = res.data;
@@ -76,7 +76,7 @@ class TicketInfoPage extends React.Component {
     }
     getUrlImage = () => {
         let img = this.props.image.map(a => {
-                return (<img className={s.img} src={"/Photo/" + a} alt={""}/*http://84.22.135.132:5000/*//>)
+                return (<img className={s.img} src={"http://84.22.135.132:5000"+"/Photo/" + a} alt={""}/*http://84.22.135.132:5000/*//>)
             }
         )
         return (img);
@@ -100,7 +100,7 @@ class TicketInfoPage extends React.Component {
                         buttonVisible={true} user={this.props.user}/>
                 <div className={s.TicketInfoPage}>
                     <div className={s.NameTicket}>
-                        <div className={s.NameTicketText}>{this.props.Ticket.ticket.id}</div>
+                        <div className={s.NameTicketText}>{"№"+this.props.Ticket.ticket.id}</div>
                     </div>
                     <div className={s.Content}>
                         <div className={s.SideBarRight}>
