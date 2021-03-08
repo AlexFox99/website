@@ -2,7 +2,7 @@ import {connect} from "react-redux";
 import TicketPage from "./TicketPage";
 import {
     ClickDirectInfoActionCreator, dataActionCreator, directActionCreator,
-    selectChangeActionCreator, stateActionCreator, typeActionCreator
+    selectChangeActionCreator, stateActionCreator, typeActionCreator, userActionCreator
 } from "../../redux/reducer/TicketReducer";
 
 let mapStateToProps = (state) => {
@@ -15,7 +15,8 @@ let mapStateToProps = (state) => {
         QuantityName: state.PageTicket.NamesTickets[1].name,
         StatusTicket: state.PageTicket.Status,
         directs: state.PageTicket.direct, ID: state.PageTicket.id,
-        user: state.PageEntrance.user, links: state.PageTicket.links, link_id: state.PageTicket.link_id
+        user: state.PageEntrance.user,user1: state.PageReg.user,
+        links: state.PageTicket.links, link_id: state.PageTicket.link_id
     };
 };
 let mapDispatchToProps = (dispatch) => {

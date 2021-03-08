@@ -115,9 +115,11 @@
     margin: 1px;
 }
 .imgNew{
-     width: 220px;
-     height: 220px;
-     margin: 1px;
+    margin: 1px;
+    width:347px;
+    height:160px;
+    display: block;
+    z-index:99999999;
  }
 .ForImage {
     grid-area: ForImage;
@@ -125,6 +127,11 @@
     margin: 10px;
 }
 
+/*
 .img:hover {
     margin: 1px;
-}
+    width:347px;
+    height:160px;
+    display: block;
+    z-index:99999999;
+}*/

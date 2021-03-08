@@ -3,29 +3,33 @@ import s from "./TicketInfoPage.module.css";
 import Detail from "./Detail/Detail";
 import * as axios from "axios";
 import Navbar from "../../navbar/Navbar";
-import {withRouter} from "react-router-dom";
+import {useHistory, withRouter} from "react-router-dom";
 
 
 class TicketInfoPage extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     componentDidMount() {
         /*let v="http://84.22.135.132:5000"*/
-        axios.get("http://84.22.135.132:5000/Ticket/Photos?id=" + this.props.Ticket.ticket.id)
+        /*axios.get("http://84.22.135.132:5000/Ticket/Photos?id=" + this.props.Ticket.id)
             .then(res => {
                 let img = res.data;
+                debugger
                 this.props.img(img);
             });
         debugger
-        axios.get("http://84.22.135.132:5000/tickethistory/" + this.props.Ticket.ticket.id)
+        axios.get("http://84.22.135.132:5000/tickethistory/" + this.props.Ticket.id)
             .then(res => {
                 debugger
                 let history = res.data;
                 this.props.Hist(history);
-            });
+            });*/
     }
     History= () =>{
         debugger
         let gethistory=()=>{
-            let historyText=this.props.HistoryText.map(ar=><div>{ar.date+" из статуса "+ar.ticket_state_old.name
+            let historyText=this.props.Ticket.histories.map(ar=><div>{ar.date+" из статуса "+ar.ticket_state_old.name
             +" перешла в "+ar.ticket_state_new.name}</div>);
             debugger
             return(historyText);
@@ -36,26 +40,28 @@ class TicketInfoPage extends React.Component {
     }
         Details = () => {
         let array = <div>
-            <Detail DetailDescriptionType={"Описание:"} DetailDescriptionInfo={this.props.Ticket.ticket.description}/>
+            <Detail DetailDescriptionType={"Описание:"} DetailDescriptionInfo={this.props.Ticket.description}/>
             <Detail DetailDescriptionType={"Дата добавления:"}
-                    DetailDescriptionInfo={this.props.Ticket.ticket.date_add}/>
+                    DetailDescriptionInfo={this.props.Ticket.date_add}/>
             <Detail DetailDescriptionType={"От кого:"} DetailDescriptionInfo={
-                this.props.Ticket.ticket.mobile_user.surname + " "
-                + this.props.Ticket.ticket.mobile_user.name + " " +
-                this.props.Ticket.ticket.mobile_user.phone}/>
+                this.props.Ticket.mobile_user.surname + " "
+                + this.props.Ticket.mobile_user.name + " " +
+                this.props.Ticket.mobile_user.phone}/>
             <Detail DetailDescriptionType={"Геолокация:"} DetailDescriptionInfo={
-                this.props.Ticket.ticket.lat + " "
-                + this.props.Ticket.ticket.long_}/>
+                this.props.Ticket.lat + " "
+                + this.props.Ticket.long_}/>
+            <Detail DetailDescriptionType={"Район:"} DetailDescriptionInfo={
+                this.props.Ticket.district.name}/>
         </div>
         return (array);
     }
     ClickProc = (idStatus) => {
         debugger
-        this.props.ClickProc(this.props.Ticket.ticket.id, idStatus)
+        this.props.ClickProc(this.props.Ticket.id, idStatus)
     }
     ClickComp = (idStatus) => {
         debugger
-        this.props.ClickComp(this.props.Ticket.ticket.id, idStatus)
+        this.props.ClickComp(this.props.Ticket.id, idStatus)
     }
     Buttons = () => {
         let button = this.props.StateTicket.map(ar => {
@@ -75,8 +81,11 @@ class TicketInfoPage extends React.Component {
         return (button);
     }
     getUrlImage = () => {
+        const { history } = this.props;
         let img = this.props.image.map(a => {
-                return (<img className={s.img} src={"http://84.22.135.132:5000"+"/Photo/" + a} alt={""}/*http://84.22.135.132:5000/*//>)
+                return (<img className={s.img} src={"http://84.22.135.132:5000"+"/Photo/" + a} alt={""}/*http://84.22.135.132:5000/*/
+                onClick={()=>history.push("/Photo/" + a)}
+                />)
             }
         )
         return (img);
@@ -97,10 +106,11 @@ class TicketInfoPage extends React.Component {
         return (
             <div>
                 <Navbar links={this.props.links[this.props.link_id].link}
-                        buttonVisible={true} user={this.props.user}/>
+                        buttonVisible={true} user={localStorage.getItem('user')}/>
                 <div className={s.TicketInfoPage}>
                     <div className={s.NameTicket}>
-                        <div className={s.NameTicketText}>{"№"+this.props.Ticket.ticket.id}</div>
+                        <div className={s.NameTicketText}>{"Заявка по: "+this.props.Ticket.type.name
+                        +" ,№"+this.props.Ticket.id}</div>
                     </div>
                     <div className={s.Content}>
                         <div className={s.SideBarRight}>

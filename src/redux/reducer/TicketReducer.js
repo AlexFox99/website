@@ -6,6 +6,7 @@ const dataActionType = 'DATA';
 const stateActionType = 'STATE';
 const typeActionType = 'TYPE';
 const directActionType = 'DIRECT';
+const userActionType = 'USER';
 const ClickProcActionType = 'CLICK-PROC';
 const ClickCompActionType = 'CLICK-COMP';
 const imgActionType = 'IMG';
@@ -25,7 +26,7 @@ let InitialState = {
         {id: 4, name: "Изображения прикреплены:"}
     ],
     links: [{id: 0, link: "/TicketPage"}, {id: 1, link: "/TicketInfoPage"}], link_id: 0,
-    history:[]
+    history:[],user:""
 
 }
 const TicketReducer = (state = InitialState, action) => {
@@ -109,6 +110,12 @@ const TicketReducer = (state = InitialState, action) => {
             debugger
             return stateCopy;
         }
+        case userActionType:{
+            let stateCopy={...state}
+            stateCopy.user=action.user;
+            debugger
+            return stateCopy;
+        }
         default:
             return state;
     }
@@ -119,6 +126,7 @@ export const dataActionCreator = (data) => ({type: dataActionType, data: data});
 export const stateActionCreator = (state) => ({type: stateActionType, state: state});
 export const typeActionCreator = (type) => ({type: typeActionType, typeTicket: type});
 export const directActionCreator = (direct) => ({type: directActionType, direct: direct});
+export const userActionCreator = (user) => ({type: userActionType, user: user});
 export const ClickProcActionCreator = (id_ticket, id_status) => ({
     type: ClickProcActionType, idTicket: id_ticket,
     StatusId: id_status

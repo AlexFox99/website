@@ -5,8 +5,13 @@ import * as axios from "axios";
 import Navbar from "../../navbar/Navbar";
 
 class TicketPage extends React.Component {
+    user;
     constructor(props) {
         super(props);
+        if(this.props.user!==""||this.props.user1!==""){
+            if(this.props.user!==""){localStorage.setItem('user', this.props.user);}
+            if(this.props.user1!==""){localStorage.setItem('user', this.props.user1);}
+        }
         /*let v="http://84.22.135.132:5000";*/
         axios.get("http://84.22.135.132:5000/TicketType")
             .then(res => {
@@ -24,34 +29,34 @@ class TicketPage extends React.Component {
                 this.props.direct(direct);
             });
     }
-
-    componentDidMount() {
-        /*let v="http://84.22.135.132:5000"*/
-        axios.get("http://84.22.135.132:5000/Ticket/TrafficLight")
-            .then(res => {
-                let data = res.data;
-                this.props.data(data);
-            });
-    }
+    /*    componentDidMount() {
+            /!*let v="http://84.22.135.132:5000"*!/
+            axios.get("http://84.22.135.132:5000/Ticket/TrafficLight")
+                .then(res => {
+                    let data = res.data;
+                    this.props.data(data);
+                });
+        }*/
 
     Buttons = () => {
         /*let v="http://84.22.135.132:5000";*/
+        let clicks=[this.click,this.click1,this.click2,this.click3];
         let buttons = this.props.TypeTicket.map(a => {
-                if (a.name === "Светофор") {
+                /*if (a.name === "Светофор") {*/
                     return (<div className={s.ItemsBut}>
-                        <button className={s.Button} onClick={this.click}>
+                        <button className={s.Button} onClick={clicks[a.id-1]}>
                             <img className={s.Img} src={"http://84.22.135.132:5000"+a.url} alt=""/>
                             {a.name}
                         </button>
                     </div>)
-                } else {
+/*                } else {
                     return (<div className={s.ItemsBut}>
                         <button className={s.Button} disabled={true}>
                             <img className={s.Img} src={"http://84.22.135.132:5000"+a.url} alt=""/>
                             {a.name}
                         </button>
                     </div>)
-                }
+                }*/
             }
         );
         return (buttons);
@@ -71,19 +76,40 @@ class TicketPage extends React.Component {
     }
     click = () => {
         /*let v="http://84.22.135.132:5000"*/
-        axios.get("http://84.22.135.132:5000/Ticket/TrafficLight")
+        axios.get("http://84.22.135.132:5000/Ticket/1")
+            .then(res => {
+                let data = res.data;
+                debugger;
+                this.props.data(data);
+            });
+    }
+    click1=()=>{
+        axios.get("http://84.22.135.132:5000/Ticket/2")
             .then(res => {
                 let data = res.data;
                 this.props.data(data);
             });
-
+    }
+    click2=()=>{
+        axios.get("http://84.22.135.132:5000/Ticket/3")
+            .then(res => {
+                let data = res.data;
+                this.props.data(data);
+            });
+    }
+    click3=()=>{
+        axios.get("http://84.22.135.132:5000/Ticket/4")
+            .then(res => {
+                let data = res.data;
+                this.props.data(data);
+            });
     }
 
     render() {
         return (
             <div>
                 <Navbar links={this.props.links[this.props.link_id].link}
-                        buttonVisible={true} user={this.props.user}
+                        buttonVisible={true} user={localStorage.getItem('user')}
                 />
                 <div className={s.ContentPage}>
                     <div className={s.SideBar}>
