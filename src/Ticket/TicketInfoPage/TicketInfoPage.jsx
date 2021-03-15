@@ -82,15 +82,28 @@ class TicketInfoPage extends React.Component {
     }
     getUrlImage = () => {
         const { history } = this.props;
-        let img = this.props.image.map(a => {
-                return (<img className={s.img} src={"http://84.22.135.132:5000"+"/Photo/" + a} alt={""}/*http://84.22.135.132:5000/*/
-                onClick={()=>history.push("/Photo/" + a)}
+        debugger
+        let img1={
+            mini:[],photo:[]
+        };
+/*        let img = this.props.Ticket.mini_photo_id.map(a => {
+                return (<img className={s.img} src={"http://84.22.135.132:5000"+"/Photo/" + a} alt={""}/!*http://84.22.135.132:5000/!*!/
+                onClick={()=>history.push("/Photo/" + this.props.Ticket.photo_id[a])}
                 />)
             }
-        )
+        )*/
+        img1.mini=this.props.Ticket.mini_photo_id.map(a => {return(a)});
+        img1.photo=this.props.Ticket.photo_id.map(a => {return(a)});
+        let img=[];
+        for(let i=0;i<img1.mini.length;i++){
+            img[i]=<img className={s.img} src={"http://84.22.135.132:5000"+"/Photo/" + img1.mini[i]} alt={""}
+                      onClick={()=>history.push("/Photo/" + img1.photo[i])}
+            />
+        }
+        debugger
         return (img);
     }
-    image = () => {
+/*    image = () => {
         if (this.props.image.length > 0) {
             return (
                 <div className={s.ForImage}>
@@ -100,7 +113,7 @@ class TicketInfoPage extends React.Component {
                     {this.getUrlImage()}
                 </div>);
         }
-    }
+    }*/
 
     render() {
         return (
@@ -132,7 +145,7 @@ class TicketInfoPage extends React.Component {
                                     <div className={s.HistoryTicketText}>
                                         {this.History()}
                                     </div>
-                                    {this.image()}
+                                    {this.getUrlImage()}
                                 </div>
                             </div>
                         </div>
