@@ -219,4 +219,4 @@ let StatusColumn = (props) => {
         </div>
     );
 }
-export default StatusColumn;
+export default StatusColumn;/*Данная функия генерирует и сортирует приходящие заявки*/

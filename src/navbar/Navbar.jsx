@@ -1,13 +1,13 @@
 import React from "react";
 import s from "./Navbar.module.css";
-import {NavLink, withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import {useHistory} from "react-router-dom";
 import * as axios from "axios";
 
-let Navbar=(props)=>{
+let Navbar = (props) => {
     const history = useHistory();
     let ClickLogOut = () => {
-        axios.post("http://84.22.135.132:5000/WebUser/Logout", [{'Content-Type': 'application/json'}])/*http://84.22.135.132:5000*/
+        axios.post("/WebUser/Logout", [{'Content-Type': 'application/json'}])/*http://84.22.135.132:5000*/
             .then(res => {
                 if (res.data.message === null) {
                     alert(res.data.error);
@@ -20,19 +20,20 @@ let Navbar=(props)=>{
     }
     let visible = () => {
         if (props.buttonVisible === true) {
-            return (<div className={s.App_Nav}>{/*<NavLink className={s.NavLink} to={props.links}>{props.links}</NavLink>*/}
-                <div className={s.User_Text}><p className={s.User}>{"Пользователь: "+props.user}</p></div>
-                <div className={s.ForBut}>
-                    <button className={s.button} onClick={ClickLogOut}>{"Выход"}</button>
-                </div>
-            </div>);
+            return (
+                <div className={s.App_Nav}>{/*<NavLink className={s.NavLink} to={props.links}>{props.links}</NavLink>*/}
+                    <div className={s.User_Text}><p className={s.User}>{"Пользователь: " + props.user}</p></div>
+                    <div className={s.ForBut}>
+                        <button className={s.button} onClick={ClickLogOut}>{"Выход"}</button>
+                    </div>
+                </div>);
         } else {
             return (<div className={s.App_Nav}>
                 {/*<NavLink className={s.NavLink} to={props.links}>{props.links}</NavLink>*/}
             </div>)
         }
     }
-    return(<div>
+    return (<div>
             {visible()}
         </div>
     );

@@ -1,35 +1,31 @@
 import React from "react";
 import s from "./TicketInfoPage.module.css";
 import Detail from "./Detail/Detail";
-import * as axios from "axios";
 import Navbar from "../../navbar/Navbar";
-import {useHistory, withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 
 
 class TicketInfoPage extends React.Component {
     constructor(props) {
         super(props);
-        if(this.props.Ticket.length!=0){
+        if (this.props.Ticket.length != 0) {
             localStorage.setItem("Ticket", JSON.stringify(this.props.Ticket));
         }
-        if(this.props.StateTicket.length!=0){
+        if (this.props.StateTicket.length != 0) {
             localStorage.setItem("State", JSON.stringify(this.props.StateTicket));
-        }
+        }/*Сохранение в локал стейдж чтобы при перезагрузке все работало*/
     }
-    History= () =>{
-        let gethistory=()=>{
-            debugger;
-            let historyText=JSON.parse(localStorage.getItem("Ticket")).histories.map(ar=><div>{
-                ar.date+" из статуса "+ar.ticket_state_old.name
-            +" перешла в "+ar.ticket_state_new.name}</div>);
-            debugger
-            return(historyText);
+    History = () => {
+        let gethistory = () => {
+            let historyText = JSON.parse(localStorage.getItem("Ticket")).histories.map(ar => <div>{
+                ar.date + " из статуса " + ar.ticket_state_old.name
+                + " перешла в " + ar.ticket_state_new.name}</div>);/*Получение истории заявки*/
+            return (historyText);
         }
-        let History=<div>{gethistory()}</div>;
-        debugger
-        return(History);
+        let History = <div>{gethistory()}</div>;
+        return (History);
     }
-        Details = () => {
+    Details = () => {
         let array = <div>
             <Detail DetailDescriptionType={"Описание:"} DetailDescriptionInfo={
                 JSON.parse(localStorage.getItem("Ticket")).description}/>
@@ -45,16 +41,14 @@ class TicketInfoPage extends React.Component {
             <Detail DetailDescriptionType={"Район:"} DetailDescriptionInfo={
                 JSON.parse(localStorage.getItem("Ticket")).district.name}/>
         </div>
-        return (array);
+        return (array);/*Детали о заявки такие как описание,от кого и т.д*/
     }
     ClickProc = (idStatus) => {
-        debugger
         this.props.ClickProc(JSON.parse(localStorage.getItem("Ticket")).id, idStatus)
-    }
+    }/*на нажатие в процессе*/
     ClickComp = (idStatus) => {
-        debugger
         this.props.ClickComp(JSON.parse(localStorage.getItem("Ticket")).id, idStatus)
-    }
+    }/*на нажатие выполнено*/
     Buttons = () => {
         let button = JSON.parse(localStorage.getItem("State")).map(ar => {
             switch (ar.name) {
@@ -70,26 +64,29 @@ class TicketInfoPage extends React.Component {
                 }
             }
         });
-        return (button);
+        return (button);/*Генерация кнопок*/
     }
     getImage = () => {
-        const { history } = this.props;
-        let img1={
-            mini:[],photo:[]
+        const {history} = this.props;
+        let img1 = {
+            mini: [], photo: []
         };
-        let img=[];
-        debugger
-        if(JSON.parse(localStorage.getItem("Ticket")).mini_photo_id!=null){
-            img1.mini=JSON.parse(localStorage.getItem("Ticket")).mini_photo_id.map(a => {return(a)});
-            img1.photo=JSON.parse(localStorage.getItem("Ticket")).photo_id.map(a => {return(a)});
+        let img = [];
+        if (JSON.parse(localStorage.getItem("Ticket")).mini_photo_id != null) {
+            img1.mini = JSON.parse(localStorage.getItem("Ticket")).mini_photo_id.map(a => {
+                return (a)
+            });
+            img1.photo = JSON.parse(localStorage.getItem("Ticket")).photo_id.map(a => {
+                return (a)
+            });
 
-            for(let i=0;i<img1.mini.length;i++){
-                img[i]=<img className={s.img} src={"http://84.22.135.132:5000"+"/Photo/" + img1.mini[i]} alt={""}
-                            onClick={()=>history.push("/Photo/" + img1.photo[i])}
+            for (let i = 0; i < img1.mini.length; i++) {
+                img[i] = <img className={s.img} src={"/Photo/" + img1.mini[i]} alt={""}
+                              onClick={() => history.push("/Photo/" + img1.photo[i])}
                 />
             }
         }
-        return (img);
+        return (img);/*Генерация изображений,проверка на случай отсутвия из-ий*/
     }
     render() {
         return (
@@ -99,8 +96,8 @@ class TicketInfoPage extends React.Component {
                 <div className={s.TicketInfoPage}>
                     <div className={s.NameTicket}>
                         <div className={s.NameTicketText}>{"Заявка по: "
-                        +JSON.parse(localStorage.getItem("Ticket")).type.name
-                        +" ,№"+JSON.parse(localStorage.getItem("Ticket")).id}</div>
+                        + JSON.parse(localStorage.getItem("Ticket")).type.name
+                        + " ,№" + JSON.parse(localStorage.getItem("Ticket")).id}</div>
                     </div>
                     <div className={s.Content}>
                         <div className={s.SideBarRight}>

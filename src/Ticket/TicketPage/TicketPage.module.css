@@ -94,7 +94,7 @@
     border-radius: 5px;
 }
 
-.Button a{
+.Button a {
     width: 100%;
     height: 50px;
     display: flex;
@@ -106,9 +106,11 @@
     text-decoration: none;
     border-radius: 5px;
 }
-.Button a.active{
+
+.Button a.active {
     background-color: #b8b8b8;
 }
+
 .StatusNames {
     width: 100%;
     border-bottom: 1px solid #e5e5e5;

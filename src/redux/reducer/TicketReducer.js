@@ -10,7 +10,7 @@ const userActionType = 'USER';
 const ClickProcActionType = 'CLICK-PROC';
 const ClickCompActionType = 'CLICK-COMP';
 const imgActionType = 'IMG';
-const historyActionType='HISTORY';
+const historyActionType = 'HISTORY';
 let InitialState = {
     ticket: [], Status: [], typeTicket: [], TicketInfo: [], direct: [], id: "0", img: [],
     NamesTickets: [
@@ -26,7 +26,7 @@ let InitialState = {
         {id: 4, name: "Изображения прикреплены:"}
     ],
     links: [{id: 0, link: "/TicketPage"}, {id: 1, link: "/TicketInfoPage"}], link_id: 0,
-    history:[],user:""
+    history: [], user: ""
 
 }
 const TicketReducer = (state = InitialState, action) => {
@@ -66,14 +66,12 @@ const TicketReducer = (state = InitialState, action) => {
                 id: action.idTicket,
                 state_id: action.StatusId,
             };
-            debugger;
             /*let v="http://84.22.135.132:5000"*/
-            axios.post("http://84.22.135.132:5000/Ticket/Update", data, [{'Content-Type': 'application/json'}])
+            axios.post("/Ticket/Update", data, [{'Content-Type': 'application/json'}])
                 .then(res => {
                     if (res.data.message === null) {
                         alert(res.data.error);
                     } else if (res.data.error === null) {
-                        debugger;
                         alert(res.data.message);
                     }
 
@@ -85,35 +83,31 @@ const TicketReducer = (state = InitialState, action) => {
                 id: action.idTicket,
                 state_id: action.StatusId,
             };
-            debugger;
             /*let v="http://84.22.135.132:5000"*/
-            axios.post("http://84.22.135.132:5000/Ticket/Update", data, [{'Content-Type': 'application/json'}])
+            axios.post("/Ticket/Update", data, [{'Content-Type': 'application/json'}])
                 .then(res => {
                     if (res.data.message === null) {
                         alert(res.data.error);
                     } else if (res.data.error === null) {
-                        debugger;
                         alert(res.data.message);
                     }
 
                 });
-                break;
+            break;
         }
         case imgActionType: {
             let stateCopy = {...state};
             stateCopy.img = action.img;
             return stateCopy;
         }
-        case historyActionType:{
-            let stateCopy={...state};
-            stateCopy.history=action.history;
-            debugger
+        case historyActionType: {
+            let stateCopy = {...state};
+            stateCopy.history = action.history;
             return stateCopy;
         }
-        case userActionType:{
-            let stateCopy={...state}
-            stateCopy.user=action.user;
-            debugger
+        case userActionType: {
+            let stateCopy = {...state}
+            stateCopy.user = action.user;
             return stateCopy;
         }
         default:

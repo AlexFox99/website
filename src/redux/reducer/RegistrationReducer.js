@@ -24,7 +24,7 @@ let InitialState = {
     ],
     Login: "",
     Password: "", PasswordText: "", PassRep: "", PassRepText: "", Email: "", Type: "text",
-    lengthPass: 0, lengthPassRep: 0,user:""
+    lengthPass: 0, lengthPassRep: 0, user: ""
 }
 const RegistrationReducer = (state = InitialState, action) => {
     /*state=this._state.PageReg*/
@@ -39,7 +39,7 @@ const RegistrationReducer = (state = InitialState, action) => {
                     email: stateCopy.Email,
                     // same for other inputs ..
                 };
-                axios.post("http://84.22.135.132:5000/WebUser/Create", data, [{'Content-Type': 'application/json'}])/*http://84.22.135.132:5000/*/
+                axios.post("/WebUser/Create", data, [{'Content-Type': 'application/json'}])/*http://84.22.135.132:5000/*/
                     .then(res => {
                             if (res.data.message === null) {
                                 alert(res.data.error);
@@ -52,7 +52,7 @@ const RegistrationReducer = (state = InitialState, action) => {
             } else {
                 alert("Ошибка заполнения полей")
             }
-            stateCopy.user=stateCopy.Login;
+            stateCopy.user = stateCopy.Login;
             stateCopy.Login = "";
             stateCopy.Password = "";
             stateCopy.PasswordText = "";

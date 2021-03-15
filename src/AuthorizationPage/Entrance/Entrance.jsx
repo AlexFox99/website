@@ -7,23 +7,23 @@ class Entrance extends React.Component {
     onClick = () => {
         const {history} = this.props;
         this.props.onClickEnter(history);
-    };
-    OnClickForgot = () => {
-        const {history} = this.props;
-        this.props.onClickForgot(history);
-    }
+    };/*На вход*/
+    /*    OnClickForgot = () => {
+            const {history} = this.props;
+            this.props.onClickForgot(history);
+        }*//*для востановления почты*/
     OnClickReg = () => {
         const {history} = this.props;
         this.props.onClickReg(history);
-    }
+    }/*на регистрацию*/
     onLoginChange = (e) => {
         let loginText = e.target.value;
         this.props.onLoginChangeEnter(loginText);
-    };
+    };/*Ввод логина*/
     onPassChange = (e) => {
         let passText = e.target.value;
         this.props.onPassChangeEnter(passText, this.props.length);
-    };
+    };/*Ввод логина*/
 
     render() {
         return (
