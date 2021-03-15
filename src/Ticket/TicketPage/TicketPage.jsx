@@ -3,6 +3,7 @@ import s from "./TicketPage.module.css";
 import StatusColumn from "./TicketStatus/StatusColumn";
 import * as axios from "axios";
 import Navbar from "../../navbar/Navbar";
+import {NavLink} from "react-router-dom";
 
 class TicketPage extends React.Component {
     user;
@@ -28,35 +29,27 @@ class TicketPage extends React.Component {
                 let direct = res.data;
                 this.props.direct(direct);
             });
+/*        axios.get("http://84.22.135.132:5000/Ticket/1")
+            .then(res => {
+                let data = res.data;
+                this.props.data(data);
+            });*/
     }
-    /*    componentDidMount() {
-            /!*let v="http://84.22.135.132:5000"*!/
-            axios.get("http://84.22.135.132:5000/Ticket/TrafficLight")
-                .then(res => {
-                    let data = res.data;
-                    this.props.data(data);
-                });
-        }*/
-
     Buttons = () => {
         /*let v="http://84.22.135.132:5000";*/
-        let clicks=[this.click,this.click1,this.click2,this.click3];
+        let clicks = [this.click, this.click1, this.click2, this.click3];
         let buttons = this.props.TypeTicket.map(a => {
-                /*if (a.name === "Светофор") {*/
-                    return (<div className={s.ItemsBut}>
-                        <button className={s.Button} onClick={clicks[a.id-1]}>
-                            <img className={s.Img} src={"http://84.22.135.132:5000"+a.url} alt=""/>
-                            {a.name}
-                        </button>
-                    </div>)
-/*                } else {
-                    return (<div className={s.ItemsBut}>
-                        <button className={s.Button} disabled={true}>
-                            <img className={s.Img} src={"http://84.22.135.132:5000"+a.url} alt=""/>
-                            {a.name}
-                        </button>
-                    </div>)
-                }*/
+                return (
+                    <div className={s.ItemsBut}>
+                        <div className={s.Button}>
+                            <NavLink to={"/TicketPage"+"/"+a.name}
+                                     onClick={clicks[a.id - 1]} activeClassName={s.active}>
+                                <img className={s.Img} src={"http://84.22.135.132:5000" + a.url} alt=""/>
+                                {a.name}
+                            </NavLink>
+                        </div>
+                    </div>
+                        )
             }
         );
         return (buttons);
