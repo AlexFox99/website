@@ -2,7 +2,7 @@ import React from "react";
 import s from "./TicketInfoPage.module.css";
 import Detail from "./Detail/Detail";
 import Navbar from "../../navbar/Navbar";
-import {withRouter} from "react-router-dom";
+import {NavLink, withRouter} from "react-router-dom";
 
 
 class TicketInfoPage extends React.Component {
@@ -15,6 +15,7 @@ class TicketInfoPage extends React.Component {
             localStorage.setItem("State", JSON.stringify(this.props.StateTicket));
         }/*Сохранение в локал стейдж чтобы при перезагрузке все работало*/
     }
+
     History = () => {
         let gethistory = () => {
             let historyText = JSON.parse(localStorage.getItem("Ticket")).histories.map(ar => <div>{
@@ -81,13 +82,14 @@ class TicketInfoPage extends React.Component {
             });
 
             for (let i = 0; i < img1.mini.length; i++) {
-                img[i] = <img className={s.img} src={"/Photo/" + img1.mini[i]} alt={""}
-                              onClick={() => history.push("/Photo/" + img1.photo[i])}
-                />
+                img[i] = <NavLink to={"/Photo/" + img1.photo[i]}>
+                    <img className={s.img} src={"/Photo/" + img1.mini[i]} alt={""}/>
+                </NavLink>
             }
         }
         return (img);/*Генерация изображений,проверка на случай отсутвия из-ий*/
     }
+
     render() {
         return (
             <div>
@@ -119,7 +121,9 @@ class TicketInfoPage extends React.Component {
                                     <div className={s.HistoryTicketText}>
                                         {this.History()}
                                     </div>
-                                    {this.getImage()}
+                                    <div className={s.ForImage}>
+                                        {this.getImage()}
+                                    </div>
                                 </div>
                             </div>
                         </div>
