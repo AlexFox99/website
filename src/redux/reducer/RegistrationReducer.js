@@ -9,11 +9,11 @@ const updateEmailRegActionType = 'UPDATE-EMAIL-REG';
 let InitialState = {
     NamesReg: [
         {id: 0, name: "Создать нового пользователя"},
-        {id: 1, name: "UserName"},
+        {id: 1, name: "Логин"},
         {id: 2, name: "Реальное имя"},
         {id: 3, name: "Пароль"},
         {id: 4, name: "Подтвердите пароль"},
-        {id: 5, name: "Email"},
+        {id: 5, name: "Электронная почта"},
         {id: 6, name: "Отмена"},
         {id: 7, name: "Зарегистрировать"}
     ], link_id: 2,
