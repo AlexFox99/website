@@ -82,9 +82,10 @@ class TicketInfoPage extends React.Component {
             });
 
             for (let i = 0; i < img1.mini.length; i++) {
-                img[i] = <NavLink to={"/Photo/" + img1.photo[i]}>
+                let str="/Photo/" + img1.photo[i];
+                img[i] = <a href={str}>
                     <img className={s.img} src={"/Photo/" + img1.mini[i]} alt={""}/>
-                </NavLink>
+                </a>
             }
         }
         return (img);/*Генерация изображений,проверка на случай отсутвия из-ий*/
