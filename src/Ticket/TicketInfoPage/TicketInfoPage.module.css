@@ -4,6 +4,7 @@
     color: white;
     display: grid;
     overflow-x: scroll;
+    overflow-y: hidden;
     grid-template-columns: 1fr;
     grid-template-rows: 10% 1fr;
     grid-template-areas: "NameTicket" "Content";
