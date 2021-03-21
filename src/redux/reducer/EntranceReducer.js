@@ -8,7 +8,7 @@ const onClickButtonForRegActionType = 'ON-CLICK-BUTTON-REG';
 let InitialState = {
     NamesEntrance: [
         {id: 0, name: "Войти"},
-        {id: 1, name: "Имя пользователя или Email"},
+        {id: 1, name: "Имя пользователя"},
         {id: 2, name: "Пароль"},
         {id: 3, name: "Забыли свой пароль?"},
         {id: 4, name: "Регистрация"}
