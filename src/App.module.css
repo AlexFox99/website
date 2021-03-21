@@ -1,7 +1,4 @@
-.scroll{
-    display: inline-block;
-    overflow-x: scroll;
-}
+
 .App {
     display: grid;
     grid-template-areas: "hed" "cont";
@@ -17,6 +14,7 @@
 }
 
 .App_header {
+    height: 50px;
     background-color: #212121;
     grid-area: hed;
     color: white;
