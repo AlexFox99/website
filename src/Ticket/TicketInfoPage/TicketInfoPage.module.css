@@ -3,6 +3,7 @@
     font-size: calc(10px + 2vmin);
     color: white;
     display: grid;
+    overflow-x: scroll;
     grid-template-columns: 1fr;
     grid-template-rows: 10% 1fr;
     grid-template-areas: "NameTicket" "Content";
